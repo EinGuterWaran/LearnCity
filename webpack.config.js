@@ -4,7 +4,7 @@ const path = require('path');
 const config = {
   entry: [
     'react-hot-loader/patch',
-    './dist/index.js'
+    './dist/subj.js'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),

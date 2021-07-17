@@ -1,0 +1,69 @@
+{
+  "subjects": {
+    "maths": {
+      "test": [
+        {
+          "done": 0,
+          "-name": "addition",
+          "desc": "Add the numbers!",
+          "task": [
+            {
+              "question": "3+4",
+              "answer": "7"
+            },
+            {
+              "question": "1+2",
+              "answer": "3"
+            },
+            {
+              "question": "1+4",
+              "answer": "5"
+            }
+          ]
+        },
+        {
+          "-name": "Which Number - Part 2",
+          "desc": "Which number is that?",
+          "done": 0,
+          "task": [
+            {
+              "question": "seven",
+              "answer": "7"
+            },
+            {
+              "question": "two",
+              "answer": "2"
+            },
+            {
+              "question": "six",
+              "answer": "6"
+            }
+          ]
+        },
+        {
+          "-name": "Which Number",
+          "desc": "Which number is that?",
+          "done": 1,
+          "points": 2,
+          "task": [
+            {
+              "question": "eight",
+              "answer": "8"
+            },
+            {
+              "question": "five",
+              "answer": "5"
+            },
+            {
+              "question": "one",
+              "answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    "english": {
+    }
+  },
+  "#omit-xml-declaration": "yes"
+}
