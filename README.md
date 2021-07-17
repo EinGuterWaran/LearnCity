@@ -1,12 +1,10 @@
-
-# LearnCity
 A contribution to the Level-Up Society Hackathon by Janusan Lingeswaran, Philipp Kant, Romelo Gilbert, Mohammad Patel and Radhhicka Kishorpouria.
 The overall theme of the hackathon is, as the name suggests, leveraging gamification to improve society. We have chosen the area of learning.
-
+# Motivation
 A 2011 study (DOI:10.1016/j.system.2011.01.009) shows that intrinsic motivation for learning generally declines in participating students from third to sixth grade.
 Another paper (DOI:10.1016/j.sbspro.2014.08.287) shows that rewards are not harmful, but that there is some relationship between external motivators and task oriented motivation. Rewards are viewed as primarily beneficial, rather than constraining, to human freedom and independence. Some research has shown that
 the dichotomy between extrinsic and intrinsic motivation is unnecessary, even unacceptable.
-
+# Learn City
 This gave us an idea to make learning more fun and playful for elementary school students to increase motivation through gamification concepts:
 Learn City, a virtual city representing a school class.
 Each student can create his own character. Customization is an important gamification concept, especially for children.
