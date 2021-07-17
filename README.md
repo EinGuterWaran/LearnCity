@@ -1,3 +1,4 @@
+
 # LearnCity
 A contribution to the Level-Up Society Hackathon by Janusan Lingeswaran, Philipp Kant, Romelo Gilbert, Mohammad Patel and Radhhicka Kishorpouria.
 The overall theme of the hackathon is, as the name suggests, leveraging gamification to improve society. We have chosen the area of learning.
@@ -23,3 +24,4 @@ We used the following concepts:
 - Random Rewards → For every day a student enter the game he will get a random reward
 - Leaderboards / Ladders + Badges / Achievements → Leaderboards for every subject + overall. Badges if a student is the best in a week or completes a test/task very well (Gold for 90%, silver for 80%, bronze for 70%)
 - Meaning / Purpose → Semester goal for the whole class. If the whole class reaches (all levels added together) a certain level in the semester, they will go eating ice cream at the end of the semester
+
