@@ -127,7 +127,7 @@ async function main() {
             }
         })
 
-        const MOVE_SPEED = 120
+        const MOVE_SPEED = 150
 
         // 20 by 20 map
         const sizeOfMap = 20
@@ -190,9 +190,9 @@ async function main() {
         keyPressRep("down", () => {
             person.move(0, MOVE_SPEED)
         })
-        // person.action(() => {
-        //     person.resolve()
-        // })
+        person.action(() => {
+            person.resolve()
+        })
 
         person.collides('door', () => {
             go("outside");
