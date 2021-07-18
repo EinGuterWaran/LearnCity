@@ -33,7 +33,7 @@ To run the project, do following steps :
 ## Entering the apartment
 To enter the building you will first have to go into the elevator and then select a room, once you select a room it will take you directly to your room, where you will be able to move around. In order to see the badges you have obtained in the game, you may click the board on the right hand side of the screen to view your badges. 
 
-## view the challenges/games
+## View the challenges/games
 Open the page: http://localhost/LearnCity/subjects/index.html?s=mathematics
 To change the topic edit the parameters in url:
 You may do:
