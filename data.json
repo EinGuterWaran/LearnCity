@@ -1,6 +1,65 @@
 {
+  "students": [
+    {
+      "id": 0,
+      "name": "Alissa",
+      "map": [
+        "atttttttts",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       pr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ]
+    },
+    {
+      "id": 1,
+
+      "name": "Nithusan",
+      "map": [
+        "atttttttts",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       pr",
+        "l    k   r",
+        "l        r",
+        "d    p   r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,33,1,5,3
+      ]
+    },{
+      "id": 2,
+      "name": "Maria",
+      "map": [
+        "atttttttts",
+        "l   e    r",
+        "l        r",
+        "l        r",
+        "l kk    pr",
+        "l        r",
+        "l    k   r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,15
+      ]
+    }
+  ],
   "student": {
-    "id": 1,
+    "id": 0,
     "name": "Alissa",
     "coins": 100,
     "exp": 1100
