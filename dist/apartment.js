@@ -68,7 +68,7 @@ async function main() {
             if (board.isClicked()) {
                 if (board.scale == 0.05) {
                     board.scale = 0.385
-                    board.pos = vec2(0.50)
+                    board.pos = vec2(0,60)
                 } else {
                     board.scale = 0.05
                     board.pos = vec2(355, 54)
