@@ -24,7 +24,7 @@ We used the following concepts:
 - Meaning / Purpose → Semester goal for the whole class. If the whole class reaches (all levels added together) a certain level in the semester, they will go eating ice cream at the end of the semester
 
 
-# Deployment to view apartment
+# Deployment
 To run the project, do following steps :
 1. git clone the project https://github.com/EinGuterWaran/LearnCity.git
 2. Run "npm install" inside the folder
