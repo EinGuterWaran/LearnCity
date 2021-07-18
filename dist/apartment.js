@@ -30,11 +30,18 @@ async function main() {
         clearColor: [0, 0, 0, 0]
     });
 
+    // furniture
     loadSprite('char', userData['student']['character'])
     loadSprite('bed', 'img/bed.png')
     loadSprite('door', 'https://i.imgur.com/okdJNls.png')
     loadSprite('sofa', 'img/sofa.png')
     loadSprite('lamp', 'img/lamp.png')
+    loadSprite('bookshelf', 'img/furniture/bookshelf.svg')
+    loadSprite('drawer', 'img/furniture/drawer.svg')
+    loadSprite('single_sofa', 'img/furniture/single_sofa.svg')
+    loadSprite('cabinet', 'img/furniture/cabinet.svg')
+    loadSprite('stool', 'img/furniture/stool.svg')
+    loadSprite('three_sofa', 'img/furniture/three_seater_sofa.svg')
 
     // badges
     loadSprite('g', 'img/badges/gold_light.svg')
@@ -76,9 +83,9 @@ async function main() {
 
         function add_badges() {
             console.log(player['badges'])
-            add([text(player['name'], 15), layer('ui'), pos(200, 70), 'name'])
+            add([text(player['name'] + "(Badges)", 15), layer('ui'), pos(150, 72), 'name'])
             if (player['badges'].length == 0) {
-                add([text("You can do it!! Lets do some challenges to earn some badges", 15,{width:300}),color(rgb(1, 0, 0)),layer('ui'), pos(100, 100),'name' ])
+                add([text("You can do it!! Lets do some challenges to earn some badges", 15, { width: 300 }), color(rgb(1, 0, 0)), layer('ui'), pos(100, 100), 'name'])
             } else {
                 py = 95
                 px = 40
@@ -94,119 +101,119 @@ async function main() {
                     }
                     console.log(px)
                 })
-            
+
             };
-}
-
-board.action(() => {
-    // console.log(board.pos)
-    if (board.isClicked()) {
-        if (board.scale == 0.05) {
-            board.scale = 0.385
-            board.pos = vec2(0, 60)
-            add_badges()
-            console.log(board)
-        } else {
-            board.scale = 0.05
-            board.pos = vec2(355, 54)
-            every("badge", (obj) => {
-                destroy(obj);
-            });
-            every("name", (obj) => {
-                destroy(obj);
-            });
         }
-    }
-})
 
-const MOVE_SPEED = 120
+        board.action(() => {
+            // console.log(board.pos)
+            if (board.isClicked()) {
+                if (board.scale == 0.05) {
+                    board.scale = 0.385
+                    board.pos = vec2(0, 60)
+                    add_badges()
+                    console.log(board)
+                } else {
+                    board.scale = 0.05
+                    board.pos = vec2(355, 54)
+                    every("badge", (obj) => {
+                        destroy(obj);
+                    });
+                    every("name", (obj) => {
+                        destroy(obj);
+                    });
+                }
+            }
+        })
 
-// 20 by 20 map
-const sizeOfMap = 20
-const map = player['map']
-// [
-//     "attttttttp",
-//     "l   e k  r",
-//     "l        r",
-//     "l        r",
-//     "l       sr",
-//     "l    k   r",
-//     "l        r",
-//     "d    s   r",
-//     "l        r",
-//     "zbbbbbbbbx"
-//   ]
+        const MOVE_SPEED = 120
 
-
-
-const posItems = {
-    width: 48,
-    height: 48,
-    'r': [sprite('right-wall'), solid(), 'wall'],
-    'l': [sprite('left-wall'), solid(), 'wall'],
-    'd': [sprite('door'), solid(), 'door'],
-    'b': [sprite('bottom-wall'), solid(), 'wall'],
-    't': [sprite('top-wall'), solid(), 'wall'],
-    'p': [sprite('top-right-wall'), solid(), 'wall'],
-    'z': [sprite('bottom-left-wall'), solid(), 'wall'],
-    'a': [sprite('top-left-wall'), solid(), 'wall'],
-    'x': [sprite('bottom-right-wall'), solid(), 'wall'],
-    'e': [sprite('bed'), scale(0.2), solid(), 'bed'],
-    's': [sprite('sofa'), scale(0.05), solid(), 'sofa'],
-    'k': [sprite('lamp'), scale(0.2), solid(), 'lamp']
-}
-
-addLevel(map, posItems)
-
-// console.log(map)
-// console.log(new Array(11).join(" "))
+        // 20 by 20 map
+        const sizeOfMap = 20
+        const map = player['map']
+        // [
+        //     "attttttttp",
+        //     "l   e k  r",
+        //     "l        r",
+        //     "l        r",
+        //     "l       sr",
+        //     "l    k   r",
+        //     "l        r",
+        //     "d    s   r",
+        //     "l        r",
+        //     "zbbbbbbbbx"
+        //   ]
 
 
-keyPressRep("left", () => {
-    person.move(-MOVE_SPEED, 0)
 
-})
-keyPressRep("right", () => {
-    person.move(MOVE_SPEED, 0)
-})
-keyPressRep("up", () => {
-    person.move(0, -MOVE_SPEED)
-})
-keyPressRep("down", () => {
-    person.move(0, MOVE_SPEED)
-})
-// person.action(() => {
-//     person.resolve()
-// })
+        const posItems = {
+            width: 48,
+            height: 48,
+            'r': [sprite('right-wall'), solid(), 'wall'],
+            'l': [sprite('left-wall'), solid(), 'wall'],
+            'd': [sprite('door'), solid(), 'door'],
+            'b': [sprite('bottom-wall'), solid(), 'wall'],
+            't': [sprite('top-wall'), solid(), 'wall'],
+            'p': [sprite('top-right-wall'), solid(), 'wall'],
+            'z': [sprite('bottom-left-wall'), solid(), 'wall'],
+            'a': [sprite('top-left-wall'), solid(), 'wall'],
+            'x': [sprite('bottom-right-wall'), solid(), 'wall'],
+            'e': [sprite('bed'), scale(0.2), solid(), 'bed'],
+            's': [sprite('sofa'), scale(0.05), solid(), 'sofa'],
+            'k': [sprite('lamp'), scale(0.2), solid(), 'lamp']
+        }
 
-person.collides('door', () => {
-    go("outside");
-})
-const allObjs = get('char');
-console.log(allObjs)
+        addLevel(map, posItems)
+
+        // console.log(map)
+        // console.log(new Array(11).join(" "))
+
+
+        keyPressRep("left", () => {
+            person.move(-MOVE_SPEED, 0)
+
+        })
+        keyPressRep("right", () => {
+            person.move(MOVE_SPEED, 0)
+        })
+        keyPressRep("up", () => {
+            person.move(0, -MOVE_SPEED)
+        })
+        keyPressRep("down", () => {
+            person.move(0, MOVE_SPEED)
+        })
+        // person.action(() => {
+        //     person.resolve()
+        // })
+
+        person.collides('door', () => {
+            go("outside");
+        })
+        const allObjs = get('char');
+        console.log(allObjs)
 
     });
 
-scene("outside", () => {
+    scene("outside", () => {
 
-})
+    })
 
-// scene("board", () => {
-//     layers(['bg', 'obj', 'ui'], 'obj')
+    // scene("board", () => {
+    //     layers(['bg', 'obj', 'ui'], 'obj')
 
-//     const background = add([sprite('board'), layer('bg'), scale(0.5)])
-//     background.action(() => {
-//         if (background.isClicked()) {
-//             go("room", player)
-//         }
-//     })
-// })
+    //     const background = add([sprite('board'), layer('bg'), scale(0.5)])
+    //     background.action(() => {
+    //         if (background.isClicked()) {
+    //             go("room", player)
+    //         }
+    //     })
+    // })
 
-start("room", player);
+    start("room", player);
 
 
-console.log(window.innerHeight)
-console.log((window.innerHeight / 4) * 3)
+    console.log(window.innerHeight)
+    console.log((window.innerHeight / 4) * 3)
 
     // action(() => {
     //     console.log("oh hi")
