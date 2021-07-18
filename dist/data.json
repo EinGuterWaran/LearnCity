@@ -15,6 +15,7 @@
         "l        r",
         "zbbbbbbbbx"
       ],
+      "char": "img/chars/rk.svg",
       "items": [
         1,14,3,11,11
       ],
@@ -37,6 +38,7 @@
         "l        r",
         "zbbbbbbbbx"
       ],
+      "char": "img/chars/philip.svg",
       "items": [
         1,14,3,11,33,1,5,3
       ],
@@ -58,6 +60,7 @@
         "l  o     r",
         "zbbbbbbbbx"
       ],
+      "char": "img/chars/janu.svg",
       "items": [
         1,14,3,11,15
       ],

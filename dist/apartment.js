@@ -118,7 +118,7 @@ async function main() {
                     board.scale = 0.05
                     board.pos = vec2(355, 54)
                     every("badge", (obj) => {
-                        destroy(obj);
+                        destroy(obj)
                     });
                     every("name", (obj) => {
                         destroy(obj);
