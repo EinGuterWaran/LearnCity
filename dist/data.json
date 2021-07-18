@@ -67,6 +67,248 @@
       "badges":[
         "g","g","g","s","s"
       ]
+    },
+    {
+      "id": 3,
+      "name": "Jonas",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sarah",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Patrick",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Alicia",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Fabian",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Harry",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Anna",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Charmila",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Birgit",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Robin",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Tobias",
+      "map": [
+        "attttttttp",
+        "l   e k  r",
+        "l        r",
+        "l        r",
+        "l       sr",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
     }
   ],
   "student": {
