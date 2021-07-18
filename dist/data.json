@@ -17,11 +17,13 @@
       ],
       "items": [
         1,14,3,11,11
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
     },
     {
       "id": 1,
-
       "name": "Nithusan",
       "map": [
         "attttttttp",
@@ -37,7 +39,10 @@
       ],
       "items": [
         1,14,3,11,33,1,5,3
-      ]
+      ],
+      "badges":[
+      "g","s","b","s","s","g"
+    ]
     },{
       "id": 2,
       "name": "Maria",
@@ -55,6 +60,9 @@
       ],
       "items": [
         1,14,3,11,15
+      ],
+      "badges":[
+        "g","g","g","s","s"
       ]
     }
   ],
@@ -62,7 +70,8 @@
     "id": 0,
     "name": "Alissa",
     "coins": 100,
-    "exp": 1100
+    "exp": 1100,
+    "character": "img/chars/character.svg"
   },
   "subjects": {
     "mathematics": {

@@ -24,12 +24,14 @@ async function main() {
         clearColor: [0, 0, 0, 0]
     });
 
-    loadSprite('char', 'https://i.imgur.com/Ei1VnX8.png')
+    loadSprite('char', userData['student']['character'])
     loadSprite('bed', 'img/bed.png')
     loadSprite('door', 'https://i.imgur.com/okdJNls.png')
     loadSprite('sofa', 'img/sofa.png')
     loadSprite('lamp', 'img/lamp.png')
-
+    
+    // badges
+    // loadSprite('gold-badge', 'img/badges/')
 
     // walls
     loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png')
@@ -53,7 +55,8 @@ async function main() {
         ])
         const person = add([
             sprite("char"),
-            pos(49, 330)
+            pos(50, 335),
+            scale(0.2)
         ])
 
         const board = add([
@@ -68,11 +71,12 @@ async function main() {
             if (board.isClicked()) {
                 if (board.scale == 0.05) {
                     board.scale = 0.385
-                    board.pos = vec2(0,60)
+                    board.pos = vec2(0, 60)
+
                 } else {
                     board.scale = 0.05
                     board.pos = vec2(355, 54)
-                    
+
                 }
             }
         })
@@ -133,9 +137,9 @@ async function main() {
         keyPressRep("down", () => {
             person.move(0, MOVE_SPEED)
         })
-        person.action(() => {
-            person.resolve()
-        })
+        // person.action(() => {
+        //     person.resolve()
+        // })
 
         person.collides('door', () => {
             go("outside");
@@ -149,16 +153,16 @@ async function main() {
 
     })
 
-    scene("board", () => {
-        layers(['bg', 'obj', 'ui'], 'obj')
+    // scene("board", () => {
+    //     layers(['bg', 'obj', 'ui'], 'obj')
 
-        const background = add([sprite('board'), layer('bg'), scale(0.5)])
-        background.action(() => {
-            if (background.isClicked()) {
-                go("room", player)
-            }
-        })
-    })
+    //     const background = add([sprite('board'), layer('bg'), scale(0.5)])
+    //     background.action(() => {
+    //         if (background.isClicked()) {
+    //             go("room", player)
+    //         }
+    //     })
+    // })
 
     start("room", player);
 
@@ -166,8 +170,8 @@ async function main() {
     console.log(window.innerHeight)
     console.log((window.innerHeight / 4) * 3)
 
-    action(() => {
-        console.log("oh hi")
-    });
+    // action(() => {
+    //     console.log("oh hi")
+    // });
 }
 main();
