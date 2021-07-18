@@ -18,7 +18,7 @@ async function main() {
     console.log(userData['students']['0'])
 
 
-    player = userData['students']['2']
+    player = userData['students']['0']
     console.log(player['map'])
 
     const k = kaboom({
@@ -42,6 +42,7 @@ async function main() {
     loadSprite('cabinet', 'img/furniture/cabinet.svg')
     loadSprite('stool', 'img/furniture/stool.svg')
     loadSprite('three-sofa', 'img/furniture/three_seater_sofa.svg')
+    loadSprite('plant', 'img/furniture/plant.svg')
 
     // badges
     loadSprite('g', 'img/badges/gold_light.svg')
@@ -126,7 +127,7 @@ async function main() {
             }
         })
 
-        const MOVE_SPEED = 120
+        const MOVE_SPEED = 150
 
         // 20 by 20 map
         const sizeOfMap = 20
@@ -160,7 +161,14 @@ async function main() {
             'x': [sprite('bottom-right-wall'), solid(), 'wall'],
             'e': [sprite('bed'), scale(0.2), solid(), 'bed'],
             's': [sprite('single-sofa'), scale(0.2), solid(), 'sofa'],
-            'k': [sprite('lamp'), scale(0.2), solid(), 'lamp']
+            '3': [sprite('three-sofa'), scale(0.4), solid(), 'sofa'],
+            'k': [sprite('lamp'), scale(0.2), solid(), 'lamp'],
+            'n': [sprite('plant'), scale(0.2), solid(), 'plant'],
+            'w': [sprite('drawer'), scale(0.2), solid(), 'drawer'],
+            'c': [sprite('cabinet'), scale(0.4), solid(), 'cabinet'],
+            'o': [sprite('stool'), scale(0.2), solid(), 'stool'],
+            'h': [sprite('bookshelf'), scale(0.4), solid(), 'bookshelf']
+
         }
 
         addLevel(map, posItems)
@@ -182,9 +190,9 @@ async function main() {
         keyPressRep("down", () => {
             person.move(0, MOVE_SPEED)
         })
-        // person.action(() => {
-        //     person.resolve()
-        // })
+        person.action(() => {
+            person.resolve()
+        })
 
         person.collides('door', () => {
             go("outside");
