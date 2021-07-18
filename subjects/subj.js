@@ -6,7 +6,7 @@ var todo ="<div class=\"col-md-6\">\n" +
     "            <div class=\"h-100 p-5 text-dark bg-light rounded-3\">\n" +
     "                <h1 class=\"display-5 fw-bold\">[testname]</h1>\n" +
     "                <p class=\"col-md-8 fs-3\">[desc]</p>\n" +
-    "                <p class=\"col-sm-8 fs-5\">[questions] questions.</p>\n" +
+    "                <p class=\"col-sm-8 fs-5\">[questions] questions, time: [time].</p>\n" +
     "                <p class=\"col-sm-8 fs-5\">What can you earn in this Test?</p>\n" +
     "                <p class=\"col-sm-8 fs-5\">[earnings]</p>\n" +
     "                <button class=\"btn btn-primary btn-lg\" onclick=\"location.href='test.html?s='+SUBJ+'&t=[id]'\" type=\"button\">Start</button>\n" +
@@ -33,6 +33,16 @@ async function getJson(url) {
     return data;
 }
 async function main(){
+    function writeTime(seconds){
+        if (seconds < 60){
+            return seconds+" seconds";
+        }
+        var minutes = Math.floor(seconds/60);
+        var seconds = seconds % 60;
+        if (seconds == 0)
+            return minutes+" minutes";
+        return minutes+" minutes and "+seconds+" seconds";
+    }
     userData = await getJson("../data.json");
     document.getElementById('sbj').innerText = SUBJ.charAt(0).toUpperCase()+SUBJ.slice(1);
     var student = userData["student"];
@@ -47,7 +57,8 @@ async function main(){
                 .replace("[desc]",testData[i]["desc"])
                 .replace("[questions]",testData[i]["task"].length)
                 .replace("[earnings]", testData[i]["task"].length*testData[i]["CPC"]+" Coins and "+testData[i]["task"].length*testData[i]["ExpPC"]+" EXP.")
-                .replace("[id]", i));
+                .replace("[id]", i)
+                .replace("[time]", writeTime(testData[i]["timer"])));
         }
         else {
             d1.insertAdjacentHTML('beforeend', done

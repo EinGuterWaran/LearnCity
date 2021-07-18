@@ -35,6 +35,7 @@
           "done": 0,
           "ExpPC": 30,
           "CPC": 5,
+          "timer": 300,
           "task": [
             {
               "question": "3+4=",
@@ -58,6 +59,7 @@
           "done": 0,
           "ExpPC": 20,
           "CPC": 3,
+          "timer": 200,
           "task": [
             {
               "question": "Seven",
@@ -86,6 +88,7 @@
           "correct": 2,
           "ExpPC": 10,
           "CPC": 2,
+          "timer": 200,
           "task": [
             {
               "question": "Eight",
@@ -133,6 +136,7 @@
       "correct": 0,
       "ExpPC": 20,
       "CPC": 5,
+      "timer": 600,
       "task": [
         {
           "question": "Weak",
