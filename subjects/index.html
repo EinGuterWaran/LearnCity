@@ -13,28 +13,54 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="../dist/bootstrap.min.css" rel="stylesheet">
-
     <style>
-
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
 
         @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
         }
+
     </style>
 
+    <link href="../dist/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
-
 <main>
     <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-                <span class="fs-4" id="subject">Maths</span>
+            <a class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4" id="sbj"> </span>
+            </a>
+            <a class="d-flex text-dark text-decoration-none"  id="student">
             </a>
         </header>
+        <div class="row align-items-md-stretch" id="mco">
+        </div>
+        <div id="highscore" class="container py-4">
+            <h1>Highscore</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gained EXP in this subject</th>
+                </tr>
+                </thead>
+                <tbody id="highbody">
 
+                </tbody>
+            </table>
 
+        </div>
     </div>
 </main>
 
