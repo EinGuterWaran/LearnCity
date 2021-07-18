@@ -21,7 +21,6 @@
     },
     {
       "id": 1,
-
       "name": "Nithusan",
       "map": [
         "atttttttts",
@@ -62,7 +61,8 @@
     "id": 0,
     "name": "Alissa",
     "coins": 100,
-    "exp": 1100
+    "exp": 1100,
+    "character": "1.jpg"
   },
   "subjects": {
     "mathematics": {
