@@ -24,10 +24,22 @@ We used the following concepts:
 - Meaning / Purpose → Semester goal for the whole class. If the whole class reaches (all levels added together) a certain level in the semester, they will go eating ice cream at the end of the semester
 
 
-# Deployment Running the application 
-Set up a localserver running on localhost
-Open the following page localhost:8000/elevator.html
+# Deployment to view apartment
+To run the project, do following steps :
+1. git clone the project https://github.com/EinGuterWaran/LearnCity.git
+2. Run "npm install" inside the folder
+3. Run "npm start" to start the server
+4. Go to "http://localhost:8080/elevator.html" on browser
 ## Entering the apartment
 To enter the building you will first have to go into the elevator and then select a room, once you select a room it will take you directly to your room, where you will be able to move around. In order to see the badges you have obtained in the game, you may click the board on the right hand side of the screen to view your badges. 
+
+## view the challenges/games
+Open the page: http://localhost/LearnCity/subjects/index.html?s=mathematics
+To change the topic edit the parameters in url:
+You may do:
+?s=mathematics
+?s=english
+Then you can the select the challenges you want to do.
+
 
 
