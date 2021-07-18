@@ -6,7 +6,15 @@ async function getJson(url) {
     return data;
 }
 async function main() {
+
+    // default choose first palyer
     userData = await getJson("../data.json");
+    console.log(userData['students']['0'])
+
+
+    player = userData['students']['0']
+    console.log(player['map'])
+
     const k = kaboom({
         global: true,
         width: (window.innerHeight / 3) * 4,
@@ -22,7 +30,6 @@ async function main() {
     loadSprite('sofa', 'img/sofa.png')
     loadSprite('lamp', 'img/lamp.png')
 
-    // loadSprite('board', 'img/')
 
     // walls
     loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png')
@@ -35,7 +42,7 @@ async function main() {
     loadSprite('top-right-wall', 'https://i.imgur.com/z0OmBd1.jpg')
     loadSprite('board', 'img/badges/wooden_board.svg')
 
-    scene("room", () => {
+    scene("room", (player) => {
 
         layers(['bg', 'obj', 'ui'], 'obj')
 
@@ -48,32 +55,47 @@ async function main() {
             sprite("char"),
             pos(49, 330)
         ])
-        // const door = add([
-        //     sprite('door'),
-        //     pos(0, innerHeight / 2)
-        // ])
 
-        // const bed = add([
-        //     sprite("bed"),
-        //     pos(100, 100),
-        //     scale(0.2)
-        // ])
+        const board = add([
+            sprite("board"),
+            pos(355, 54),
+            scale(0.05),
+            layer('ui')
+        ])
+
+        board.action(() => {
+            // console.log(board.pos)
+            if (board.isClicked()) {
+                if (board.scale == 0.05) {
+                    board.scale = 0.385
+                    board.pos = vec2(0.50)
+                } else {
+                    board.scale = 0.05
+                    board.pos = vec2(355, 54)
+                    
+                }
+            }
+        })
+
         const MOVE_SPEED = 120
 
         // 20 by 20 map
         const sizeOfMap = 20
-        const map = [
-            "attttttttp",
-            "l   e k  r",
-            "l       cr",
-            "l        r",
-            "l       sr",
-            "l        r",
-            "l        r",
-            "d        r",
-            "l        r",
-            "zbbbbbbbbx"
-        ]
+        const map = player['map']
+        // [
+        //     "attttttttp",
+        //     "l   e k  r",
+        //     "l        r",
+        //     "l        r",
+        //     "l       sr",
+        //     "l    k   r",
+        //     "l        r",
+        //     "d    s   r",
+        //     "l        r",
+        //     "zbbbbbbbbx"
+        //   ]
+
+
 
         const posItems = {
             width: 48,
@@ -89,14 +111,13 @@ async function main() {
             'x': [sprite('bottom-right-wall'), solid(), 'wall'],
             'e': [sprite('bed'), scale(0.2), solid(), 'bed'],
             's': [sprite('sofa'), scale(0.05), solid(), 'sofa'],
-            'k': [sprite('lamp'), scale(0.2), solid(), 'lamp'],
-            'c': [sprite('board'), scale(0.05),origin("center"),'board']
+            'k': [sprite('lamp'), scale(0.2), solid(), 'lamp']
         }
 
         addLevel(map, posItems)
 
         // console.log(map)
-        console.log(new Array(11).join(" "))
+        // console.log(new Array(11).join(" "))
 
 
         keyPressRep("left", () => {
@@ -112,7 +133,6 @@ async function main() {
         keyPressRep("down", () => {
             person.move(0, MOVE_SPEED)
         })
-        
         person.action(() => {
             person.resolve()
         })
@@ -129,7 +149,18 @@ async function main() {
 
     })
 
-    start("room");
+    scene("board", () => {
+        layers(['bg', 'obj', 'ui'], 'obj')
+
+        const background = add([sprite('board'), layer('bg'), scale(0.5)])
+        background.action(() => {
+            if (background.isClicked()) {
+                go("room", player)
+            }
+        })
+    })
+
+    start("room", player);
 
 
     console.log(window.innerHeight)
@@ -140,97 +171,3 @@ async function main() {
     });
 }
 main();
-// userData = await getJson("../data.json")
-// console.log(userData) 
-
-// import data from './data.json';
-// console.log(data);
-
-
-// data = fetch("./data.json")
-// .then(response => {
-//    return response.json();
-// })
-// // .then(data => console.log(data));
-
-// console.log(data['students'])
-
-// function loadJSON(callback) {   
-
-//     var xobj = new XMLHttpRequest();
-//         xobj.overrideMimeType("application/json");
-//     xobj.open('GET', 'data.json', true); // Replace 'my_data' with the path to your file
-//     xobj.onreadystatechange = function () {
-//           if (xobj.readyState == 4 && xobj.status == "200") {
-//             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-//             callback(xobj.responseText);
-//           }
-//     };
-//     xobj.send(null);  
-//  }
-
-//  loadJSON(function(response) {
-//     // Parse JSON string into object
-//       var actual_JSON = JSON.parse(response);
-//       console.log(actual_JSON['students'])
-//    });
-
-// data = {
-//     "id": 0,
-//     "name": "Alissa",
-//     "map": [
-//       "atttttttts",
-//       "l   e k  r",
-//       "l        r",
-//       "l        r",
-//       "l       pr",
-//       "l        r",
-//       "l        r",
-//       "d        r",
-//       "l        r",
-//       "zbbbbbbbbx"
-//     ],
-//     "items": [
-//       1,14,3,11,11
-//     ]
-//   },
-//   {
-//     "id": 1,
-
-//     "name": "Nithusan",
-//     "map": [
-//       "atttttttts",
-//       "l   e k  r",
-//       "l        r",
-//       "l        r",
-//       "l       pr",
-//       "l    k   r",
-//       "l        r",
-//       "d    p   r",
-//       "l        r",
-//       "zbbbbbbbbx"
-//     ],
-//     "items": [
-//       1,14,3,11,33,1,5,3
-//     ]
-//   },{
-//     "id": 2,
-//     "name": "Maria",
-//     "map": [
-//       "atttttttts",
-//       "l   e    r",
-//       "l        r",
-//       "l        r",
-//       "l kk    pr",
-//       "l        r",
-//       "l    k   r",
-//       "d        r",
-//       "l        r",
-//       "zbbbbbbbbx"
-//     ],
-//     "items": [
-//       1,14,3,11,15
-//     ]
-//   }
-
-// console.log(data)
