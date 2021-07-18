@@ -23,3 +23,11 @@ We used the following concepts:
 - Leaderboards / Ladders + Badges / Achievements → Leaderboards for every subject + overall. Badges if a student is the best in a week or completes a test/task very well (Gold for 90%, silver for 80%, bronze for 70%)
 - Meaning / Purpose → Semester goal for the whole class. If the whole class reaches (all levels added together) a certain level in the semester, they will go eating ice cream at the end of the semester
 
+
+# Deployment Running the application 
+Set up a localserver running on localhost
+Open the following page localhost:8000/elevator.html
+## Entering the apartment
+To enter the building you will first have to go into the elevator and then select a room, once you select a room it will take you directly to your room, where you will be able to move around. In order to see the badges you have obtained in the game, you may click the board on the right hand side of the screen to view your badges. 
+
+
