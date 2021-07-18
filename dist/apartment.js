@@ -38,10 +38,10 @@ async function main() {
     loadSprite('lamp', 'img/lamp.png')
     loadSprite('bookshelf', 'img/furniture/bookshelf.svg')
     loadSprite('drawer', 'img/furniture/drawer.svg')
-    loadSprite('single_sofa', 'img/furniture/single_sofa.svg')
+    loadSprite('single-sofa', 'img/furniture/single_sofa.svg')
     loadSprite('cabinet', 'img/furniture/cabinet.svg')
     loadSprite('stool', 'img/furniture/stool.svg')
-    loadSprite('three_sofa', 'img/furniture/three_seater_sofa.svg')
+    loadSprite('three-sofa', 'img/furniture/three_seater_sofa.svg')
 
     // badges
     loadSprite('g', 'img/badges/gold_light.svg')
@@ -159,7 +159,7 @@ async function main() {
             'a': [sprite('top-left-wall'), solid(), 'wall'],
             'x': [sprite('bottom-right-wall'), solid(), 'wall'],
             'e': [sprite('bed'), scale(0.2), solid(), 'bed'],
-            's': [sprite('sofa'), scale(0.05), solid(), 'sofa'],
+            's': [sprite('single-sofa'), scale(0.2), solid(), 'sofa'],
             'k': [sprite('lamp'), scale(0.2), solid(), 'lamp']
         }
 
