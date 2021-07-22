@@ -1,4 +1,5 @@
-A contribution to the Level-Up Society Hackathon by Janusan Lingeswaran, Philipp Kant, Romelo Gilbert, Mohammad Patel and Radhhicka Kishorpouria.
+A contribution to the Level-Up Society Hackathon by Janusan Lingeswaran, Radhhicka Kishorpouria, Mohammad Patel and Philipp Kant.
+
 The overall theme of the hackathon is, as the name suggests, leveraging gamification to improve society. We have chosen the area of learning.
 # Motivation
 A 2011 study (DOI:10.1016/j.system.2011.01.009) shows that intrinsic motivation for learning generally declines in participating students from third to sixth grade.
