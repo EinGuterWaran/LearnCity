@@ -232,5 +232,51 @@
 
   "#omit-xml-declaration": "yes"
   }
-  }
+  },
+  "item": [
+    {
+      "id" : 0,
+      "name": "Bookshelf",
+      "src" : "bookshelf.svg",
+      "price" : 150,
+      "scarcity" : 70
+    },
+    {
+      "id" : 1,
+      "name": "Cabinet",
+      "src" : "cabinet.svg",
+      "price" : 80,
+      "scarcity" : 40
+    },{
+      "id" : 2,
+      "name": "Drawer",
+      "src" : "drawer.svg",
+      "price" : 30,
+      "scarcity" : 20
+    },{
+      "id" : 3,
+      "name": "Plant",
+      "src" : "plant.svg",
+      "price" : 30,
+      "scarcity" : 20
+    },{
+      "id" : 4,
+      "name": "Single Sofa",
+      "src" : "single_sofa.svg",
+      "price" : 100,
+      "scarcity" : 50
+    },{
+      "id" : 5,
+      "name": "Stool",
+      "src" : "stool",
+      "price" : 10,
+      "scarcity" : 10
+    },{
+      "id" : 6,
+      "name": "Three Seater Sofa",
+      "src" : "three_seater_sofa.svg",
+      "price" : 200,
+      "scarcity" : 90
+    }
+  ]
 }
