@@ -487,6 +487,7 @@
       "price" : 150,
       "scarcity" : 70,
       "type": "furniture",
+      "kind": "bookshelf",
       "scale": 0.4,
       "del": false
     },
@@ -498,6 +499,7 @@
       "price" : 80,
       "scarcity" : 40,
       "type": "furniture",
+      "kind": "cabinet",
       "scale": 0.4,
       "del": false
     },{
@@ -508,6 +510,7 @@
       "price" : 30,
       "scarcity" : 20,
       "type": "furniture",
+      "kind": "drawer",
       "scale": 0.2,
       "del": false
     },{
@@ -518,6 +521,7 @@
       "price" : 30,
       "scarcity" : 20,
       "type": "furniture",
+      "kind": "plant",
       "scale": 0.2,
       "del": false
     },{
@@ -528,6 +532,7 @@
       "price" : 100,
       "scarcity" : 50,
       "type": "furniture",
+      "kind": "sofa",
       "scale": 0.2,
       "del": false
     },{
@@ -538,6 +543,7 @@
       "price" : 10,
       "scarcity" : 10,
       "type": "furniture",
+      "kind": "stool",
       "scale": 0.2,
       "del": false
     },{
@@ -548,6 +554,7 @@
       "price" : 200,
       "scarcity" : 90,
       "type": "furniture",
+      "kind": "sofa",
       "scale": 0.4,
       "del": false
     }

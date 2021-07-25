@@ -33,10 +33,10 @@ async function main() {
     loadSprite('door', 'https://i.imgur.com/okdJNls.png')
     loadSprite('bookshelf', '../img/furniture/bookshelf.svg')
     loadSprite('drawer', '../img/furniture/drawer.svg')
-    loadSprite('single-sofa', '../img/furniture/single_sofa.svg')
+    loadSprite('single_sofa', '../img/furniture/single_sofa.svg')
     loadSprite('cabinet', '../img/furniture/cabinet.svg')
     loadSprite('stool', '../img/furniture/stool.svg')
-    loadSprite('three-sofa', '../img/furniture/three_seater_sofa.svg')
+    loadSprite('three_seater_sofa', '../img/furniture/three_seater_sofa.svg')
     loadSprite('plant', '../img/furniture/plant.svg')
 
     // badges
@@ -193,7 +193,7 @@ async function main() {
 
 
 
-        const posItems = {
+        var posItems = {
             width: 48,
             height: 48,
             'r': [sprite('right-wall'), solid(), 'wall'],
@@ -205,20 +205,21 @@ async function main() {
             'z': [sprite('bottom-left-wall'), solid(), 'wall'],
             'a': [sprite('top-left-wall'), solid(), 'wall'],
             'x': [sprite('bottom-right-wall'), solid(), 'wall'],
-            's': [sprite('single-sofa'), scale(0.2), solid(), 'sofa'],
-            '3': [sprite('three-sofa'), scale(0.4), solid(), 'sofa'],
-            'n': [sprite('plant'), scale(0.2), solid(), 'plant'],
-            'w': [sprite('drawer'), scale(0.2), solid(), 'drawer'],
-            'c': [sprite('cabinet'), scale(0.4), solid(), 'cabinet'],
-            'o': [sprite('stool'), scale(0.2), solid(), 'stool'],
-            'h': [sprite('bookshelf'), scale(0.4), solid(), 'bookshelf']
         }
-        console.log(userData["items"]);
-        for (var i = 0; i < userData["items"].length; i++){
-            console.log(i);
-        }
+        for (var i = 0; i < userData["items"].length; i++){ //TODO fix sizes
+            var item = userData["items"][i];
+            console.log(item["scale"]);
+            if (item["type"] == "furniture"){
+                if (userData.hasOwnProperty("scale"))
+                    posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), scale(item["scale"]), solid(), item["kind"]] ;
+                else
+                    posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), solid(), item["kind"]] ;
 
-        addLevel(map, posItems)
+            }
+        }
+        console.log(posItems);
+
+        addLevel(map, posItems);
 
         // console.log(map)
         // console.log(new Array(11).join(" "))
