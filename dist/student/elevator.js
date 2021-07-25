@@ -76,12 +76,60 @@ async function main() {
   loadSprite('elevator-up', 'https://i.imgur.com/oLybhK4.png');
   loadSprite('elevator-down', 'https://i.imgur.com/prk0prO.png');
 
-  scene('city', () => {
+  // sounds
+  // loadSound("elevator-music", "sounds/539574__qd42__elevator-ding-at-arenco-tower-dubai.wav");
+  loadSound(
+    'elevator1',
+    'https://freesound.org/data/previews/55/55837_644651-lq.mp3',
+  );
+
+  loadSound(
+    'elevator2',
+    'https://freesound.org/data/previews/539/539574_3775755-lq.mp3',
+  );
+
+  loadSound(
+    'elevator3',
+    'https://freesound.org/data/previews/403/403188_7813079-lq.mp3',
+  );
+
+  loadSound(
+    'elevator4',
+    'https://freesound.org/data/previews/331/331205_2792951-lq.mp3',
+  );
+
+  loadSound(
+    'elevator5',
+    'https://freesound.org/data/previews/467/467243_6300624-lq.mp3',
+  );
+
+  loadSound(
+    'elevator6',
+    'https://freesound.org/data/previews/482/482096_8253036-lq.mp3',
+  );
+
+  loadSound(
+    'door',
+    'https://freesound.org/data/previews/214/214001_3635427-lq.mp3',
+  );
+
+  loadSound(
+    'city-sound',
+    'https://freesound.org/data/previews/366/366304_5950368-lq.mp3',
+  );
+
+  https: scene('city', () => {
     add([
       sprite('city-background'),
       //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
+
+    const citySound = play('city-sound', {
+      volume: 1.0,
+      speed: 1.0,
+      //detune: 1200,
+    });
 
     const apartmentBuilding = add([
       sprite('apartment-building'),
@@ -91,7 +139,15 @@ async function main() {
 
     apartmentBuilding.action(() => {
       if (apartmentBuilding.isClicked()) {
-        go('elevator-animation', 'city');
+        play('door', {
+          volume: 1.0,
+          speed: 1.0,
+          //detune: 1200,
+        });
+        wait(1, () => {
+          citySound.stop();
+          go('elevator-animation', 'city');
+        });
       }
     });
 
@@ -99,6 +155,7 @@ async function main() {
 
     market.action(() => {
       if (market.isClicked()) {
+        citySound.stop();
         go('market');
       }
     });
@@ -111,6 +168,7 @@ async function main() {
 
     clubHouse.action(() => {
       if (clubHouse.isClicked()) {
+        citySound.stop();
         go('club-house');
       }
     });
@@ -138,6 +196,7 @@ async function main() {
       ]);
       house.action(() => {
         if (house.isClicked()) {
+          citySound.stop();
           window.location = '/student/subjects/test.html';
         }
       });
@@ -192,6 +251,11 @@ async function main() {
       //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
+    play('elevator3', {
+      volume: 1.0,
+      speed: 1.0,
+      //detune: 1200,
+    });
 
     wait(2, () => {
       if (from == 'city') {
@@ -209,6 +273,12 @@ async function main() {
       origin('topleft'),
     ]);
 
+    play('elevator6', {
+      volume: 1.0,
+      speed: 1.0,
+      //detune: 1,
+    });
+
     wait(2, () => {
       if (from == 'room') {
         go('elevator', player);
@@ -221,6 +291,11 @@ async function main() {
   scene('elevator', () => {
     add([sprite('elevator-inside'), origin('topleft')]);
 
+    const elevatorMusic = play('elevator5', {
+      volume: 0.1,
+      loop: true,
+    });
+
     const exitButton = add([
       sprite('bell-button'),
       pos(237 + 342 * 1, 241 + 91 * 5),
@@ -229,7 +304,15 @@ async function main() {
 
     exitButton.action(() => {
       if (exitButton.isClicked()) {
-        go('elevator-animation', 'elevator');
+        play('elevator4', {
+          volume: 1.0,
+          speed: 1.0,
+          //detune: 1,
+        });
+        wait(1, () => {
+          elevatorMusic.stop();
+          go('elevator-animation', 'elevator');
+        });
       }
     });
 
@@ -295,10 +378,19 @@ async function main() {
         origin('topleft'),
         i.toString(),
       ]);
+
       const player = userData['students'][i];
       action(i.toString(), (b) => {
         if (b.isClicked()) {
-          go('elevator-animation2', 'elevator', player);
+          play('elevator4', {
+            volume: 1.0,
+            speed: 1.0,
+            //detune: 1,
+          });
+          wait(1, () => {
+            elevatorMusic.stop();
+            go('elevator-animation2', 'elevator', player);
+          });
         }
       });
 
@@ -454,7 +546,14 @@ async function main() {
     });
 
     person.collides('door', () => {
-      go('elevator-animation2', 'room', player);
+      play('door', {
+        volume: 1.0,
+        speed: 1.0,
+        //detune: 1200,
+      });
+      wait(0.5, () => {
+        go('elevator-animation2', 'room', player);
+      });
     });
     const allObjs = get('char');
     //console.log(allObjs);
