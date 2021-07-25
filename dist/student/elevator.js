@@ -9,7 +9,7 @@ async function main() {
   userData = await getJson('../data.json');
   //console.log(userData['students']['0']);
 
-  player = userData['students']['0'];
+  //player = userData['students']['0'];
   //console.log(player['map']);
 
   //   for (var i = 0; i < userData['students'].length; i++) {
@@ -210,6 +210,8 @@ async function main() {
     var y = 241;
     var row = 0;
 
+    const buttons = [];
+
     for (var i = 0; i < userData['students'].length; i++) {
       if (i >= 3) {
         row = 1;
@@ -227,16 +229,39 @@ async function main() {
         row = 5;
       }
 
-      //console.log(userData['students'][i]);
-      const buttons = add([
+      // console.log(buttons);
+
+      // console.log(userData['students'][i]);
+      // buttons[i] = add([
+      //   sprite('bell-button'),
+      //   pos(x + (i % 3) * 342, y + row * 91),
+      //   origin('topleft'),
+      // ]);
+
+      // player = userData['students'][i];
+      // console.log(player);
+      // // buttons[i].action(() => {
+      // //   if (buttons[i].isClicked()) {
+      // //     go('room', userData['students'][i]);
+      // //   }
+      // // });
+
+      // add([
+      //   text(userData['students'][i].name, 18),
+      //   pos(x + (i % 3) * 342 + 90, y + row * 91 + 22),
+      //   color(0, 0, 0),
+      //   origin('topleft'),
+      // ]);
+
+      add([
         sprite('bell-button'),
         pos(x + (i % 3) * 342, y + row * 91),
         origin('topleft'),
+        i.toString(),
       ]);
-      player = userData['students'][i];
-      console.log(player);
-      buttons.action(() => {
-        if (buttons.isClicked()) {
+      const player = userData['students'][i];
+      action(i.toString(), (b) => {
+        if (b.isClicked()) {
           go('room', player);
         }
       });
@@ -248,9 +273,12 @@ async function main() {
         origin('topleft'),
       ]);
     }
+    //console.log(buttons);
   });
 
   scene('room', (player) => {
+    //console.log(player);
+    //console.log(player['map']);
     layers(['bg', 'obj', 'ui'], 'obj');
 
     const title = add([
@@ -282,7 +310,7 @@ async function main() {
             15,
             { width: 300 },
           ),
-          color(rgb(1, 0, 0)),
+          color(rgb(0, 0, 0)),
           layer('ui'),
           pos(100, 100),
           'name',
@@ -393,7 +421,7 @@ async function main() {
       go('elevator');
     });
     const allObjs = get('char');
-    console.log(allObjs);
+    //console.log(allObjs);
   });
   scene('outside', () => {});
   start('elevator');
