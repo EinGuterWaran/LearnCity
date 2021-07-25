@@ -72,6 +72,10 @@ async function main() {
   loadSprite('market-inside', 'https://i.imgur.com/ZrvMVTZ.png');
   loadSprite('club-house-inside', 'https://i.imgur.com/0q7syOz.png');
 
+  // elevator
+  loadSprite('elevator-up', 'https://i.imgur.com/oLybhK4.png');
+  loadSprite('elevator-down', 'https://i.imgur.com/prk0prO.png');
+
   scene('city', () => {
     add([
       sprite('city-background'),
@@ -87,7 +91,7 @@ async function main() {
 
     apartmentBuilding.action(() => {
       if (apartmentBuilding.isClicked()) {
-        go('elevator');
+        go('elevator-animation', 'city');
       }
     });
 
@@ -182,6 +186,22 @@ async function main() {
     });
   });
 
+  scene('elevator-animation', (from) => {
+    add([
+      sprite('elevator-up'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+
+    wait(2, () => {
+      if (from == 'city') {
+        go('elevator');
+      } else if (from == 'elevator') {
+        go('city');
+      }
+    });
+  });
+
   scene('elevator', () => {
     add([sprite('elevator-inside'), origin('topleft')]);
 
@@ -193,7 +213,7 @@ async function main() {
 
     exitButton.action(() => {
       if (exitButton.isClicked()) {
-        go('city');
+        go('elevator-animation', 'elevator');
       }
     });
 
