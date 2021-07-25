@@ -287,28 +287,6 @@
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
-    },
-    {
-      "id": 13,
-      "name": "Tobias",
-      "map": [
-        "attttttttp",
-        "l   e k  r",
-        "l        r",
-        "l        r",
-        "l       sr",
-        "l        r",
-        "l        r",
-        "d        r",
-        "l        r",
-        "zbbbbbbbbx"
-      ],
-      "items": [
-        1,14,3,11,11
-      ],
-      "badges":[
-        "g","s","b","s","s","g","s","g","s","g","s","g","g"
-      ]
     }
   ],
   "student": {
