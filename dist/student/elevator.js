@@ -206,11 +206,10 @@ async function main() {
             'a': [sprite('top-left-wall'), solid(), 'wall'],
             'x': [sprite('bottom-right-wall'), solid(), 'wall'],
         }
-        for (var i = 0; i < userData["items"].length; i++){ //TODO fix sizes
+        for (var i = 0; i < userData["items"].length; i++){
             var item = userData["items"][i];
-            console.log(item["scale"]);
             if (item["type"] == "furniture"){
-                if (userData.hasOwnProperty("scale"))
+                if ("scale" in item)
                     posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), scale(item["scale"]), solid(), item["kind"]] ;
                 else
                     posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), solid(), item["kind"]] ;
