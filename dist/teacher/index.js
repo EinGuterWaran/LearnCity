@@ -4,7 +4,7 @@ setTimeout(function(){
     document.getElementById("dashboard").addEventListener ("click", function(){switchMenu("dashboard");}, false);
     document.getElementById ("subjects").addEventListener ("click", function(){switchMenu("subjects");}, false);
     document.getElementById ("students").addEventListener ("click", function(){switchMenu("students");}, false);
-    document.getElementById ("reports").addEventListener ("click", function(){switchMenu("reports");}, false);
+    document.getElementById ("items").addEventListener ("click", function(){switchMenu("items");}, false);
     document.getElementById ("tests").addEventListener ("click", function(){switchMenu("tests");}, false);
     main();
 }, 500);
@@ -34,7 +34,7 @@ function clearContent() {
 }
 
 function clearMenu(){
-    const menupoints = ["dashboard","subjects", "students", "reports", "tests"];
+    const menupoints = ["dashboard","subjects", "students", "items", "tests"];
     menupoints.forEach(menupoint => document.getElementById(menupoint).removeAttribute("aria-current"));
     menupoints.forEach(menupoint => document.getElementById(menupoint).setAttribute("class","nav-link"));
 }
@@ -53,7 +53,7 @@ function generateContent(){
 
     } else if (menu == "students") {
 
-    } else if (menu == "reports") {
+    } else if (menu == "items") {
         content+="";
 
     } else if (menu == "tests") {
