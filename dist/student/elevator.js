@@ -202,6 +202,22 @@ async function main() {
     });
   });
 
+  scene('elevator-animation2', (from, player) => {
+    add([
+      sprite('elevator-down'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+
+    wait(2, () => {
+      if (from == 'room') {
+        go('elevator', player);
+      } else if (from == 'elevator') {
+        go('room', player);
+      }
+    });
+  });
+
   scene('elevator', () => {
     add([sprite('elevator-inside'), origin('topleft')]);
 
@@ -282,7 +298,7 @@ async function main() {
       const player = userData['students'][i];
       action(i.toString(), (b) => {
         if (b.isClicked()) {
-          go('room', player);
+          go('elevator-animation2', 'elevator', player);
         }
       });
 
@@ -438,7 +454,7 @@ async function main() {
     });
 
     person.collides('door', () => {
-      go('elevator');
+      go('elevator-animation2', 'room', player);
     });
     const allObjs = get('char');
     //console.log(allObjs);
