@@ -23,21 +23,21 @@ async function main() {
         debug: true,
         clearColor: [0,0,0,1]
     })
+    //character
+    loadSprite('char', '../img/chars/'+userData['student']['character'])
 
     loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png')
     loadSprite('elevator-inside', '../img/elevator/elevator-inside.png')
     loadSprite('bell-button', '../img/elevator/bell-button.png')
 
+
+
     // furniture
-    loadSprite('char', '../img/chars/'+userData['student']['character'])
-    loadSprite('door', 'https://i.imgur.com/okdJNls.png')
-    loadSprite('bookshelf', '../img/furniture/bookshelf.svg')
-    loadSprite('drawer', '../img/furniture/drawer.svg')
-    loadSprite('single_sofa', '../img/furniture/single_sofa.svg')
-    loadSprite('cabinet', '../img/furniture/cabinet.svg')
-    loadSprite('stool', '../img/furniture/stool.svg')
-    loadSprite('three_seater_sofa', '../img/furniture/three_seater_sofa.svg')
-    loadSprite('plant', '../img/furniture/plant.svg')
+    for (var i = 0; i < userData["items"].length; i++){
+        var item = userData["items"][i];
+        if (item["type"] == "furniture")
+            loadSprite(item["src"].substr(0,item["src"].length-4), '../img/furniture/'+item["src"])
+    }
 
     // badges
     loadSprite('g', '../img/badges/gold_light.svg')
@@ -45,6 +45,7 @@ async function main() {
     loadSprite('b', '../img/badges/bronze_light.svg')
 
     // walls
+    loadSprite('door', 'https://i.imgur.com/okdJNls.png')
     loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png')
     loadSprite('top-wall', 'https://i.imgur.com/QA257Bj.png')
     loadSprite('bottom-wall', 'https://i.imgur.com/vWJWmvb.png')
@@ -216,7 +217,6 @@ async function main() {
 
             }
         }
-        console.log(posItems);
 
         addLevel(map, posItems);
 
