@@ -63,10 +63,165 @@ async function main() {
     loadSprite('top-right-wall', 'https://i.imgur.com/z0OmBd1.jpg')
     loadSprite('board', 'img/badges/wooden_board.svg')
 
+    // city
+    loadSprite('city-background', 'https://i.imgur.com/Tu3Qqzi.png')
+    loadSprite('apartment-building', 'https://i.imgur.com/tKRE5mO.png')
+    loadSprite('settings-building', 'https://i.imgur.com/iWlvTL2.png')
+    loadSprite('subject-building', 'https://i.imgur.com/oKq4WvC.png')
+    loadSprite('market', 'https://i.imgur.com/xsCx0QA.png')
+    loadSprite('club-house', 'https://i.imgur.com/VqVolZR.png')
+    loadSprite('city-image', 'https://i.imgur.com/FROeDHY.png')
+    loadSprite('market-inside', 'https://i.imgur.com/ZrvMVTZ.png')
+    loadSprite('club-house-inside', 'https://i.imgur.com/0q7syOz.png')
+    
+    
+    
+
+    scene('city', () => {
+    
+        add([
+            sprite('city-background'),
+            //scale(width() / 240, height() / 240),
+            origin('topleft')
+        ])
+
+        const apartmentBuilding = add([
+            sprite('apartment-building'),
+            pos(0,63),
+            origin('topleft')
+        ])
+
+        apartmentBuilding.action(() => {
+            if (apartmentBuilding.isClicked()){
+                go("elevator");
+            }
+        })
+
+        const market = add([
+            sprite('market'),
+            pos(580,327),
+            origin('topleft')
+        ])
+
+        market.action(() => {
+            if (market.isClicked()){
+                go("market");
+            }
+        })
+
+        const clubHouse = add([
+            sprite('club-house'),
+            pos(1172,360),
+            origin('topleft')
+        ])
+
+        clubHouse.action(() => {
+            if (clubHouse.isClicked()){
+                go("club-house");
+            }
+        })
+        
+        const size = 0.9
+        // var x = 1240;
+        // var y = 737;
+        var x = 1250;
+        var y = 762;
+        var row = 0;
+
+        for (var i=0; i < 4; i++){
+            const house = add([
+                sprite('subject-building'),
+                pos(x-i*190,y-(i%2)*80),
+                scale(size),
+                origin('topleft')
+            ])
+
+            add([
+                text("Math", 14),
+                pos(x-i*190+66,y-(i%2)*80+70),
+                color(0,0,0),
+                origin('topleft')
+            ])
+            house.action(() => {
+                if (house.isClicked()){
+                    window.location = '/student/subjects/test.html';
+                }
+            })
+        }
+    })
+
+    scene('market', () => {
+    
+        add([
+            sprite('market-inside'),
+            //scale(width() / 240, height() / 240),
+            origin('topleft')
+        ])
+
+        
+        const exitButton = add([
+            text("Exit", 48),
+            pos(1100,850),
+            color(255,0,0),
+            origin('topleft')
+        ])
+
+        exitButton.action(() => {
+            if (exitButton.isClicked()){
+                go("city");
+            }
+        })
+
+    })
+
+    scene('club-house', () => {
+    
+        add([
+            sprite('club-house-inside'),
+            //scale(width() / 240, height() / 240),
+            origin('topleft')
+        ])
+
+        
+        const exitButton = add([
+            text("Exit", 48),
+            pos(1100,865),
+            color(255,0,0),
+            origin('topleft')
+        ])
+
+        exitButton.action(() => {
+            if (exitButton.isClicked()){
+                go("city");
+            }
+        })
+
+    })
+
     scene('elevator', () => {
     
         add([
             sprite('elevator-inside'),
+            origin('topleft')
+        ])
+
+        const exitButton = add([
+            sprite('bell-button'),
+            pos(237+342*1,241+91*5),
+            origin('topleft')
+        ])
+
+        exitButton.action(() => {
+            if (exitButton.isClicked()){
+                go("city");
+            }
+        })
+
+        add([
+            text("Exit", 18),
+            pos(237+342*1+90,241+91*5+22),
+            color(255,0,0),
+            //pos(237, 241),
             //scale(width() / 240, height() / 240),
             origin('topleft')
         ])
@@ -96,8 +251,6 @@ async function main() {
             const buttons = add([
                 sprite('bell-button'),
                 pos(x+(i%3)*342,y+row*91),
-                //pos(237, 241),
-                //scale(width() / 240, height() / 240),
                 origin('topleft')
             ])
             buttons.action(() => {
@@ -109,8 +262,7 @@ async function main() {
             add([
                 text(userData['students'][i].name, 18),
                 pos(x+(i%3)*342+90,y+row*91+22),
-                //pos(237, 241),
-                //scale(width() / 240, height() / 240),
+                color(0,0,0),
                 origin('topleft')
             ])
         }
