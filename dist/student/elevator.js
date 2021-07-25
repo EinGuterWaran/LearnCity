@@ -70,7 +70,11 @@ async function main() {
   loadSprite('club-house', 'https://i.imgur.com/VqVolZR.png');
   loadSprite('city-image', 'https://i.imgur.com/FROeDHY.png');
   loadSprite('market-inside', 'https://i.imgur.com/ZrvMVTZ.png');
-  loadSprite('club-house-inside', 'https://i.imgur.com/0q7syOz.png');
+  loadSprite('club-house-inside', 'https://i.imgur.com/09wCp4G.png');
+
+  loadSprite('loading-screen', 'https://i.imgur.com/8n8c7fJ.png');
+  loadSprite('avatar1', 'https://i.imgur.com/zWJNFUn.png');
+  loadSprite('avatar2', 'https://i.imgur.com/9PU6ViJ.png');
 
   // elevator
   loadSprite('elevator-up', 'https://i.imgur.com/oLybhK4.png');
@@ -118,7 +122,18 @@ async function main() {
     'https://freesound.org/data/previews/366/366304_5950368-lq.mp3',
   );
 
-  https: scene('city', () => {
+  scene('loading-screen', () => {
+    add([
+      sprite('loading-screen'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+    wait(3, () => {
+      go('city');
+    });
+  });
+
+  scene('city', () => {
     add([
       sprite('city-background'),
       //scale(width() / 240, height() / 240),
@@ -128,6 +143,8 @@ async function main() {
     const citySound = play('city-sound', {
       volume: 1.0,
       speed: 1.0,
+      loop: true,
+      seek: 27,
       //detune: 1200,
     });
 
@@ -173,6 +190,19 @@ async function main() {
       }
     });
 
+    const settingsBuilding = add([
+      sprite('settings-building'),
+      pos(942, 424),
+      origin('topleft'),
+    ]);
+
+    settingsBuilding.action(() => {
+      if (settingsBuilding.isClicked()) {
+        citySound.stop();
+        go('settings-building');
+      }
+    });
+
     const size = 0.9;
     // var x = 1240;
     // var y = 737;
@@ -180,7 +210,9 @@ async function main() {
     var y = 762;
     var row = 0;
 
-    for (var i = 0; i < 4; i++) {
+    var i = 0;
+
+    for (var subject in userData['subjects']) {
       const house = add([
         sprite('subject-building'),
         pos(x - i * 190, y - (i % 2) * 80),
@@ -189,18 +221,64 @@ async function main() {
       ]);
 
       add([
-        text('Math', 14),
-        pos(x - i * 190 + 66, y - (i % 2) * 80 + 70),
+        text(subject, 12, {
+          width: 94, // wrap when exceeds this width (defaults to 0 - no wrap)
+        }),
+        pos(x - i * 190 + 66, y - (i % 2) * 80 + 66),
         color(0, 0, 0),
         origin('topleft'),
       ]);
+
       house.action(() => {
         if (house.isClicked()) {
           citySound.stop();
           window.location = '/student/subjects/test.html';
         }
       });
+      ++i;
     }
+  });
+
+  scene('settings-building', () => {
+    add([
+      sprite('avatar1'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+
+    const continueButton = add([
+      text('Continue', 48),
+      pos(950, 950),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    continueButton.action(() => {
+      if (continueButton.isClicked()) {
+        go('settings-building2');
+      }
+    });
+  });
+
+  scene('settings-building2', () => {
+    const exitButton = add([
+      text('Exit', 88),
+      pos(950, 860),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
+      sprite('avatar2'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+
+    exitButton.action(() => {
+      if (exitButton.isClicked()) {
+        go('city');
+      }
+    });
   });
 
   scene('market', () => {
@@ -558,8 +636,8 @@ async function main() {
     const allObjs = get('char');
     //console.log(allObjs);
   });
-  scene('outside', () => {});
-  start('elevator');
+
+  start('loading-screen');
 }
 
 main();
