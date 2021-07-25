@@ -6,17 +6,12 @@ async function getJson(url) {
 
 async function main() {
 
-    // default choose first palyer
+    // default choose first player
     userData = await getJson("../data.json");
-    console.log(userData['students']['0'])
 
 
     player = userData['students']['0']
-    console.log(player['map'])
 
-    for (var i=0; i < userData['students'].length; i++){
-        console.log(userData['students'][i]);
-    }
 
     kaboom({
         global: true,
@@ -28,31 +23,29 @@ async function main() {
         debug: true,
         clearColor: [0,0,0,1]
     })
+    //character
+    loadSprite('char', '../img/chars/'+userData['student']['character'])
 
-    loadSprite('elevator-sketch', 'img/elevator/elevator-sketch.png')
-    loadSprite('elevator-inside', 'img/elevator/elevator-inside.png')
-    loadSprite('bell-button', 'img/elevator/bell-button.png')
+    loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png')
+    loadSprite('elevator-inside', '../img/elevator/elevator-inside.png')
+    loadSprite('bell-button', '../img/elevator/bell-button.png')
+
+
 
     // furniture
-    loadSprite('char', userData['student']['character'])
-    loadSprite('bed', 'img/bed.png')
-    loadSprite('door', 'https://i.imgur.com/okdJNls.png')
-    loadSprite('sofa', 'img/sofa.png')
-    loadSprite('lamp', 'img/lamp.png')
-    loadSprite('bookshelf', 'img/furniture/bookshelf.svg')
-    loadSprite('drawer', 'img/furniture/drawer.svg')
-    loadSprite('single-sofa', 'img/furniture/single_sofa.svg')
-    loadSprite('cabinet', 'img/furniture/cabinet.svg')
-    loadSprite('stool', 'img/furniture/stool.svg')
-    loadSprite('three-sofa', 'img/furniture/three_seater_sofa.svg')
-    loadSprite('plant', 'img/furniture/plant.svg')
+    for (var i = 0; i < userData["items"].length; i++){
+        var item = userData["items"][i];
+        if (item["type"] == "furniture")
+            loadSprite(item["src"].substr(0,item["src"].length-4), '../img/furniture/'+item["src"])
+    }
 
     // badges
-    loadSprite('g', 'img/badges/gold_light.svg')
-    loadSprite('s', 'img/badges/silver_light.svg')
-    loadSprite('b', 'img/badges/bronze_light.svg')
+    loadSprite('g', '../img/badges/gold_light.svg')
+    loadSprite('s', '../img/badges/silver_light.svg')
+    loadSprite('b', '../img/badges/bronze_light.svg')
 
     // walls
+    loadSprite('door', 'https://i.imgur.com/okdJNls.png')
     loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png')
     loadSprite('top-wall', 'https://i.imgur.com/QA257Bj.png')
     loadSprite('bottom-wall', 'https://i.imgur.com/vWJWmvb.png')
@@ -61,7 +54,7 @@ async function main() {
     loadSprite('bottom-right-wall', 'https://i.imgur.com/84oyTFy.png')
     loadSprite('top-left-wall', 'https://i.imgur.com/xlpUxIm.png')
     loadSprite('top-right-wall', 'https://i.imgur.com/z0OmBd1.jpg')
-    loadSprite('board', 'img/badges/wooden_board.svg')
+    loadSprite('board', '../img/badges/wooden_board.svg')
 
     scene('elevator', () => {
     
@@ -92,7 +85,6 @@ async function main() {
                 row = 5;
             }
 
-            console.log(userData['students'][i]);
             const buttons = add([
                 sprite('bell-button'),
                 pos(x+(i%3)*342,y+row*91),
@@ -139,7 +131,6 @@ async function main() {
         ])
 
         function add_badges() {
-            console.log(player['badges'])
             add([text(player['name'] + "(Badges)", 15), layer('ui'), pos(150, 72), 'name'])
             if (player['badges'].length == 0) {
                 add([text("You can do it!! Lets do some challenges to earn some badges", 15, { width: 300 }), color(rgb(1, 0, 0)), layer('ui'), pos(100, 100), 'name'])
@@ -203,7 +194,7 @@ async function main() {
 
 
 
-        const posItems = {
+        var posItems = {
             width: 48,
             height: 48,
             'r': [sprite('right-wall'), solid(), 'wall'],
@@ -215,19 +206,19 @@ async function main() {
             'z': [sprite('bottom-left-wall'), solid(), 'wall'],
             'a': [sprite('top-left-wall'), solid(), 'wall'],
             'x': [sprite('bottom-right-wall'), solid(), 'wall'],
-            'e': [sprite('bed'), scale(0.2), solid(), 'bed'],
-            's': [sprite('single-sofa'), scale(0.2), solid(), 'sofa'],
-            '3': [sprite('three-sofa'), scale(0.4), solid(), 'sofa'],
-            'k': [sprite('lamp'), scale(0.2), solid(), 'lamp'],
-            'n': [sprite('plant'), scale(0.2), solid(), 'plant'],
-            'w': [sprite('drawer'), scale(0.2), solid(), 'drawer'],
-            'c': [sprite('cabinet'), scale(0.4), solid(), 'cabinet'],
-            'o': [sprite('stool'), scale(0.2), solid(), 'stool'],
-            'h': [sprite('bookshelf'), scale(0.4), solid(), 'bookshelf']
+        }
+        for (var i = 0; i < userData["items"].length; i++){
+            var item = userData["items"][i];
+            if (item["type"] == "furniture"){
+                if ("scale" in item)
+                    posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), scale(item["scale"]), solid(), item["kind"]] ;
+                else
+                    posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), solid(), item["kind"]] ;
 
+            }
         }
 
-        addLevel(map, posItems)
+        addLevel(map, posItems);
 
         // console.log(map)
         // console.log(new Array(11).join(" "))
@@ -254,7 +245,6 @@ async function main() {
             go("elevator");
         })
         const allObjs = get('char');
-        console.log(allObjs)
 
     });
     scene("outside", () => {
