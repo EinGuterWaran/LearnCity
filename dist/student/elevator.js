@@ -33,6 +33,7 @@ async function main() {
 
     // furniture
     loadSprite('char', "../img/chars/"+userData['student']['character']);
+    loadSprite('door', 'https://i.imgur.com/okdJNls.png');
     for (var i = 0; i < userData["items"].length; i++){
         var item = userData["items"][i];
         if (item["type"] == "furniture")
