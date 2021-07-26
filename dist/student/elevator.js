@@ -5,7 +5,7 @@ async function getJson(url) {
 }
 
 async function main() {
-  // default choose first palyer
+  // default choose first player
   userData = await getJson('../data.json');
   //console.log(userData['students']['0']);
 
@@ -27,28 +27,23 @@ async function main() {
     clearColor: [0, 0, 0, 1],
   });
 
-  loadSprite('elevator-sketch', 'img/elevator/elevator-sketch.png');
-  loadSprite('elevator-inside', 'img/elevator/elevator-inside.png');
-  loadSprite('bell-button', 'img/elevator/bell-button.png');
-
+  loadSprite('elevator-sketch', './img/elevator/elevator-sketch.png');
+  loadSprite('elevator-inside', './img/elevator/elevator-inside.png');
+  loadSprite('bell-button', './img/elevator/bell-button.png');
+  
   // furniture
-  loadSprite('char', userData['student']['character']);
-  loadSprite('bed', 'img/bed.png');
+  loadSprite('char', "../img/chars/"+userData['student']['character']);
   loadSprite('door', 'https://i.imgur.com/okdJNls.png');
-  loadSprite('sofa', 'img/sofa.png');
-  loadSprite('lamp', 'img/lamp.png');
-  loadSprite('bookshelf', 'img/furniture/bookshelf.svg');
-  loadSprite('drawer', 'img/furniture/drawer.svg');
-  loadSprite('single-sofa', 'img/furniture/single_sofa.svg');
-  loadSprite('cabinet', 'img/furniture/cabinet.svg');
-  loadSprite('stool', 'img/furniture/stool.svg');
-  loadSprite('three-sofa', 'img/furniture/three_seater_sofa.svg');
-  loadSprite('plant', 'img/furniture/plant.svg');
+  for (var i = 0; i < userData["items"].length; i++){
+      var item = userData["items"][i];
+      if (item["type"] == "furniture")
+          loadSprite(item["src"].substr(0,item["src"].length-4), '../img/furniture/'+item["src"])
+  }
 
   // badges
-  loadSprite('g', 'img/badges/gold_light.svg');
-  loadSprite('s', 'img/badges/silver_light.svg');
-  loadSprite('b', 'img/badges/bronze_light.svg');
+  loadSprite('g', '../img/badges/gold_light.svg');
+  loadSprite('s', './img/badges/silver_light.svg');
+  loadSprite('b', './img/badges/bronze_light.svg');
 
   // walls
   loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png');
@@ -579,28 +574,28 @@ async function main() {
     //     "zbbbbbbbbx"
     //   ]
 
-    const posItems = {
-      width: 48,
-      height: 48,
-      r: [sprite('right-wall'), solid(), 'wall'],
-      l: [sprite('left-wall'), solid(), 'wall'],
-      d: [sprite('door'), solid(), 'door'],
-      b: [sprite('bottom-wall'), solid(), 'wall'],
-      t: [sprite('top-wall'), solid(), 'wall'],
-      p: [sprite('top-right-wall'), solid(), 'wall'],
-      z: [sprite('bottom-left-wall'), solid(), 'wall'],
-      a: [sprite('top-left-wall'), solid(), 'wall'],
-      x: [sprite('bottom-right-wall'), solid(), 'wall'],
-      e: [sprite('bed'), scale(0.2), solid(), 'bed'],
-      s: [sprite('single-sofa'), scale(0.2), solid(), 'sofa'],
-      3: [sprite('three-sofa'), scale(0.4), solid(), 'sofa'],
-      k: [sprite('lamp'), scale(0.2), solid(), 'lamp'],
-      n: [sprite('plant'), scale(0.2), solid(), 'plant'],
-      w: [sprite('drawer'), scale(0.2), solid(), 'drawer'],
-      c: [sprite('cabinet'), scale(0.4), solid(), 'cabinet'],
-      o: [sprite('stool'), scale(0.2), solid(), 'stool'],
-      h: [sprite('bookshelf'), scale(0.4), solid(), 'bookshelf'],
-    };
+    var posItems = {
+    width: 48,
+    height: 48,
+    'r': [sprite('right-wall'), solid(), 'wall'],
+    'l': [sprite('left-wall'), solid(), 'wall'],
+    'd': [sprite('door'), solid(), 'door'],
+    'b': [sprite('bottom-wall'), solid(), 'wall'],
+    't': [sprite('top-wall'), solid(), 'wall'],
+    'p': [sprite('top-right-wall'), solid(), 'wall'],
+    'z': [sprite('bottom-left-wall'), solid(), 'wall'],
+    'a': [sprite('top-left-wall'), solid(), 'wall'],
+    'x': [sprite('bottom-right-wall'), solid(), 'wall'],
+    }
+    for (var i = 0; i < userData["items"].length; i++){
+        var item = userData["items"][i];
+        if (item["type"] == "furniture"){
+            if ("scale" in item)
+                posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), scale(item["scale"]), solid(), item["kind"]] ;
+            else
+                posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), solid(), item["kind"]] ;
+        }
+    }
 
     addLevel(map, posItems);
 

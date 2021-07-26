@@ -8,7 +8,7 @@
         "lh  we   r",
         "l        r",
         "l        r",
-        "l       sr",
+        "l  eee  sr",
         "l       kr",
         "l        r",
         "d   3    r",
@@ -224,7 +224,7 @@
     },
     {
       "id": 10,
-      "name": "Charmila",
+      "name": "Sharmila",
       "map": [
         "attttttttp",
         "l   e k  r",
@@ -294,7 +294,7 @@
     "name": "Alissa",
     "coins": 100,
     "exp": 1100,
-    "character": "img/chars/character.svg"
+    "character": "rk.svg"
   },
   "subjects": {
     "mathematics": {
@@ -455,5 +455,87 @@
 
   "#omit-xml-declaration": "yes"
   }
-  }
+  },
+  "items": [
+    {
+      "id" : 0,
+      "name": "Bookshelf",
+      "src" : "bookshelf.svg",
+      "let": "h",
+      "price" : 150,
+      "scarcity" : 70,
+      "type": "furniture",
+      "kind": "bookshelf",
+      "scale": 0.4,
+      "del": false
+    },
+    {
+      "id" : 1,
+      "name": "Cabinet",
+      "src" : "cabinet.svg",
+      "let": "c",
+      "price" : 80,
+      "scarcity" : 40,
+      "type": "furniture",
+      "kind": "cabinet",
+      "scale": 0.4,
+      "del": false
+    },{
+      "id" : 2,
+      "name": "Drawer",
+      "src" : "drawer.svg",
+      "let": "w",
+      "price" : 30,
+      "scarcity" : 20,
+      "type": "furniture",
+      "kind": "drawer",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 3,
+      "name": "Plant",
+      "src" : "plant.svg",
+      "let": "n",
+      "price" : 30,
+      "scarcity" : 20,
+      "type": "furniture",
+      "kind": "plant",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 4,
+      "name": "Single Sofa",
+      "src" : "single_sofa.svg",
+      "let": "s",
+      "price" : 100,
+      "scarcity" : 50,
+      "type": "furniture",
+      "kind": "sofa",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 5,
+      "name": "Stool",
+      "src" : "stool.svg",
+      "let": "o",
+      "price" : 10,
+      "scarcity" : 10,
+      "type": "furniture",
+      "kind": "stool",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 6,
+      "name": "Three Seater Sofa",
+      "src" : "three_seater_sofa.svg",
+      "let": "3",
+      "price" : 200,
+      "scarcity" : 90,
+      "type": "furniture",
+      "kind": "sofa",
+      "scale": 0.4,
+      "del": false
+    }
+  ]
+
 }

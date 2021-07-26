@@ -4,6 +4,9 @@ coverage/
 !dist/index.html
 node_modules/
 *.log
+package.json
+.idea/
+webpack.config.js
 
 # OS generated files
 .DS_Store
