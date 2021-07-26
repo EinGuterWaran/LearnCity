@@ -75,13 +75,14 @@ function generatTh(heads, table){
     table.classList.add('table-hover');
     var tbody = document.createElement("tbody");
      if (menu == "subjects") {
-         generatTh(["Id","Subject", "highscore"], table);
+         generatTh(["Id","Subject", "highscore", "delete"], table);
          var subjects = data["subjects"];
          var subid=0;
-
+        var keyss = []
          for (var key in subjects) {
              var tr = document.createElement("tr");
              tr.insertAdjacentHTML("beforeend", "<td>"+subid+"</td><td>"+key.charAt(0).toUpperCase()+key.slice(1)+"</td>");
+             keyss.push(key);
              var hightable = document.createElement("table");
              hightable.classList.add('table');
              hightable.classList.add('table-striped');
@@ -98,10 +99,15 @@ function generatTh(heads, table){
              hightable.appendChild(highbody);
              hightd.appendChild(hightable);
              tr.appendChild(hightd);
+             tr.insertAdjacentHTML("beforeend","<button id='delete"+key+"'>Delete</button>");
+             setTimeout(function(){
+                 var actKey = keyss.pop();
+                 document.getElementById ("delete"+actKey).addEventListener ("click", function(){deleteSubject(actKey);}, false);
+             }, 500);
              tbody.appendChild(tr);
              subid++;
          }
-        if (subid < 5){
+        if (subid < 4){
          tbody.insertAdjacentHTML("beforeend","<tr><td></td><td><input id='newSubject' type='text'></td><td><input type='button' id ='addSubject' value='Add subject!'></td></tr>");
             setTimeout(function(){
                 document.getElementById ("addSubject").addEventListener ("click", function(){addSubject();}, false);
@@ -276,5 +282,16 @@ function addSubject() {
 
     }
     else
-        window.alert("Maximum number of subjects has been reached!");
-    }
+        window.alert("Empty name for new subject!");
+
+}
+
+function deleteSubject(key) {
+    var subData = stHa.getStorage();
+    delete subData["subjects"][key];
+    stHa.writeStorage(subData);
+    window.alert(key+" has been deleted successfully. :)");
+    location.reload();
+
+
+}
