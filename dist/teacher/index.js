@@ -157,19 +157,19 @@ function generatTh(heads, table){
              "  </div>\n"+
              "  <div class=\"form-group\">\n" +
              "    <label for=\"title\">Title</label>\n" +
-             "    <select class=\"form-control\" id=\"title\">\n";
+             "    <select class=\"form-control\" id=\"title2\">\n";
             if (teacher.title != "Mr.")
-                form+="<option value='Mr.'>Mr.</option>\n";
+                form+="<option>Mr.</option>\n";
             else
-                form+="<option selected value='Mr.'>Mr.</option>\n";
+                form+="<option selected>Mr.</option>\n";
             if (teacher.title != "Mrs.")
-                form+="<option value='Mrs.'>Mrs.</option>\n";
+                form+="<option>Mrs.</option>\n";
             else
                 form+="<option selected value='Mrs.'>Mrs.</option>\n";
          if (teacher.title != "Ms.")
-             form+="<option value='Ms.'>Ms.</option>\n";
+             form+="<option>Ms.</option>\n";
          else
-             form+="<option selected value='Ms.'>Ms.</option>\n";
+             form+="<option selected>.'>Ms.</option>\n";
              form+="    </select>\n" +
              "</div>\n";
              form+="<div class=\"form-group\"><input type='button' id='setButton' value='Save'></div>" +
@@ -198,7 +198,7 @@ function saveSettings(){
     var tData = stHa.getStorage();
     var firstInput = document.getElementById("firstName").value;
     var lasttInput = document.getElementById("lastName").value;
-    var titleInput = document.getElementById("title").value;
+    var titleInput = document.getElementById("title2").value;
     console.log(titleInput);
     tData["teacher"].firstname = firstInput;
     tData["teacher"].lastname = lasttInput;
