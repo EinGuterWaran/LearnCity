@@ -4,16 +4,25 @@ async function getJson(url) {
     return data;
 }
 
-async function main() {
-    userData = await getJson('data.json');
-
-    localStorage.setItem('testObject', JSON.stringify(testObject));
-
-// Retrieve the object from storage
-    var retrievedObject = localStorage.getItem('testObject');
-
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
+async function getOriginalJSON(){
+    var userData = await getJson('data.json');
+    return userData;
 }
 
-main();
+async function initStorage(){
+    var userData = getOriginalJSON();
+    localStorage.setItem('LearnStorage', JSON.stringify(userData));
+}
+async function getStorage() {
+// Retrieve the object from storage
+    var retrievedObject = localStorage.getItem('LearnStorage');
+    var learnjson = JSON.parse(retrievedObject);
+    return learnjson;
+}
+async function writeStorage(var json) {
+    localStorage.setItem('LearnStorage', JSON.stringify(json));
+}
+
+if (localStorage.getItem("LearnStorage") === null)
+    initStorage();
+

@@ -1,4 +1,9 @@
 {
+  "teacher": {
+    "firstname" : "Anne-Liese",
+    "lastname" : "Schäfer",
+    "title" : "Mrs."
+  },
   "students": [
     {
       "id": 0,
