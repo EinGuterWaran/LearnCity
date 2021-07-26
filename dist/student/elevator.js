@@ -27,23 +27,26 @@ async function main() {
     clearColor: [0, 0, 0, 1],
   });
 
-  loadSprite('elevator-sketch', './img/elevator/elevator-sketch.png');
-  loadSprite('elevator-inside', './img/elevator/elevator-inside.png');
-  loadSprite('bell-button', './img/elevator/bell-button.png');
-  
+  loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
+  loadSprite('elevator-inside', '../img/elevator/elevator-inside.png');
+  loadSprite('bell-button', '../img/elevator/bell-button.png');
+
   // furniture
-  loadSprite('char', "../img/chars/"+userData['student']['character']);
+  loadSprite('char', '../img/chars/' + userData['student']['character']);
   loadSprite('door', 'https://i.imgur.com/okdJNls.png');
-  for (var i = 0; i < userData["items"].length; i++){
-      var item = userData["items"][i];
-      if (item["type"] == "furniture")
-          loadSprite(item["src"].substr(0,item["src"].length-4), '../img/furniture/'+item["src"])
+  for (var i = 0; i < userData['items'].length; i++) {
+    var item = userData['items'][i];
+    if (item['type'] == 'furniture')
+      loadSprite(
+        item['src'].substr(0, item['src'].length - 4),
+        '../img/furniture/' + item['src'],
+      );
   }
 
   // badges
   loadSprite('g', '../img/badges/gold_light.svg');
-  loadSprite('s', './img/badges/silver_light.svg');
-  loadSprite('b', './img/badges/bronze_light.svg');
+  loadSprite('s', '../img/badges/silver_light.svg');
+  loadSprite('b', '../img/badges/bronze_light.svg');
 
   // walls
   loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png');
@@ -54,7 +57,7 @@ async function main() {
   loadSprite('bottom-right-wall', 'https://i.imgur.com/84oyTFy.png');
   loadSprite('top-left-wall', 'https://i.imgur.com/xlpUxIm.png');
   loadSprite('top-right-wall', 'https://i.imgur.com/z0OmBd1.jpg');
-  loadSprite('board', 'img/badges/wooden_board.svg');
+  loadSprite('board', '../img/badges/wooden_board.svg');
 
   // city
   loadSprite('city-background', 'https://i.imgur.com/Tu3Qqzi.png');
@@ -575,26 +578,35 @@ async function main() {
     //   ]
 
     var posItems = {
-    width: 48,
-    height: 48,
-    'r': [sprite('right-wall'), solid(), 'wall'],
-    'l': [sprite('left-wall'), solid(), 'wall'],
-    'd': [sprite('door'), solid(), 'door'],
-    'b': [sprite('bottom-wall'), solid(), 'wall'],
-    't': [sprite('top-wall'), solid(), 'wall'],
-    'p': [sprite('top-right-wall'), solid(), 'wall'],
-    'z': [sprite('bottom-left-wall'), solid(), 'wall'],
-    'a': [sprite('top-left-wall'), solid(), 'wall'],
-    'x': [sprite('bottom-right-wall'), solid(), 'wall'],
-    }
-    for (var i = 0; i < userData["items"].length; i++){
-        var item = userData["items"][i];
-        if (item["type"] == "furniture"){
-            if ("scale" in item)
-                posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), scale(item["scale"]), solid(), item["kind"]] ;
-            else
-                posItems[item["let"]] = [sprite(item["src"].substr(0,item["src"].length-4)), solid(), item["kind"]] ;
-        }
+      width: 48,
+      height: 48,
+      r: [sprite('right-wall'), solid(), 'wall'],
+      l: [sprite('left-wall'), solid(), 'wall'],
+      d: [sprite('door'), solid(), 'door'],
+      b: [sprite('bottom-wall'), solid(), 'wall'],
+      t: [sprite('top-wall'), solid(), 'wall'],
+      p: [sprite('top-right-wall'), solid(), 'wall'],
+      z: [sprite('bottom-left-wall'), solid(), 'wall'],
+      a: [sprite('top-left-wall'), solid(), 'wall'],
+      x: [sprite('bottom-right-wall'), solid(), 'wall'],
+    };
+    for (var i = 0; i < userData['items'].length; i++) {
+      var item = userData['items'][i];
+      if (item['type'] == 'furniture') {
+        if ('scale' in item)
+          posItems[item['let']] = [
+            sprite(item['src'].substr(0, item['src'].length - 4)),
+            scale(item['scale']),
+            solid(),
+            item['kind'],
+          ];
+        else
+          posItems[item['let']] = [
+            sprite(item['src'].substr(0, item['src'].length - 4)),
+            solid(),
+            item['kind'],
+          ];
+      }
     }
 
     addLevel(map, posItems);
