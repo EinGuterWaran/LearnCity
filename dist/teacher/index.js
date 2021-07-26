@@ -1,6 +1,5 @@
 import * as stHa from "../storage_handler.js";
 stHa.main();
-console.log(stHa.getStorage());
 var menu = "dashboard";
 var tablerow = "<tr>\n" +
     "                    <th scope=\"row\">[place]</th>\n" +
@@ -16,8 +15,6 @@ setTimeout(function(){
     document.getElementById ("items").addEventListener ("click", function(){switchMenu("items");}, false);
     document.getElementById ("tests").addEventListener ("click", function(){switchMenu("tests");}, false);
     document.getElementById ("settings").addEventListener ("click", function(){switchMenu("settings");}, false);
-    document.getElementById ("setButton").addEventListener ("click", function(){saveSettings();}, false);
-
     main();
 }, 500);
 function reloadCSS() {
@@ -152,30 +149,40 @@ function generatTh(heads, table){
          table = document.createElement("form");
          var form = "  <div class=\"form-group\">\n" +
              "    <label for=\"firstName\">First Name</label>\n" +
-             "    <input type=\"text\" class=\"form-control\" id=\"firstName\" placeholder="+teacher.firstname+">\n" +
+             "    <input type=\"text\" class=\"form-control\" id=\"firstName\" value="+teacher.firstname+">\n" +
              "  </div>\n" +
              "<div class=\"form-group\">\n" +
              "    <label for=\"lastName\">Last Name</label>\n" +
-             "    <input type=\"text\" class=\"form-control\" id=\"lastName\" placeholder="+teacher.lastname+">\n" +
+             "    <input type=\"text\" class=\"form-control\" id=\"lastName\" value="+teacher.lastname+">\n" +
              "  </div>\n"+
              "  <div class=\"form-group\">\n" +
              "    <label for=\"title\">Title</label>\n" +
              "    <select class=\"form-control\" id=\"title\">\n";
             if (teacher.title != "Mr.")
-                form+="<option>Mr.</option>\n";
+                form+="<option value='Mr.'>Mr.</option>\n";
             else
-                form+="<option selected>Mr.</option>\n";
+                form+="<option selected value='Mr.'>Mr.</option>\n";
             if (teacher.title != "Mrs.")
-                form+="<option>Mrs.</option>\n";
+                form+="<option value='Mrs.'>Mrs.</option>\n";
             else
-                form+="<option selected>Mrs.</option>\n";
+                form+="<option selected value='Mrs.'>Mrs.</option>\n";
          if (teacher.title != "Ms.")
-             form+="<option>Ms.</option>\n";
+             form+="<option value='Ms.'>Ms.</option>\n";
          else
-             form+="<option selected>Ms.</option>\n";
+             form+="<option selected value='Ms.'>Ms.</option>\n";
              form+="    </select>\n" +
              "</div>\n";
-             form+="<div class=\"form-group\"><input type='button' id='setButton' value='Save'></div>";
+             form+="<div class=\"form-group\"><input type='button' id='setButton' value='Save'></div>" +
+                 "<hr> <div class=\"alert alert-danger\" role=\"alert\">\n" +
+                 "  Danger Zone\n" +
+                 "</div>\n" +
+                 "If you click this button, there won't be a way back. <br>"+
+                 "<button type=\"button\" class=\"btn btn-danger\" id='reset'>Reset this class!</button>\n";
+         setTimeout(function(){
+             document.getElementById ("setButton").addEventListener ("click", function(){saveSettings();}, false);
+             document.getElementById ("reset").addEventListener ("click", stHa.initStorage(), false);
+
+         }, 500);
          table.insertAdjacentHTML("beforeend", form);
      }
      else {
@@ -188,5 +195,15 @@ function generatTh(heads, table){
 }
 
 function saveSettings(){
+    var tData = stHa.getStorage();
+    var firstInput = document.getElementById("firstName").value;
+    var lasttInput = document.getElementById("lastName").value;
+    var titleInput = document.getElementById("title").value;
+    console.log(titleInput);
+    tData["teacher"].firstname = firstInput;
+    tData["teacher"].lastname = lasttInput;
+    tData["teacher"].title = titleInput;
+    stHa.writeStorage(tData);
+
 
 }

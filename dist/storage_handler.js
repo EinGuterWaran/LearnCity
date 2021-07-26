@@ -7,13 +7,14 @@ async function getJson(url) {
 
 
 async function getOriginalJSON(){
-    var userData = await getJson('data.json');
+    var userData = await getJson('../data.json');
     return userData;
 }
 
 async function initStorage(){
-    var userData = getOriginalJSON();
-    localStorage.setItem('LearnStorage', JSON.stringify(userData));
+    var userData2 = await getOriginalJSON();
+
+    localStorage.setItem('LearnStorage', JSON.stringify(userData2));
 }
 function getStorage() {
 // Retrieve the object from storage
@@ -26,8 +27,9 @@ async function writeStorage(json) {
 }
 
 function main() {
-    if (localStorage.getItem("LearnStorage") === null)
+    if (localStorage.getItem("LearnStorage") === null) {
         initStorage();
+    }
 }
 
 export {main, getJson, getOriginalJSON, initStorage, getStorage, writeStorage };
