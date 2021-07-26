@@ -110,10 +110,17 @@ function generatTh(heads, table){
         var students = data["students"];
         generatTh(["Id","Name","Badges","Items", "avatar"], table);
         for (var s = 0; s < students.length; s++){
-            console.log(s);
             tbody.insertAdjacentHTML("beforeend", "<tr><td>"+students[s]["id"]+"</td><td>"+students[s]["name"]+"</td><td>"+students[s]["badges"]+"</td><td>"+students[s]["items"]+"</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../"+students[s]["char"]+"'></td></tr>")
         }
-        tbody.insertAdjacentHTML("beforeend","<tr><td></td><td><input type='text'></td><td><input type='button' value='Add student!'></td><td></td><td></td></tr>")
+        if (students.length < 16) {
+            tbody.insertAdjacentHTML("beforeend", "<tr><td></td><td><input type='text' id='studentName'></td><td><input type='button' id ='addStudent' value='Add student!'></td><td></td><td></td></tr>")
+            setTimeout(function(){
+                document.getElementById ("addStudent").addEventListener ("click", function(){addStudent();}, false);
+
+            }, 500);
+        }
+        else
+             tbody.insertAdjacentHTML("beforeend","<tr colspan='5'>Maximum number of students has been reached!</tr>");
          table.appendChild(tbody);
     }
      else if (menu == "items") {
@@ -169,7 +176,7 @@ function generatTh(heads, table){
          if (teacher.title != "Ms.")
              form+="<option>Ms.</option>\n";
          else
-             form+="<option selected>.'>Ms.</option>\n";
+             form+="<option selected>Ms.</option>\n";
              form+="    </select>\n" +
              "</div>\n";
              form+="<div class=\"form-group\"><input type='button' id='setButton' value='Save'></div>" +
@@ -180,7 +187,7 @@ function generatTh(heads, table){
                  "<button type=\"button\" class=\"btn btn-danger\" id='reset'>Reset this class!</button>\n";
          setTimeout(function(){
              document.getElementById ("setButton").addEventListener ("click", function(){saveSettings();}, false);
-             document.getElementById ("reset").addEventListener ("click", stHa.initStorage(), false);
+             document.getElementById ("reset").addEventListener ("click", function(){stHa.initStorage();window.alert("This class has been reset.");location.reload();}, false);
 
          }, 500);
          table.insertAdjacentHTML("beforeend", form);
@@ -199,11 +206,55 @@ function saveSettings(){
     var firstInput = document.getElementById("firstName").value;
     var lasttInput = document.getElementById("lastName").value;
     var titleInput = document.getElementById("title2").value;
-    console.log(titleInput);
-    tData["teacher"].firstname = firstInput;
-    tData["teacher"].lastname = lasttInput;
-    tData["teacher"].title = titleInput;
-    stHa.writeStorage(tData);
+    if (firstInput.length !=0 && lasttInput.length !=0){
+        tData["teacher"].firstname = firstInput;
+        tData["teacher"].lastname = lasttInput;
+        tData["teacher"].title = titleInput;
+        stHa.writeStorage(tData);
+    }
+    else {
+        window.alert("No empty inputs please!");
+    }
+}
+
+function addStudent(){
+    var sData = stHa.getStorage();
+    var studentName = document.getElementById("studentName").value;
+    if (studentName.length > 0) {
+        if (sData["students"].length < 16) {
+            var newStudent = {
+                "id": sData["students"].length,
+                "name": studentName,
+                "map": [
+                    "attttttttp",
+                    "l        r",
+                    "l        r",
+                    "l        r",
+                    "l        r",
+                    "l        r",
+                    "l        r",
+                    "d        r",
+                    "l        r",
+                    "zbbbbbbbbx"
+                ],
+                "char": "img/chars/philip.svg",
+                "items": [
+                ],
+                "badges":[
+                ]
+            };
+            sData["students"].push(newStudent);
+            stHa.writeStorage(sData);
+            window.alert(studentName+" has been added successfully. :)");
+            location.reload();
+
+
+        } else {
+            window.alert("Maximum number of students has been reached!");
+        }
+    }
+    else
+        window.alert("Empty student name!");
 
 
 }
