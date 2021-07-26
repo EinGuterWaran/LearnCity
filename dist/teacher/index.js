@@ -101,8 +101,15 @@ function generatTh(heads, table){
              tbody.appendChild(tr);
              subid++;
          }
+        if (subid < 5){
+         tbody.insertAdjacentHTML("beforeend","<tr><td></td><td><input id='newSubject' type='text'></td><td><input type='button' id ='addSubject' value='Add subject!'></td></tr>");
+            setTimeout(function(){
+                document.getElementById ("addSubject").addEventListener ("click", function(){addSubject();}, false);
+            }, 500);
+        }
+        else
+            tbody.insertAdjacentHTML("beforeend","<tr><td colspan='3'>Maximum number of subjects has been reached</td></tr>");
 
-         tbody.insertAdjacentHTML("beforeend","<tr><td></td><td><input type='text'></td><td><input type='button' value='Add subject!'></td></tr>")
          table.appendChild(tbody);
      }
 
@@ -249,12 +256,25 @@ function addStudent(){
             location.reload();
 
 
-        } else {
+        } else
             window.alert("Maximum number of students has been reached!");
-        }
     }
     else
         window.alert("Empty student name!");
-
-
 }
+
+function addSubject() {
+    var stData = stHa.getStorage();
+    var subjectName = document.getElementById("newSubject").value;
+    if (subjectName.length > 0){
+        stData["subjects"][subjectName] = {};
+        stData["subjects"][subjectName].highscore = [];
+        stData["subjects"][subjectName].test = [];
+        stHa.writeStorage(stData);
+        window.alert(subjectName+" has been added successfully. :)");
+        location.reload();
+
+    }
+    else
+        window.alert("Maximum number of subjects has been reached!");
+    }
