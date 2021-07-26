@@ -1,15 +1,12 @@
+import * as stHa from "../storage_handler.js";
+stHa.main();
+console.log(stHa.getStorage());
 var menu = "dashboard";
 var tablerow = "<tr>\n" +
     "                    <th scope=\"row\">[place]</th>\n" +
     "                    <td>[name]</td>\n" +
     "                    <td>[points]</td>\n" +
     "                </tr>";
-
-async function getJson(url) {
-    let response = await fetch (url);
-    let data = await response.json();
-    return data;
-}
 
 setTimeout(function(){
     var content = document.getElementById("content");
@@ -18,6 +15,9 @@ setTimeout(function(){
     document.getElementById ("students").addEventListener ("click", function(){switchMenu("students");}, false);
     document.getElementById ("items").addEventListener ("click", function(){switchMenu("items");}, false);
     document.getElementById ("tests").addEventListener ("click", function(){switchMenu("tests");}, false);
+    document.getElementById ("settings").addEventListener ("click", function(){switchMenu("settings");}, false);
+    document.getElementById ("setButton").addEventListener ("click", function(){saveSettings();}, false);
+
     main();
 }, 500);
 function reloadCSS() {
@@ -46,12 +46,12 @@ function clearContent() {
 }
 
 function clearMenu(){
-    const menupoints = ["dashboard","subjects", "students", "items", "tests"];
+    const menupoints = ["dashboard","subjects", "students", "items", "tests", "settings"];
     menupoints.forEach(menupoint => document.getElementById(menupoint).removeAttribute("aria-current"));
     menupoints.forEach(menupoint => document.getElementById(menupoint).setAttribute("class","nav-link"));
 }
 async function main(){
-    var data = await getJson("../data.json");
+    var data = stHa.getStorage();
     clearMenu();
     document.getElementById(menu).setAttribute("aria-current","page");
     document.getElementById(menu).setAttribute("class","nav-link active");
@@ -113,12 +113,12 @@ function generatTh(heads, table){
         var students = data["students"];
         generatTh(["Id","Name","Badges","Items", "avatar"], table);
         for (var s = 0; s < students.length; s++){
+            console.log(s);
             tbody.insertAdjacentHTML("beforeend", "<tr><td>"+students[s]["id"]+"</td><td>"+students[s]["name"]+"</td><td>"+students[s]["badges"]+"</td><td>"+students[s]["items"]+"</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../"+students[s]["char"]+"'></td></tr>")
         }
         tbody.insertAdjacentHTML("beforeend","<tr><td></td><td><input type='text'></td><td><input type='button' value='Add student!'></td><td></td><td></td></tr>")
          table.appendChild(tbody);
     }
-
      else if (menu == "items") {
          var items = data["items"];
          generatTh(["Id","Name","Letter", "Price", "Scarcity (1-100)", "type", "kind", "scale","Image"], table);
@@ -141,14 +141,52 @@ function generatTh(heads, table){
          table.appendChild(tbody);
 
 
-    } else if (menu == "tests") {
+    }
+     else if (menu == "tests") {
          table = document.createElement("h1");
          table.insertAdjacentText("beforeend", "Here would be a module to add and edit tests.");
 
-    } else {
-    table = document.createElement("h1");
-    table.insertAdjacentText("beforeend", "Welcome Mrs. Teacher!");
+    }
+     else if (menu == "settings"){
+         var teacher = data["teacher"];
+         table = document.createElement("form");
+         var form = "  <div class=\"form-group\">\n" +
+             "    <label for=\"firstName\">First Name</label>\n" +
+             "    <input type=\"text\" class=\"form-control\" id=\"firstName\" placeholder="+teacher.firstname+">\n" +
+             "  </div>\n" +
+             "<div class=\"form-group\">\n" +
+             "    <label for=\"lastName\">Last Name</label>\n" +
+             "    <input type=\"text\" class=\"form-control\" id=\"lastName\" placeholder="+teacher.lastname+">\n" +
+             "  </div>\n"+
+             "  <div class=\"form-group\">\n" +
+             "    <label for=\"title\">Title</label>\n" +
+             "    <select class=\"form-control\" id=\"title\">\n";
+            if (teacher.title != "Mr.")
+                form+="<option>Mr.</option>\n";
+            else
+                form+="<option selected>Mr.</option>\n";
+            if (teacher.title != "Mrs.")
+                form+="<option>Mrs.</option>\n";
+            else
+                form+="<option selected>Mrs.</option>\n";
+         if (teacher.title != "Ms.")
+             form+="<option>Ms.</option>\n";
+         else
+             form+="<option selected>Ms.</option>\n";
+             form+="    </select>\n" +
+             "</div>\n";
+             form+="<div class=\"form-group\"><input type='button' id='setButton' value='Save'></div>";
+         table.insertAdjacentHTML("beforeend", form);
+     }
+     else {
+         var teacherdata = data["teacher"];
+        table = document.createElement("h1");
+        table.insertAdjacentText("beforeend", "Welcome "+teacherdata.title+" "+teacherdata.firstname+" "+teacherdata.lastname+"! :)");
     }
     return table;
+
+}
+
+function saveSettings(){
 
 }
