@@ -154,7 +154,7 @@ function generatTh(heads, table){
              "  <option value=\"furniture\">furniture</option>\n" +
              "</select>\n" +
              "</td><td><input type='text'></td><td><input type='text'></td>" +
-             "<td><input type='file'></td><td><input type='button' value='Add Item!'></td></tr>")
+             "<td><input type='file'></td><td><input type='button' onclick='window.alert(\"For technical reasons, it is not possible to add items in this demo. We apologize for the inconvenience. <3 \")' value='Add Item!'></td></tr>")
          table.appendChild(tbody);
 
 
@@ -192,11 +192,11 @@ function generatTh(heads, table){
              form+="<option selected>Ms.</option>\n";
              form+="    </select>\n" +
              "</div>\n";
-             form+="<div class=\"form-group\"><input type='button' id='setButton' value='Save'></div>" +
+             form+="<div class=\"form-group\"><br><input type='button' id='setButton' value='Save'></div>" +
                  "<hr> <div class=\"alert alert-danger\" role=\"alert\">\n" +
                  "  Danger Zone\n" +
                  "</div>\n" +
-                 "If you click this button, there won't be a way back. <br>"+
+                 "If you click this button, there is no way back. <br><br>"+
                  "<button type=\"button\" class=\"btn btn-danger\" id='reset'>Reset this class!</button>\n";
          setTimeout(function(){
              document.getElementById ("setButton").addEventListener ("click", function(){saveSettings();}, false);
@@ -224,6 +224,8 @@ function saveSettings(){
         tData["teacher"].lastname = lasttInput;
         tData["teacher"].title = titleInput;
         stHa.writeStorage(tData);
+        window.alert("New settings have been saved successfully. :)");
+        location.reload();
     }
     else {
         window.alert("No empty inputs please!");
