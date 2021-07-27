@@ -6,7 +6,7 @@ var tablerow = "<tr>\n" +
     "                    <td>[name]</td>\n" +
     "                    <td>[points]</td>\n" +
     "                </tr>";
-
+console.log(stHa.getStorage());
 setTimeout(function(){
     var content = document.getElementById("content");
     document.getElementById("dashboard").addEventListener ("click", function(){switchMenu("dashboard");}, false);
@@ -121,9 +121,23 @@ function generatTh(heads, table){
 
      else if (menu == "students") {
         var students = data["students"];
-        generatTh(["Id","Name","Badges","Items", "avatar"], table);
+        var actStudent = [];
+        generatTh(["Id","Name","Badges","Items", "avatar", "delete"], table);
         for (var s = 0; s < students.length; s++){
-            tbody.insertAdjacentHTML("beforeend", "<tr><td>"+students[s]["id"]+"</td><td>"+students[s]["name"]+"</td><td>"+students[s]["badges"]+"</td><td>"+students[s]["items"]+"</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../"+students[s]["char"]+"'></td></tr>")
+            if (students[s]!=null) {
+                actStudent.push(s);
+                tbody.insertAdjacentHTML("beforeend", "<tr><td>" + students[s]["id"] + "</td><td>" + students[s]["name"] + "</td><td>" + students[s]["badges"] + "</td><td>" + students[s]["items"] + "</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../" + students[s]["char"] + "'></td>" +
+                    "<td><button id='deleteStudent" + s + "'>Delete</button></td></tr>");
+                setTimeout(function () {
+                    var actKey = actStudent.shift();
+                    console.log(actKey);
+                    document.getElementById("deleteStudent" + actKey).addEventListener("click", function () {
+                        deleteStudent(actKey);
+                    }, false);
+                }, 500);
+            }
+            else
+                delete students[s];
         }
         if (students.length < 16) {
             tbody.insertAdjacentHTML("beforeend", "<tr><td></td><td><input type='text' id='studentName'></td><td><input type='button' id ='addStudent' value='Add student!'></td><td></td><td></td></tr>")
@@ -235,8 +249,10 @@ function saveSettings(){
 function addStudent(){
     var sData = stHa.getStorage();
     var studentName = document.getElementById("studentName").value;
+    var avatars = ['philip','janu','rk','mo','romelo'];
     if (studentName.length > 0) {
         if (sData["students"].length < 16) {
+            var whichAvatar = Math.floor(Math.random() * 4);
             var newStudent = {
                 "id": sData["students"].length,
                 "name": studentName,
@@ -252,7 +268,7 @@ function addStudent(){
                     "l        r",
                     "zbbbbbbbbx"
                 ],
-                "char": "img/chars/philip.svg",
+                "char": "img/chars/"+avatars[whichAvatar]+".svg",
                 "items": [
                 ],
                 "badges":[
@@ -295,5 +311,14 @@ function deleteSubject(key) {
     window.alert(key+" has been deleted successfully. :)");
     location.reload();
 
+}
 
+function deleteStudent(key) {
+    var stuData = stHa.getStorage();
+    var stuName = stuData["students"][key]["name"];
+    stuData["students"].splice(key,1);
+    stHa.writeStorage(stuData);
+    console.log(stuData);
+    window.alert(stuName+" has been deleted successfully. :)");
+    location.reload();
 }
