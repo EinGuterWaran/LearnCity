@@ -7,13 +7,15 @@ async function getJson(url) {
 
 
 async function getOriginalJSON(){
-    var userData = await getJson('../data.json');
+    var actURL = window.location.href;
+    var path = window.location.pathname;
+    var actURL = actURL.replace(path,'');
+    var userData = await getJson(actURL+'/data.json');
     return userData;
 }
 
 async function initStorage(){
     var userData2 = await getOriginalJSON();
-
     localStorage.setItem('LearnStorage', JSON.stringify(userData2));
 }
 function getStorage() {

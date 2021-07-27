@@ -364,7 +364,6 @@ function visualizeItems(itemString){
         }
         outputItems+="<img height='60' src='../img/furniture/"+itemData['items'][isItemArray[i]]['src']+"'>";
     }
-    console.log(outputItems);
 
     return outputItems;
 }
