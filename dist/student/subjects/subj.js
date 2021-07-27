@@ -1,6 +1,10 @@
+import * as stHa from "../../storage_handler.js";
+stHa.main();
+
 var url_string = window.location.href;
 var url = new URL(url_string);
 const SUBJ = url.searchParams.get("s");
+console.log(SUBJ);
 var userData;
 var todo ="<div class=\"col-md-6\">\n" +
     "            <div class=\"h-100 p-5 text-dark bg-light rounded-3\">\n" +
@@ -9,7 +13,7 @@ var todo ="<div class=\"col-md-6\">\n" +
     "                <p class=\"col-sm-8 fs-5\">[questions] questions, time: [time].</p>\n" +
     "                <p class=\"col-sm-8 fs-5\">What can you earn in this Test?</p>\n" +
     "                <p class=\"col-sm-8 fs-5\">[earnings]</p>\n" +
-    "                <button class=\"btn btn-primary btn-lg\" onclick=\"location.href='test.html?s='+SUBJ+'&t=[id]'\" type=\"button\">Start</button>\n" +
+    "                <a class=\"btn btn-primary btn-lg\" href='test.html?s="+SUBJ+"&t=[id]' type=\"button\">Start</a>\n" +
 
     "            </div>\n" +
     "        </div>";
@@ -27,11 +31,7 @@ var tablerow = "<tr>\n" +
     "                    <td>[name]</td>\n" +
     "                    <td>[points]</td>\n" +
     "                </tr>";
-async function getJson(url) {
-    let response = await fetch (url);
-    let data = await response.json();
-    return data;
-}
+
 async function main(){
     function writeTime(seconds){
         if (seconds < 60){
@@ -43,7 +43,7 @@ async function main(){
             return minutes+" minutes";
         return minutes+" minutes and "+seconds+" seconds";
     }
-    userData = await getJson("../data.json");
+    userData = stHa.getStorage();
     document.getElementById('sbj').innerText = SUBJ.charAt(0).toUpperCase()+SUBJ.slice(1);
     var student = userData["student"];
     document.getElementById('student').innerHTML = "<b>"+student["name"]+", "+student["exp"]+" EXP, "+student["coins"]+" Coins</b>";
@@ -51,6 +51,7 @@ async function main(){
     var testData = userData["subjects"][SUBJ]["test"];
     var d1 = document.getElementById('mco');
     for (var i=0; i < testData.length; i++){
+
         if(!testData[i].done){
             d1.insertAdjacentHTML('beforeend', todo
                 .replace("[testname]",testData[i]["-name"])
