@@ -1,12 +1,12 @@
-async function getJson(url) {
-  let response = await fetch(url);
-  let data = await response.json();
-  return data;
-}
+import * as stHa from "../storage_handler.js";
+stHa.main();
+
+
+
 
 async function main() {
   // default choose first player
-  userData = await getJson('../data.json');
+  var userData = stHa.getStorage();
   //console.log(userData['students']['0']);
 
   //player = userData['students']['0'];
