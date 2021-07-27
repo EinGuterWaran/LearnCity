@@ -129,8 +129,11 @@ function generatTh(heads, table){
                     .replaceAll("!g!","<img src='../img/badges/gold_dark.svg' height='30'>")
                     .replaceAll("!s!","<img src='../img/badges/silver_dark.svg' height='30'>")
                     .replaceAll("!b!","<img src='../img/badges/bronze_dark.svg' height='30'>");
+                var itemsOutput = students[s]["items"].toString().replaceAll(",","");
+                itemsOutput = visualizeItems(itemsOutput);
+
                 tbody.insertAdjacentHTML("beforeend", "<tr><td>" + students[s]["id"] + "</td><td>" + students[s]["name"] + "</td><td>"
-                    + badgesOutput + "</td><td>" + students[s]["items"] + "</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../" + students[s]["char"] + "'></td>" +
+                    + badgesOutput + "</td><td>" + itemsOutput + "</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../" + students[s]["char"] + "'></td>" +
                     "<td><button id='deleteStudent" + s + "'>Delete</button></td></tr>");
                 setTimeout(function () {
                     var actKey = actStudent.shift();
@@ -224,8 +227,16 @@ function generatTh(heads, table){
      }
      else {
          var teacherdata = data["teacher"];
-        table = document.createElement("h1");
-        table.insertAdjacentText("beforeend", "Welcome "+teacherdata.title+" "+teacherdata.firstname+" "+teacherdata.lastname+"! :)");
+        table = document.createElement("div");
+        var h1teacher = document.createElement("h1");
+        h1teacher.insertAdjacentText("beforeend", "Welcome "+teacherdata.title+" "+teacherdata.firstname+" "+teacherdata.lastname+"! :)");
+        var h2teacher = document.createElement("h2");
+        h2teacher.insertAdjacentHTML("beforeend","This is a demo of the part of Learn City that a potential teacher would see. <br>");
+        h2teacher.insertAdjacentText("beforeend","In this demo, the data of your imaginary class is stored in the Local Storage, i.e. the changes you make can be seen immediately in the demo for the students. Try it out! :)");
+        table.appendChild(h1teacher);
+        table.appendChild(h2teacher);
+        table.insertAdjacentHTML("beforeend", "<br><br><hr><div class=\"alert alert-warning\" role=\"alert\">If you click on a 'Delete' button, the element will be gone." +
+            " There is no way back!</div>");
     }
     return table;
 
@@ -323,4 +334,37 @@ function deleteStudent(key) {
     stHa.writeStorage(stuData);
     window.alert(stuName+" has been deleted successfully. :)");
     location.reload();
+}
+
+function visualizeItems(itemString){
+    itemString;
+    var itemData = stHa.getStorage();
+    var outputItems = "";
+    var isItemArray=[];
+    var itemArray=[];
+    for (var i=0; i < itemString.length;i++){
+        if (!isItemArray.includes(itemString.charAt(i))){
+            isItemArray.push(itemString.charAt(i));
+        }
+    }
+    isItemArray.sort(function (a,b) {
+        return parseInt(a) - parseInt(b);
+    });
+    for (var i=0; i < itemString.length;i++){
+        if (itemArray[itemString.charAt(i)] == null)
+            itemArray[itemString.charAt(i)] = 1;
+        else
+            itemArray[itemString.charAt(i)]+=1;
+    }
+    for (var i = 0; i < isItemArray.length; i++){
+        if (i!=0 && i!=isItemArray.length)
+            outputItems+=", ";
+        if (itemArray[isItemArray[i]] > 1){
+            outputItems += itemArray[isItemArray[i]]+"x";
+        }
+        outputItems+="<img height='30' src='../img/furniture/"+itemData['items'][isItemArray[i]]['src']+"'>";
+    }
+    console.log(outputItems);
+
+    return outputItems;
 }
