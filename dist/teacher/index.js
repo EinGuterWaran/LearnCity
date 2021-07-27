@@ -126,9 +126,9 @@ function generatTh(heads, table){
                 actStudent.push(s);
                 var badgesOutput = students[s]["badges"].toString();
                 badgesOutput = badgesOutput.replaceAll(",","").replaceAll("g","!g!").replaceAll("s","!s!").replaceAll("b","!b!")
-                    .replaceAll("!g!","<img src='../img/badges/gold_dark.svg' height='30'>")
-                    .replaceAll("!s!","<img src='../img/badges/silver_dark.svg' height='30'>")
-                    .replaceAll("!b!","<img src='../img/badges/bronze_dark.svg' height='30'>");
+                    .replaceAll("!g!","<img src='../img/badges/gold_dark.svg' height='40'>")
+                    .replaceAll("!s!","<img src='../img/badges/silver_dark.svg' height='40'>")
+                    .replaceAll("!b!","<img src='../img/badges/bronze_dark.svg' height='40'>");
                 var itemsOutput = students[s]["items"].toString().replaceAll(",","");
                 itemsOutput = visualizeItems(itemsOutput);
 
@@ -362,7 +362,7 @@ function visualizeItems(itemString){
         if (itemArray[isItemArray[i]] > 1){
             outputItems += itemArray[isItemArray[i]]+"x";
         }
-        outputItems+="<img height='30' src='../img/furniture/"+itemData['items'][isItemArray[i]]['src']+"'>";
+        outputItems+="<img height='60' src='../img/furniture/"+itemData['items'][isItemArray[i]]['src']+"'>";
     }
     console.log(outputItems);
 
