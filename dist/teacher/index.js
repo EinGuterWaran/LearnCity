@@ -6,7 +6,6 @@ var tablerow = "<tr>\n" +
     "                    <td>[name]</td>\n" +
     "                    <td>[points]</td>\n" +
     "                </tr>";
-console.log(stHa.getStorage());
 setTimeout(function(){
     var content = document.getElementById("content");
     document.getElementById("dashboard").addEventListener ("click", function(){switchMenu("dashboard");}, false);
@@ -31,7 +30,6 @@ function reloadCSS() {
 
 function switchMenu(newMenu) {
     menu = newMenu;
-    console.log(newMenu);
     clearContent();
     setTimeout(function(){
         main();
@@ -126,11 +124,16 @@ function generatTh(heads, table){
         for (var s = 0; s < students.length; s++){
             if (students[s]!=null) {
                 actStudent.push(s);
-                tbody.insertAdjacentHTML("beforeend", "<tr><td>" + students[s]["id"] + "</td><td>" + students[s]["name"] + "</td><td>" + students[s]["badges"] + "</td><td>" + students[s]["items"] + "</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../" + students[s]["char"] + "'></td>" +
+                var badgesOutput = students[s]["badges"].toString();
+                badgesOutput = badgesOutput.replaceAll(",","").replaceAll("g","!g!").replaceAll("s","!s!").replaceAll("b","!b!")
+                    .replaceAll("!g!","<img src='../img/badges/gold_dark.svg' height='30'>")
+                    .replaceAll("!s!","<img src='../img/badges/silver_dark.svg' height='30'>")
+                    .replaceAll("!b!","<img src='../img/badges/bronze_dark.svg' height='30'>");
+                tbody.insertAdjacentHTML("beforeend", "<tr><td>" + students[s]["id"] + "</td><td>" + students[s]["name"] + "</td><td>"
+                    + badgesOutput + "</td><td>" + students[s]["items"] + "</td><td><img height='100' onerror=\"this.style.display='none'\" alt=\"Don't have an avatar yet\" src='../" + students[s]["char"] + "'></td>" +
                     "<td><button id='deleteStudent" + s + "'>Delete</button></td></tr>");
                 setTimeout(function () {
                     var actKey = actStudent.shift();
-                    console.log(actKey);
                     document.getElementById("deleteStudent" + actKey).addEventListener("click", function () {
                         deleteStudent(actKey);
                     }, false);
@@ -318,7 +321,6 @@ function deleteStudent(key) {
     var stuName = stuData["students"][key]["name"];
     stuData["students"].splice(key,1);
     stHa.writeStorage(stuData);
-    console.log(stuData);
     window.alert(stuName+" has been deleted successfully. :)");
     location.reload();
 }

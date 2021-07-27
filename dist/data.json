@@ -43,7 +43,7 @@
         "l        r",
         "zbbbbbbbbx"
       ],
-      "char": "img/chars/philip.svg",
+      "char": "img/chars/janu.svg",
       "items": [
         1,14,3,11,33,1,5,3
       ],
@@ -65,7 +65,7 @@
         "l  o     r",
         "zbbbbbbbbx"
       ],
-      "char": "img/chars/janu.svg",
+      "char": "img/chars/rk.svg",
       "items": [
         1,14,3,11,15
       ],
@@ -88,6 +88,7 @@
         "l        r",
         "zbbbbbbbbx"
       ],
+      "char": "img/chars/philip.svg",
       "items": [
         1,14,3,11,11
       ],
@@ -113,6 +114,8 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/rk.svg",
+
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -135,6 +138,7 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/romelo.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -157,6 +161,7 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/rk.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -201,6 +206,7 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/philip.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -223,6 +229,7 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/rk.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -245,13 +252,14 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/rk.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
     },
     {
       "id": 11,
-      "name": "Birgit",
+      "name": "Mehmet",
       "map": [
         "attttttttp",
         "l   e k  r",
@@ -267,13 +275,14 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/Mo.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
     },
     {
       "id": 12,
-      "name": "Robin",
+      "name": "Carl Johnson",
       "map": [
         "attttttttp",
         "l   e k  r",
@@ -289,6 +298,7 @@
       "items": [
         1,14,3,11,11
       ],
+      "char": "img/chars/romelo.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
