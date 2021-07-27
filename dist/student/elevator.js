@@ -1,8 +1,7 @@
-import * as stHa from "../storage_handler.js";
+import * as stHa from '../storage_handler.js';
 stHa.main();
 
-
-
+const scaleDown = 1.3333333333333333;
 
 async function main() {
   // default choose first player
@@ -20,16 +19,16 @@ async function main() {
     global: true,
     //width: window.innerHeight <= window.innerWidth ? (window.innerHeight / 3) * 4 : window.innerWidth,
     //height: window.innerWidth <= window.innerHeight ? (window.innerWidth / 4) * 3 : window.innerHeight,
-    width: 1440, //1440
-    height: 1024, //1024
+    width: 1080, //1440
+    height: 768, //1024
     scale: 1,
     debug: true,
     clearColor: [0, 0, 0, 1],
   });
 
-  loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
-  loadSprite('elevator-inside', '../img/elevator/elevator-inside.png');
-  loadSprite('bell-button', '../img/elevator/bell-button.png');
+  // loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
+  // loadSprite('elevator-inside', '../img/elevator/elevator-inside.png');
+  // loadSprite('bell-button', '../img/elevator/bell-button.png');
 
   // furniture
   loadSprite('char', '../img/chars/' + userData['student']['character']);
@@ -60,65 +59,91 @@ async function main() {
   loadSprite('board', '../img/badges/wooden_board.svg');
 
   // city
-  loadSprite('city-background', 'https://i.imgur.com/Tu3Qqzi.png');
-  loadSprite('apartment-building', 'https://i.imgur.com/tKRE5mO.png');
-  loadSprite('settings-building', 'https://i.imgur.com/iWlvTL2.png');
-  loadSprite('subject-building', 'https://i.imgur.com/oKq4WvC.png');
-  loadSprite('market', 'https://i.imgur.com/xsCx0QA.png');
-  loadSprite('club-house', 'https://i.imgur.com/VqVolZR.png');
-  loadSprite('city-image', 'https://i.imgur.com/FROeDHY.png');
-  loadSprite('market-inside', 'https://i.imgur.com/ZrvMVTZ.png');
-  loadSprite('club-house-inside', 'https://i.imgur.com/09wCp4G.png');
+  // loadSprite('city-background', 'https://i.imgur.com/Tu3Qqzi.png');
+  // loadSprite('apartment-building', 'https://i.imgur.com/tKRE5mO.png');
+  // loadSprite('settings-building', 'https://i.imgur.com/iWlvTL2.png');
+  // loadSprite('subject-building', 'https://i.imgur.com/oKq4WvC.png');
+  // loadSprite('market', 'https://i.imgur.com/xsCx0QA.png');
+  // loadSprite('club-house', 'https://i.imgur.com/VqVolZR.png');
+  // loadSprite('city-image', 'https://i.imgur.com/FROeDHY.png');
+  // loadSprite('market-inside', 'https://i.imgur.com/ZrvMVTZ.png');
+  // loadSprite('club-house-inside', 'https://i.imgur.com/09wCp4G.png');
 
-  loadSprite('loading-screen', 'https://i.imgur.com/8n8c7fJ.png');
-  loadSprite('avatar1', 'https://i.imgur.com/zWJNFUn.png');
-  loadSprite('avatar2', 'https://i.imgur.com/9PU6ViJ.png');
+  // loadSprite('loading-screen', 'https://i.imgur.com/8n8c7fJ.png');
+  // loadSprite('avatar1', 'https://i.imgur.com/zWJNFUn.png');
+  // loadSprite('avatar2', 'https://i.imgur.com/9PU6ViJ.png');
 
-  // elevator
-  loadSprite('elevator-up', 'https://i.imgur.com/oLybhK4.png');
-  loadSprite('elevator-down', 'https://i.imgur.com/prk0prO.png');
+  // // elevator
+  // loadSprite('elevator-up', 'https://i.imgur.com/oLybhK4.png');
+  // loadSprite('elevator-down', 'https://i.imgur.com/prk0prO.png');
+
+  loadSprite('elevator-inside', '../img/small/elevator-inside.png');
+  loadSprite('bell-button', '../img/small/bell-button.png');
+  loadSprite('city-background', '../img/small/city-background.png');
+  loadSprite('apartment-building', '../img/small/apartment-building.png');
+  loadSprite('settings-building', '../img/small/settings-building.png');
+  loadSprite('subject-building', '../img/small/subject-building.png');
+  loadSprite('market', '../img/small/market.png');
+  loadSprite('club-house', '../img/small/club-house.png');
+  loadSprite('market-inside', '../img/small/market-inside.png');
+  loadSprite('club-house-inside', '../img/small/club-house-inside.png');
+  loadSprite('loading-screen', '../img/small/loading-screen.png');
+  loadSprite('avatar1', '../img/small/avatar1.png');
+  loadSprite('avatar2', '../img/small/avatar2.png');
+  loadSprite('elevator-up', '../img/small/elevator-up.png');
+  loadSprite('elevator-down', '../img/small/elevator-down.png');
 
   // sounds
   // loadSound("elevator-music", "sounds/539574__qd42__elevator-ding-at-arenco-tower-dubai.wav");
-  loadSound(
-    'elevator1',
-    'https://freesound.org/data/previews/55/55837_644651-lq.mp3',
-  );
 
-  loadSound(
-    'elevator2',
-    'https://freesound.org/data/previews/539/539574_3775755-lq.mp3',
-  );
+  loadSound('elevator1', '../sounds/55837_644651-lq.mp3');
+  loadSound('elevator2', '../sounds/539574_3775755-lq.mp3');
+  loadSound('elevator3', '../sounds/403188_7813079-lq.mp3');
+  loadSound('elevator4', '../sounds/331205_2792951-lq.mp3');
+  loadSound('elevator5', '../sounds/467243_6300624-lq.mp3');
+  loadSound('elevator6', '../sounds/482096_8253036-lq.mp3');
+  loadSound('door', '../sounds/214001_3635427-lq.mp3');
+  loadSound('city-sound', '../sounds/366304_5950368-lq.mp3');
 
-  loadSound(
-    'elevator3',
-    'https://freesound.org/data/previews/403/403188_7813079-lq.mp3',
-  );
+  // loadSound(
+  //   'elevator1',
+  //   'https://freesound.org/data/previews/55/55837_644651-lq.mp3',
+  // );
 
-  loadSound(
-    'elevator4',
-    'https://freesound.org/data/previews/331/331205_2792951-lq.mp3',
-  );
+  // loadSound(
+  //   'elevator2',
+  //   'https://freesound.org/data/previews/539/539574_3775755-lq.mp3',
+  // );
 
-  loadSound(
-    'elevator5',
-    'https://freesound.org/data/previews/467/467243_6300624-lq.mp3',
-  );
+  // loadSound(
+  //   'elevator3',
+  //   'https://freesound.org/data/previews/403/403188_7813079-lq.mp3',
+  // );
 
-  loadSound(
-    'elevator6',
-    'https://freesound.org/data/previews/482/482096_8253036-lq.mp3',
-  );
+  // loadSound(
+  //   'elevator4',
+  //   'https://freesound.org/data/previews/331/331205_2792951-lq.mp3',
+  // );
 
-  loadSound(
-    'door',
-    'https://freesound.org/data/previews/214/214001_3635427-lq.mp3',
-  );
+  // loadSound(
+  //   'elevator5',
+  //   'https://freesound.org/data/previews/467/467243_6300624-lq.mp3',
+  // );
 
-  loadSound(
-    'city-sound',
-    'https://freesound.org/data/previews/366/366304_5950368-lq.mp3',
-  );
+  // loadSound(
+  //   'elevator6',
+  //   'https://freesound.org/data/previews/482/482096_8253036-lq.mp3',
+  // );
+
+  // loadSound(
+  //   'door',
+  //   'https://freesound.org/data/previews/214/214001_3635427-lq.mp3',
+  // );
+
+  // loadSound(
+  //   'city-sound',
+  //   'https://freesound.org/data/previews/366/366304_5950368-lq.mp3',
+  // );
 
   scene('loading-screen', () => {
     add([
@@ -126,7 +151,7 @@ async function main() {
       //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
-    wait(3, () => {
+    wait(0, () => {
       go('city');
     });
   });
@@ -148,7 +173,7 @@ async function main() {
 
     const apartmentBuilding = add([
       sprite('apartment-building'),
-      pos(0, 63),
+      pos(0 / scaleDown, 63 / scaleDown),
       origin('topleft'),
     ]);
 
@@ -166,7 +191,11 @@ async function main() {
       }
     });
 
-    const market = add([sprite('market'), pos(580, 327), origin('topleft')]);
+    const market = add([
+      sprite('market'),
+      pos(580 / scaleDown, 327 / scaleDown),
+      origin('topleft'),
+    ]);
 
     market.action(() => {
       if (market.isClicked()) {
@@ -177,7 +206,7 @@ async function main() {
 
     const clubHouse = add([
       sprite('club-house'),
-      pos(1172, 360),
+      pos(1212 / scaleDown, 380 / scaleDown),
       origin('topleft'),
     ]);
 
@@ -190,7 +219,7 @@ async function main() {
 
     const settingsBuilding = add([
       sprite('settings-building'),
-      pos(942, 424),
+      pos(938 / scaleDown, 290 / scaleDown),
       origin('topleft'),
     ]);
 
@@ -201,7 +230,7 @@ async function main() {
       }
     });
 
-    const size = 0.9;
+    const size = 1.0; // 0.9
     // var x = 1240;
     // var y = 737;
     var x = 1250;
@@ -213,16 +242,23 @@ async function main() {
     for (var subject in userData['subjects']) {
       const house = add([
         sprite('subject-building'),
-        pos(x - i * 190, y - (i % 2) * 80),
+        pos((x - i * 190) / scaleDown, (y - (i % 2) * 80) / scaleDown),
         scale(size),
         origin('topleft'),
       ]);
-
+      var subjectName = subject.charAt(0).toUpperCase() + subject.substring(1);
+      if (subjectName.length > 7) {
+        subjectName =
+          subjectName.substring(0, 6) + '-' + subjectName.substring(6);
+      }
       add([
-        text(subject, 12, {
-          width: 94, // wrap when exceeds this width (defaults to 0 - no wrap)
+        text(subjectName, 9, {
+          width: Math.round(94 / scaleDown), // wrap when exceeds this width (defaults to 0 - no wrap)
         }),
-        pos(x - i * 190 + 66, y - (i % 2) * 80 + 66),
+        pos(
+          (x - i * 190 + 70) / scaleDown,
+          (y - (i % 2) * 80 + 66) / scaleDown,
+        ),
         color(0, 0, 0),
         origin('topleft'),
       ]);
@@ -246,7 +282,7 @@ async function main() {
 
     const continueButton = add([
       text('Continue', 48),
-      pos(950, 950),
+      pos(950 / scaleDown, 950 / scaleDown),
       color(0, 0, 0),
       origin('topleft'),
     ]);
@@ -261,7 +297,7 @@ async function main() {
   scene('settings-building2', () => {
     const exitButton = add([
       text('Exit', 88),
-      pos(950, 860),
+      pos(950 / scaleDown, 860 / scaleDown),
       color(0, 0, 0),
       origin('topleft'),
     ]);
@@ -288,7 +324,7 @@ async function main() {
 
     const exitButton = add([
       text('Exit', 48),
-      pos(1100, 850),
+      pos(1100 / scaleDown, 850 / scaleDown),
       color(255, 0, 0),
       origin('topleft'),
     ]);
@@ -309,7 +345,7 @@ async function main() {
 
     const exitButton = add([
       text('Exit', 48),
-      pos(1100, 865),
+      pos(1100 / scaleDown, 865 / scaleDown),
       color(255, 0, 0),
       origin('topleft'),
     ]);
@@ -374,7 +410,7 @@ async function main() {
 
     const exitButton = add([
       sprite('bell-button'),
-      pos(237 + 342 * 1, 241 + 91 * 5),
+      pos((237 + 342 * 1) / scaleDown, (241 + 91 * 5) / scaleDown),
       origin('topleft'),
     ]);
 
@@ -393,8 +429,8 @@ async function main() {
     });
 
     add([
-      text('Exit', 18),
-      pos(237 + 342 * 1 + 90, 241 + 91 * 5 + 22),
+      text('Exit', 14),
+      pos((237 + 342 * 1 + 90) / scaleDown, (241 + 91 * 5 + 22) / scaleDown),
       color(255, 0, 0),
       //pos(237, 241),
       //scale(width() / 240, height() / 240),
@@ -404,8 +440,6 @@ async function main() {
     var x = 237;
     var y = 241;
     var row = 0;
-
-    const buttons = [];
 
     for (var i = 0; i < userData['students'].length; i++) {
       if (i >= 3) {
@@ -450,7 +484,7 @@ async function main() {
 
       add([
         sprite('bell-button'),
-        pos(x + (i % 3) * 342, y + row * 91),
+        pos((x + (i % 3) * 342) / scaleDown, (y + row * 91) / scaleDown),
         origin('topleft'),
         i.toString(),
       ]);
@@ -470,9 +504,17 @@ async function main() {
         }
       });
 
+      var xname = Math.round((x + (i % 3) * 342 + 87) / scaleDown);
+      var yname = Math.round((y + row * 91 + 24) / scaleDown);
+
+      // xname +=
+      //   (((12 - userData['students'][i].name.length) / (12 * 2)) * 150) /
+      //   scaleDown;
+      // console.log(userData['students'][i].name.length);
+
       add([
-        text(userData['students'][i].name, 18),
-        pos(x + (i % 3) * 342 + 90, y + row * 91 + 22),
+        text(userData['students'][i].name, 11),
+        pos(xname, yname),
         color(0, 0, 0),
         origin('topleft'),
       ]);
