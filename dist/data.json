@@ -22,7 +22,7 @@
       ],
       "char": "img/chars/rk.svg",
       "items": [
-        1,14,3,11,11
+        1,4,5
       ],
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
@@ -43,9 +43,9 @@
         "l        r",
         "zbbbbbbbbx"
       ],
-      "char": "img/chars/philip.svg",
+      "char": "img/chars/janu.svg",
       "items": [
-        1,14,3,11,33,1,5,3
+        1,2,2,2,5,5,6
       ],
       "badges":[
       "g","s","b","s","s","g"
@@ -65,9 +65,9 @@
         "l  o     r",
         "zbbbbbbbbx"
       ],
-      "char": "img/chars/janu.svg",
+      "char": "img/chars/rk.svg",
       "items": [
-        1,14,3,11,15
+        1,5,4,3,2,6
       ],
       "badges":[
         "g","g","g","s","s"
@@ -88,8 +88,9 @@
         "l        r",
         "zbbbbbbbbx"
       ],
+      "char": "img/chars/philip.svg",
       "items": [
-        1,14,3,11,11
+        6
       ],
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
@@ -111,8 +112,10 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1,1,2,2,2,4,3,3,3,6,3
       ],
+      "char": "img/chars/rk.svg",
+
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -133,8 +136,9 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1
       ],
+      "char": "img/chars/romelo.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -155,15 +159,16 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1,6
       ],
+      "char": "img/chars/rk.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
     },
     {
       "id": 7,
-      "name": "Fabian",
+      "name": "Mahmud",
       "map": [
         "attttttttp",
         "l   e k  r",
@@ -177,8 +182,9 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1,5
       ],
+      "char": "img/chars/mo.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -199,8 +205,9 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1,6,3
       ],
+      "char": "img/chars/philip.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -221,8 +228,9 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        6,6,6,5,4,6,1,1,4
       ],
+      "char": "img/chars/rk.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
@@ -243,15 +251,16 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1,2,3,4,5,5,6
       ],
+      "char": "img/chars/rk.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
     },
     {
       "id": 11,
-      "name": "Birgit",
+      "name": "Mehmet",
       "map": [
         "attttttttp",
         "l   e k  r",
@@ -265,21 +274,22 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+        1,2,3,4,5,5,6
       ],
+      "char": "img/chars/Mo.svg",
       "badges":[
         "g","s","b","s","s","g","s","g","s","g","s","g","g"
       ]
     },
     {
       "id": 12,
-      "name": "Robin",
+      "name": "Carl Johnson",
       "map": [
         "attttttttp",
-        "l   e k  r",
         "l        r",
         "l        r",
-        "l       sr",
+        "l        r",
+        "l        r",
         "l        r",
         "l        r",
         "d        r",
@@ -287,10 +297,11 @@
         "zbbbbbbbbx"
       ],
       "items": [
-        1,14,3,11,11
+
       ],
+      "char": "img/chars/romelo.svg",
       "badges":[
-        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+        "g"
       ]
     }
   ],
