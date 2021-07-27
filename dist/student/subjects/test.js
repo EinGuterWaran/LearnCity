@@ -1,7 +1,15 @@
+import * as stHa from "../../storage_handler.js";
+stHa.main();
+
+setTimeout(function(){
+    document.getElementById("but").addEventListener ("click", function(){nextQuestion(); return false;}, false);
+    }, 500);
+
+
 var url_string = window.location.href;
 var url = new URL(url_string);
-const SUBJ = url.searchParams.get("s");
-const TEST = url.searchParams.get("t");
+var SUBJ = url.searchParams.get("s");
+var TEST = url.searchParams.get("t");
 var userData;
 var curQue=0;
 var first = 1;
@@ -10,13 +18,11 @@ var feedback = 0;
 var correct= 0;
 var addCoins=0;
 var addExp=0;
-async function getJson(url) {
-    let response = await fetch (url);
-    let data = await response.json();
-    return data;
-}
+
 async function main(next){
-    userData = await getJson("../data.json");
+    var SUBJ = url.searchParams.get("s");
+    var TEST = url.searchParams.get("t");
+    userData = stHa.getStorage();
     var student = userData["student"];
     var testData = userData["subjects"][SUBJ]["test"];
     if (next){
@@ -62,13 +68,18 @@ async function main(next){
         document.getElementById("but").setAttribute("type", "button");
         document.getElementById("form").insertAdjacentHTML('afterbegin', "<h3>The test is over. :)</h3>" +
             "<h5>You earned "+addExp+" EXP and "+addCoins+" Coins. :)</h5>");
+        userData["subjects"][SUBJ]["test"][TEST].done=1;
+        userData["subjects"][SUBJ]["test"][TEST].correct=correct;
+        userData["student"].coins+=addCoins;
+        userData["student"].exp+=addExp;
+        stHa.writeStorage(userData);
         document.getElementById("but").innerText = "Leave";
 
     }
     else {
         document.getElementById('progBar').setAttribute("style", "width: "+progressPerc+"%");
         document.getElementById('progBar').setAttribute("aria-valuenow", progressPerc);
-        document.getElementById('ques').innerText = testData[TEST]["task"][curQue]["question"];
+        document.getElementById('ques').innerHTML = "Question: <br>"+testData[TEST]["task"][curQue]["question"];
 
     }
     if (first) {
@@ -79,6 +90,9 @@ async function main(next){
     }
     document.getElementById('student').innerHTML = "<b>"+student["name"]+", "+(student["exp"]+addExp)+" EXP, "+(student["coins"]+addCoins)+" Coins</b>";
     document.getElementById('progr').innerText=(curQue+1)+"/"+testData[TEST]["task"].length;
+
+    if (final)
+        document.getElementById('student').innerHTML = "<b>"+student["name"]+", "+(student["exp"])+" EXP, "+(student["coins"])+" Coins</b>";
 
     return false;
 }
