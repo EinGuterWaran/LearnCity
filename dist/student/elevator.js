@@ -19,6 +19,7 @@ async function main() {
     global: true,
     //width: window.innerHeight <= window.innerWidth ? (window.innerHeight / 3) * 4 : window.innerWidth,
     //height: window.innerWidth <= window.innerHeight ? (window.innerWidth / 4) * 3 : window.innerHeight,
+    root: document.getElementById('game'),
     width: 1080, //1440
     height: 768, //1024
     scale: 1,
@@ -245,6 +246,7 @@ async function main() {
         pos((x - i * 190) / scaleDown, (y - (i % 2) * 80) / scaleDown),
         scale(size),
         origin('topleft'),
+        subject,
       ]);
       var subjectName = subject.charAt(0).toUpperCase() + subject.substring(1);
       if (subjectName.length > 7) {
@@ -263,12 +265,15 @@ async function main() {
         origin('topleft'),
       ]);
 
-      house.action(() => {
-        if (house.isClicked()) {
+      const location = '/student/subjects/?s=' + subject;
+
+      action(subject, (b) => {
+        if (b.isClicked()) {
           citySound.stop();
-          window.location = '/student/subjects/test.html';
+          window.location = location;
         }
       });
+
       ++i;
     }
   });
@@ -280,8 +285,14 @@ async function main() {
       origin('topleft'),
     ]);
 
+    // add(
+    //   [rect(100, 100)],
+    //   pos(950 / scaleDown, 950 / scaleDown),
+    //   color(0, 0, 0),
+    // );
+
     const continueButton = add([
-      text('Continue', 48),
+      text('Continue', Math.round(48 / scaleDown)),
       pos(950 / scaleDown, 950 / scaleDown),
       color(0, 0, 0),
       origin('topleft'),
@@ -296,7 +307,7 @@ async function main() {
 
   scene('settings-building2', () => {
     const exitButton = add([
-      text('Exit', 88),
+      text('Exit', Math.round(88 / scaleDown)),
       pos(950 / scaleDown, 860 / scaleDown),
       color(0, 0, 0),
       origin('topleft'),
@@ -323,7 +334,7 @@ async function main() {
     ]);
 
     const exitButton = add([
-      text('Exit', 48),
+      text('Exit', Math.round(48 / scaleDown)),
       pos(1100 / scaleDown, 850 / scaleDown),
       color(255, 0, 0),
       origin('topleft'),
@@ -344,7 +355,7 @@ async function main() {
     ]);
 
     const exitButton = add([
-      text('Exit', 48),
+      text('Exit', Math.round(48 / scaleDown)),
       pos(1100 / scaleDown, 865 / scaleDown),
       color(255, 0, 0),
       origin('topleft'),
@@ -429,7 +440,7 @@ async function main() {
     });
 
     add([
-      text('Exit', 14),
+      text('Exit', Math.round(14 / scaleDown)),
       pos((237 + 342 * 1 + 90) / scaleDown, (241 + 91 * 5 + 22) / scaleDown),
       color(255, 0, 0),
       //pos(237, 241),
