@@ -264,7 +264,7 @@ function addStudent(){
     var sData = stHa.getStorage();
     var studentName = document.getElementById("studentName").value;
     var avatars = ['philip','janu','rk','mo','romelo'];
-    if (studentName.length > 0) {
+    if (studentName.length > 0 && studentName.length <= 12) {
         if (sData["students"].length < 16) {
             var whichAvatar = Math.floor(Math.random() * 4);
             var newStudent = {
@@ -297,8 +297,10 @@ function addStudent(){
         } else
             window.alert("Maximum number of students has been reached!");
     }
-    else
+    else if(studentName.length == 0)
         window.alert("Empty student name!");
+    else
+        window.alert("The maximum number of characters for a student name is 12!");
 }
 
 function addSubject() {
