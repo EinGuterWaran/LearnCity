@@ -11,6 +11,7 @@ async function getOriginalJSON(){
     var path = window.location.pathname;
     var actURL = actURL.replace(path,'');
     var userData = await getJson(actURL+'/data.json');
+    //var userData = await getJson(actURL+'/LearnCity/data.json');
     return userData;
 }
 
