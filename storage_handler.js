@@ -18,7 +18,7 @@ async function initStorage(){
     var userData2 = await getOriginalJSON();
     localStorage.setItem('LearnStorage', JSON.stringify(userData2));
 }
-function getStorage() {
+async function getStorage() {
 // Retrieve the object from storage
     var retrievedObject = localStorage.getItem('LearnStorage');
     var learnjson = JSON.parse(retrievedObject);
@@ -28,9 +28,9 @@ async function writeStorage(json) {
     localStorage.setItem('LearnStorage', JSON.stringify(json));
 }
 
-function main() {
+async function main() {
     if (localStorage.getItem("LearnStorage") === null) {
-        initStorage();
+        await initStorage();
     }
 }
 
