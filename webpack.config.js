@@ -47,6 +47,7 @@ const config = {
   },
   devServer: {
     contentBase: './dist',
+    open: true,
   },
 };
 

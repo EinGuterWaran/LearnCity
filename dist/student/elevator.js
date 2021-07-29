@@ -27,6 +27,81 @@ async function main() {
     clearColor: [0, 0, 0, 1],
   });
 
+  const myfunc = () => {
+
+    const expPercent = userData['student'].exp / 10000;
+    var goalPercent = 0;
+    for (var i = 0; i < userData['students'].length; i++) {
+      goalPercent += userData['students'][i].id;
+    }
+
+    add([
+      rect(Math.round(304 / scaleDown), Math.round(114 / scaleDown)),
+      pos(Math.round(1142 / scaleDown), Math.round(0 / scaleDown)),
+      color(rgba(1, 1, 1, 0.0)),
+      origin('topleft'),
+    ]);
+
+    add([
+      text('User: ' + userData['student'].name, Math.round(13 / scaleDown)),
+      pos(Math.round(1190 / scaleDown), Math.round(5 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
+      text('Coins: ' + userData['student'].coins, Math.round(13 / scaleDown)),
+      pos(Math.round(1190 / scaleDown), Math.round(25 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+    add([
+      text('Exp: ', Math.round(13 / scaleDown)),
+      pos(Math.round(1190 / scaleDown), Math.round(45 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
+      rect(120, 13),
+      pos(Math.round(1270 / scaleDown), Math.round(43 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    
+
+    goalPercent = goalPercent / 100;
+
+    add([
+      rect(120*expPercent, 13),
+      pos(Math.round(1270 / scaleDown), Math.round(43 / scaleDown)),
+      color(rgba(0.094, 0.760, 0.058)),
+      origin('topleft'),
+    ]);
+
+    add([
+      text('Goal:', Math.round(13 / scaleDown)),
+      pos(Math.round(1190 / scaleDown), Math.round(65 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
+      rect(120, 13),
+      pos(Math.round(1270 / scaleDown), Math.round(65 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
+      rect(120*goalPercent, 13),
+      pos(Math.round(1270 / scaleDown), Math.round(65 / scaleDown)),
+      color(rgba(0.094, 0.760, 0.058)),
+      origin('topleft'),
+    ]);
+  }
+
   // loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
   // loadSprite('elevator-inside', '../img/elevator/elevator-inside.png');
   // loadSprite('bell-button', '../img/elevator/bell-button.png');
@@ -164,6 +239,9 @@ async function main() {
       origin('topleft'),
     ]);
 
+    myfunc()
+    
+
     const citySound = play('city-sound', {
       volume: 1.0,
       speed: 1.0,
@@ -174,7 +252,7 @@ async function main() {
 
     const apartmentBuilding = add([
       sprite('apartment-building'),
-      pos(0 / scaleDown, 63 / scaleDown),
+      pos(Math.round(0 / scaleDown), Math.round(63 / scaleDown)),
       origin('topleft'),
     ]);
 
@@ -194,7 +272,7 @@ async function main() {
 
     const market = add([
       sprite('market'),
-      pos(580 / scaleDown, 327 / scaleDown),
+      pos(Math.round(580 / scaleDown), Math.round(327 / scaleDown)),
       origin('topleft'),
     ]);
 
@@ -207,7 +285,7 @@ async function main() {
 
     const clubHouse = add([
       sprite('club-house'),
-      pos(1212 / scaleDown, 380 / scaleDown),
+      pos(Math.round(1212 / scaleDown), Math.round(380 / scaleDown)),
       origin('topleft'),
     ]);
 
@@ -220,7 +298,7 @@ async function main() {
 
     const settingsBuilding = add([
       sprite('settings-building'),
-      pos(938 / scaleDown, 290 / scaleDown),
+      pos(Math.round(938 / scaleDown), Math.round(290 / scaleDown)),
       origin('topleft'),
     ]);
 
@@ -243,23 +321,25 @@ async function main() {
     for (var subject in userData['subjects']) {
       const house = add([
         sprite('subject-building'),
-        pos((x - i * 190) / scaleDown, (y - (i % 2) * 80) / scaleDown),
+        pos(Math.round((x - i * 190) / scaleDown), Math.round((y - (i % 2) * 80) / scaleDown)),
         scale(size),
         origin('topleft'),
         subject,
       ]);
+      var shiftMiddle = 5;
       var subjectName = subject.charAt(0).toUpperCase() + subject.substring(1);
       if (subjectName.length > 7) {
         subjectName =
           subjectName.substring(0, 6) + '-' + subjectName.substring(6);
+        shiftMiddle = 0;
       }
       add([
         text(subjectName, 9, {
           width: Math.round(94 / scaleDown), // wrap when exceeds this width (defaults to 0 - no wrap)
         }),
         pos(
-          (x - i * 190 + 70) / scaleDown,
-          (y - (i % 2) * 80 + 66) / scaleDown,
+          Math.round((x - i * 190 + 69) / scaleDown),
+          Math.round((y - (i % 2) * 80 + 66 + shiftMiddle) / scaleDown),
         ),
         color(0, 0, 0),
         origin('topleft'),
@@ -293,7 +373,7 @@ async function main() {
 
     const continueButton = add([
       text('Continue', Math.round(48 / scaleDown)),
-      pos(950 / scaleDown, 950 / scaleDown),
+      pos(Math.round(950 / scaleDown), Math.round(950 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
@@ -308,7 +388,7 @@ async function main() {
   scene('settings-building2', () => {
     const exitButton = add([
       text('Exit', Math.round(88 / scaleDown)),
-      pos(950 / scaleDown, 860 / scaleDown),
+      pos(Math.round(950 / scaleDown), Math.round(860 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
@@ -327,6 +407,13 @@ async function main() {
   });
 
   scene('market', () => {
+    const rectangle = add([
+      rect(1200 / scaleDown, 600 / scaleDown),
+      pos(Math.round(120 / scaleDown), Math.round(210 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+
     add([
       sprite('market-inside'),
       //scale(width() / 240, height() / 240),
@@ -334,9 +421,16 @@ async function main() {
     ]);
 
     const exitButton = add([
-      text('Exit', Math.round(48 / scaleDown)),
-      pos(1100 / scaleDown, 850 / scaleDown),
+      rect(200 / scaleDown, 70 / scaleDown),
+      pos(Math.round(1095 / scaleDown),Math.round(837 / scaleDown)),
       color(255, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
+      text('Exit', Math.round(48 / scaleDown)),
+      pos(Math.round(1100 / scaleDown), Math.round(850 / scaleDown)),
+      color(0, 0, 0),
       origin('topleft'),
     ]);
 
@@ -345,9 +439,63 @@ async function main() {
         go('city');
       }
     });
+    var stateMessage = true;
+    rectangle.action(() => {
+      // console.log(board.pos)
+      // console.log('Testtt');
+      // console.log(message.scale);
+      // console.log(scale(1).scale);
+      if (rectangle.isClicked()) {
+        if (stateMessage) {
+          const message = add([
+            rect(1440 / scaleDown, 1024 / scaleDown),
+            pos(0 / scaleDown, 0 / scaleDown),
+            color(rgba(0, 0, 0, 0.8)),
+            origin('topleft'),
+            'message',
+            // scale(1),
+          ]);
+
+          const padding = 100;
+
+          add([
+            text(
+              "In this demo you\ncan't buy items,\nyou already have\nall items in your\ninventory.",
+              48,
+              { width: Math.round((1440 - padding * 2) / scaleDown) },
+            ),
+            pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
+            origin('topleft'),
+            color(1, 0, 0),
+            origin('topleft'),
+            'message',
+          ]);
+
+          stateMessage = false;
+        } else {
+          destroyAll('message');
+          stateMessage = true;
+        }
+      }
+      mouseClick(() => {
+        if (!stateMessage) {
+          //stateMessage = true;
+          destroyAll('message');
+          wait(0.1, () => {
+            stateMessage = true;
+          });
+        }
+      });
+    });
   });
 
   scene('club-house', () => {
+    const rectangle = add([
+      rect(300 / scaleDown, 500 / scaleDown),
+      pos(Math.round(230 / scaleDown), Math.round(200 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
     add([
       sprite('club-house-inside'),
       //scale(width() / 240, height() / 240),
@@ -355,9 +503,16 @@ async function main() {
     ]);
 
     const exitButton = add([
+      rect(200 / scaleDown, 70 / scaleDown),
+      pos(Math.round(1095 / scaleDown), Math.round(849 / scaleDown)),
+      color(1, 0, 0),
+      origin('topleft'),
+    ]);
+
+    add([
       text('Exit', Math.round(48 / scaleDown)),
-      pos(1100 / scaleDown, 865 / scaleDown),
-      color(255, 0, 0),
+      pos(Math.round(1100 / scaleDown), Math.round(865 / scaleDown)),
+      color(0, 0, 0),
       origin('topleft'),
     ]);
 
@@ -365,6 +520,57 @@ async function main() {
       if (exitButton.isClicked()) {
         go('city');
       }
+    });
+
+    var stateMessage = true;
+    rectangle.action(() => {
+      // console.log(board.pos)
+      // console.log('Testtt');
+      // console.log(message.scale);
+      // console.log(scale(1).scale);
+      if (rectangle.isClicked()) {
+        if (stateMessage) {
+          const message = add([
+            rect(1440 / scaleDown, 1024 / scaleDown),
+            pos(0 / scaleDown, 0 / scaleDown),
+            color(rgba(0, 0, 0, 0.8)),
+            origin('topleft'),
+            'message',
+            // scale(1),
+          ]);
+
+          const padding = 100;
+
+          add([
+            text('In this demo the\nclub house is not\nfinished.', 48, {
+              width: Math.round((1440 - padding * 2) / scaleDown),
+            }),
+            pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
+            origin('topleft'),
+            color(255, 0, 0),
+            origin('topleft'),
+            'message',
+          ]);
+
+          stateMessage = false;
+        } else {
+          destroyAll('message');
+          stateMessage = true;
+        }
+      }
+      mouseClick(() => {
+        if (!stateMessage) {
+          //stateMessage = true;
+          destroyAll('message');
+          wait(0.1, () => {
+            stateMessage = true;
+          });
+        }
+      });
+      // if (mouseIsClicked()) {
+      //   destroyAll('message');
+      //   stateMessage = true;
+      // }
     });
   });
 
@@ -421,7 +627,7 @@ async function main() {
 
     const exitButton = add([
       sprite('bell-button'),
-      pos((237 + 342 * 1) / scaleDown, (241 + 91 * 5) / scaleDown),
+      pos(Math.round((237 + 342 * 1) / scaleDown), Math.round((241 + 91 * 5) / scaleDown)),
       origin('topleft'),
     ]);
 
@@ -441,7 +647,7 @@ async function main() {
 
     add([
       text('Exit', Math.round(14 / scaleDown)),
-      pos((237 + 342 * 1 + 90) / scaleDown, (241 + 91 * 5 + 22) / scaleDown),
+      pos(Math.round((237 + 342 * 1 + 90) / scaleDown), Math.round((241 + 91 * 5 + 22) / scaleDown)),
       color(255, 0, 0),
       //pos(237, 241),
       //scale(width() / 240, height() / 240),
@@ -495,7 +701,7 @@ async function main() {
 
       add([
         sprite('bell-button'),
-        pos((x + (i % 3) * 342) / scaleDown, (y + row * 91) / scaleDown),
+        pos(Math.round((x + (i % 3) * 342) / scaleDown), Math.round((y + row * 91) / scaleDown)),
         origin('topleft'),
         i.toString(),
       ]);
@@ -538,16 +744,23 @@ async function main() {
     //console.log(player['map']);
     layers(['bg', 'obj', 'ui'], 'obj');
 
+    const shiftx = 300;
+    const shifty = 144;
+
     const title = add([
-      text('Apartment', 15),
+      text('Apartment', 24),
       layer('ui'),
-      pos(innerWidth / 3, 2),
+      pos(132 + shiftx, -40 + shifty),
     ]);
-    const person = add([sprite('char'), pos(50, 335), scale(0.2)]);
+    const person = add([
+      sprite('char'),
+      pos(50 + shiftx, 335 + shifty),
+      scale(0.2),
+    ]);
 
     const board = add([
       sprite('board'),
-      pos(355, 54),
+      pos(355 + shiftx, 54 + shifty),
       scale(0.05),
       layer('ui'),
     ]);
@@ -555,9 +768,9 @@ async function main() {
     function add_badges() {
       console.log(player['badges']);
       add([
-        text(player['name'] + '(Badges)', 15),
+        text(player['name'] + ' (Badges)', 15),
         layer('ui'),
-        pos(150, 72),
+        pos(150 + shiftx, 72 + shifty),
         'name',
       ]);
       if (player['badges'].length == 0) {
@@ -567,22 +780,23 @@ async function main() {
             15,
             { width: 300 },
           ),
-          color(rgb(0, 0, 0)),
+          color(rgb(1, 0, 0)),
           layer('ui'),
           pos(100, 100),
           'name',
         ]);
       } else {
-        py = 95;
-        px = 40;
+        var px = 40 + shiftx;
+        var py = 95 + shifty;
+
         player['badges'].forEach((element) => {
           add([sprite(element), pos(px, py), layer('ui'), scale(0.2), 'badge']);
           // py+=30
-          if (px < 390) {
+          if (px < 390 + shiftx) {
             px += 40;
           } else {
             py += 50;
-            px = 40;
+            px = 40 + shiftx;
           }
           console.log(px);
         });
@@ -592,14 +806,16 @@ async function main() {
     board.action(() => {
       // console.log(board.pos)
       if (board.isClicked()) {
-        if (board.scale == 0.05) {
-          board.scale = 0.385;
-          board.pos = vec2(0, 60);
+        if (board.scale.x == 0.05) {
+          board.scale.x = 0.385;
+          board.scale.y = 0.385;
+          board.pos = vec2(0 + shiftx, 60 + shifty);
           add_badges();
           console.log(board);
         } else {
-          board.scale = 0.05;
-          board.pos = vec2(355, 54);
+          board.scale.x = 0.05;
+          board.scale.y = 0.05;
+          board.pos = vec2(355 + shiftx, 54 + shifty);
           every('badge', (obj) => {
             destroy(obj);
           });
@@ -610,7 +826,7 @@ async function main() {
       }
     });
 
-    const MOVE_SPEED = 150;
+    const MOVE_SPEED = 250;
 
     // 20 by 20 map
     const sizeOfMap = 20;
@@ -633,6 +849,7 @@ async function main() {
     var posItems = {
       width: 48,
       height: 48,
+      pos: vec2(shiftx, shifty),
       r: [sprite('right-wall'), solid(), 'wall'],
       l: [sprite('left-wall'), solid(), 'wall'],
       d: [sprite('door'), solid(), 'door'],
