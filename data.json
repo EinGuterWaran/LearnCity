@@ -1,0 +1,557 @@
+{
+  "teacher": {
+    "firstname" : "Anne-Liese",
+    "lastname" : "Schäfer",
+    "title" : "Mrs."
+  },
+  "students": [
+    {
+      "id": 0,
+      "name": "Alissa",
+      "map": [
+        "attttttttp",
+        "lh   1   r",
+        "l        r",
+        "l        r",
+        "l    4   r",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "char": "img/chars/rk.svg",
+      "items": [
+        1,4,5
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Nithusan",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l  222   r",
+        "l   55   r",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "char": "img/chars/janu.svg",
+      "items": [
+        1,2,2,2,5,5,6
+      ],
+      "badges":[
+      "g","s","b","s","s","g"
+    ]
+    },{
+      "id": 2,
+      "name": "Maria",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l    4   r",
+        "l  1     r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "char": "img/chars/rk.svg",
+      "items": [
+        1,5,4,3,2,6
+      ],
+      "badges":[
+        "g","g","g","s","s"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Jonas",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l       6r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "char": "img/chars/philip.svg",
+      "items": [
+        6
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sarah",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l  1  1  r",
+        "l        r",
+        "l        r",
+        "l    3   r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,1,2,2,2,4,3,3,3,6,3
+      ],
+      "char": "img/chars/rk.svg",
+
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Patrick",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l    1   r",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1
+      ],
+      "char": "img/chars/romelo.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Alicia",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l     1  r",
+        "l     6  r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,6
+      ],
+      "char": "img/chars/rk.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Mahmud",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l   15   r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,5
+      ],
+      "char": "img/chars/mo.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Harry",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l    3   r",
+        "l        r",
+        "l        r",
+        "l   16   r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,6,3
+      ],
+      "char": "img/chars/philip.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Anna Teufel",
+      "map": [
+        "attttttttp",
+        "l   666  r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        6,6,6,5,4,6,1,1,4
+      ],
+      "char": "img/chars/rk.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Sharmila",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l   4    r",
+        "l        r",
+        "l  55    r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,2,3,4,5,5,6
+      ],
+      "char": "img/chars/rk.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Mehmet",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "d  123   r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+        1,2,3,4,5,5,6
+      ],
+      "char": "img/chars/Mo.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Carl Johnson",
+      "map": [
+        "attttttttp",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "l        r",
+        "d        r",
+        "l        r",
+        "zbbbbbbbbx"
+      ],
+      "items": [
+
+      ],
+      "char": "img/chars/romelo.svg",
+      "badges":[
+        "g"
+      ]
+    }
+  ],
+  "student": {
+    "id": 0,
+    "name": "Alissa",
+    "coins": 100,
+    "exp": 1100,
+    "character": "rk.svg"
+  },
+  "subjects": {
+    "maths": {
+      "highscore": [
+        {
+          "name": "Marie",
+          "exp": 120
+        },
+        {
+          "name": "Jack",
+          "exp": 100
+        },{
+          "name": "The_K1d",
+          "exp": 90
+        },{
+          "name": "Romelo",
+          "exp": 80
+        },{
+          "name": "Philipp",
+          "exp": 50
+        }
+      ],
+      "test": [
+        {
+          "id": 3,
+          "-name": "Addition",
+          "type": "text",
+          "desc": "Add the numbers!",
+          "done": 0,
+          "ExpPC": 30,
+          "CPC": 5,
+          "timer": 300,
+          "task": [
+            {
+              "question": "3+4=",
+              "answer": "7"
+            },
+            {
+              "question": "1+2=",
+              "answer": "3"
+            },
+            {
+              "question": "1+4=",
+              "answer": "5"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "-name": "Which Number - Part 2",
+          "type": "text",
+          "desc": "Which number is that?",
+          "done": 0,
+          "ExpPC": 20,
+          "CPC": 3,
+          "timer": 200,
+          "task": [
+            {
+              "question": "Seven",
+              "answer": "7"
+            },
+            {
+              "question": "Two",
+              "answer": "2"
+            },
+            {
+              "question": "Six",
+              "answer": "6"
+            },
+            {
+              "question": "Zero",
+              "answer": "0"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "-name": "Which Number",
+          "type": "text",
+          "desc": "Which number is that?",
+          "done": 1,
+          "correct": 2,
+          "ExpPC": 10,
+          "CPC": 2,
+          "timer": 200,
+          "task": [
+            {
+              "question": "Eight",
+              "answer": "8"
+            },
+            {
+              "question": "Five",
+              "answer": "5"
+            },
+            {
+              "question": "One",
+              "answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    "english": {
+      "highscore": [
+        {
+          "name": "Angela",
+          "exp": 100
+        },
+        {
+          "name": "Radhicka",
+          "exp": 80
+        },{
+          "name": "The_K1d",
+          "exp": 60
+        },{
+          "name": "Mohammad",
+          "exp": 40
+        },{
+          "name": "Janusan",
+          "exp": 20
+        }
+      ],
+  "test": [
+    {
+      "id": 4,
+      "-name": "The opposite of...?",
+      "type": "text",
+      "desc": "What is the oppsite of the following word?",
+      "done": 0,
+      "correct": 0,
+      "ExpPC": 20,
+      "CPC": 5,
+      "timer": 600,
+      "task": [
+        {
+          "question": "Weak",
+          "answer": "Strong"
+        },
+        {
+          "question": "Happy",
+          "answer": "Sad"
+        },
+        {
+          "question": "Bright",
+          "answer": "Dark"
+        },
+        {
+          "question": "Black",
+          "answer": "White"
+        },
+        {
+          "question": "Up",
+          "answer": "Down"
+        }
+      ]
+    }
+  ],
+
+  "#omit-xml-declaration": "yes"
+  }
+  },
+  "items": [
+    {
+      "id" : 0,
+      "name": "Bookshelf",
+      "src" : "bookshelf.svg",
+      "let": "0",
+      "price" : 150,
+      "scarcity" : 70,
+      "type": "furniture",
+      "kind": "bookshelf",
+      "scale": 0.4,
+      "del": false
+    },
+    {
+      "id" : 1,
+      "name": "Cabinet",
+      "src" : "cabinet.svg",
+      "let": "1",
+      "price" : 80,
+      "scarcity" : 40,
+      "type": "furniture",
+      "kind": "cabinet",
+      "scale": 0.4,
+      "del": false
+    },{
+      "id" : 2,
+      "name": "Drawer",
+      "src" : "drawer.svg",
+      "let": "2",
+      "price" : 30,
+      "scarcity" : 20,
+      "type": "furniture",
+      "kind": "drawer",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 3,
+      "name": "Plant",
+      "src" : "plant.svg",
+      "let": "3",
+      "price" : 30,
+      "scarcity" : 20,
+      "type": "furniture",
+      "kind": "plant",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 4,
+      "name": "Single Sofa",
+      "src" : "single_sofa.svg",
+      "let": "4",
+      "price" : 100,
+      "scarcity" : 50,
+      "type": "furniture",
+      "kind": "sofa",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 5,
+      "name": "Stool",
+      "src" : "stool.svg",
+      "let": "5",
+      "price" : 10,
+      "scarcity" : 10,
+      "type": "furniture",
+      "kind": "stool",
+      "scale": 0.2,
+      "del": false
+    },{
+      "id" : 6,
+      "name": "Three Seater Sofa",
+      "src" : "three_seater_sofa.svg",
+      "let": "6",
+      "price" : 200,
+      "scarcity" : 90,
+      "type": "furniture",
+      "kind": "sofa",
+      "scale": 0.4,
+      "del": false
+    }
+  ]
+
+}
