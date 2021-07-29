@@ -3,9 +3,7 @@ const path = require('path');
 
 const config = {
   entry: [
-    'react-hot-loader/patch',
-    './dist/subj.js'
-  ],
+    'react-hot-loader/patch'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
