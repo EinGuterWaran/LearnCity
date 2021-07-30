@@ -109,7 +109,7 @@ async function main() {
 
   // furniture
   loadSprite('char', '../img/chars/' + userData['student']['character']);
-  loadSprite('door', 'https://i.imgur.com/okdJNls.png');
+  loadSprite('door', '../img/apartment/door.png');
   for (var i = 0; i < userData['items'].length; i++) {
     var item = userData['items'][i];
     if (item['type'] === 'furniture') {
@@ -126,15 +126,17 @@ async function main() {
   loadSprite('b', '../img/badges/bronze_light.svg');
 
   // walls
-  loadSprite('left-wall', 'https://i.imgur.com/rfDoaa1.png');
-  loadSprite('top-wall', 'https://i.imgur.com/QA257Bj.png');
-  loadSprite('bottom-wall', 'https://i.imgur.com/vWJWmvb.png');
-  loadSprite('right-wall', 'https://i.imgur.com/SmHhgUn.png');
-  loadSprite('bottom-left-wall', 'https://i.imgur.com/awnTfNC.png');
-  loadSprite('bottom-right-wall', 'https://i.imgur.com/84oyTFy.png');
-  loadSprite('top-left-wall', 'https://i.imgur.com/xlpUxIm.png');
-  loadSprite('top-right-wall', 'https://i.imgur.com/z0OmBd1.jpg');
+  loadSprite('left-wall', '../img/apartment/left-wall.png');
+  loadSprite('top-wall', '../img/apartment/top-wall.png');
+  loadSprite('bottom-wall', '../img/apartment/bottom-wall.png');
+  loadSprite('right-wall', '../img/apartment/right-wall.png');
+  loadSprite('bottom-left-wall', '../img/apartment/bottom-left-wall.png');
+  loadSprite('bottom-right-wall', '../img/apartment/bottom-right-wall.png');
+  loadSprite('top-left-wall', '../img/apartment/top-left-wall.png');
+  loadSprite('top-right-wall', '../img/apartment/top-right-wall.jpg');
   loadSprite('board', '../img/badges/wooden_board.svg');
+
+  loadSprite('floor', '../img/apartment/floor10.png');
 
   // city
   // loadSprite('city-background', 'https://i.imgur.com/Tu3Qqzi.png');
@@ -320,6 +322,8 @@ async function main() {
 
     var i = 0;
 
+    console.log(userData['subjects'])
+
     for (var subject in userData['subjects']) {
       const house = add([
         sprite('subject-building'),
@@ -335,13 +339,25 @@ async function main() {
           subjectName.substring(0, 6) + '-' + subjectName.substring(6);
         shiftMiddle = 0;
       }
+
+      var xname = Math.round((x - i * 190 + 69) / scaleDown)
+      var yname = Math.round((y - (i % 2) * 80 + 66 + shiftMiddle) / scaleDown)
+
+      if (subjectName.length <= 7) {
+        xname +=
+        (((7 - subjectName.length) / (7 * 2)) * 94) /
+        scaleDown;
+      }
+      
+
+
       add([
         text(subjectName, 9, {
           width: Math.round(94 / scaleDown), // wrap when exceeds this width (defaults to 0 - no wrap)
         }),
         pos(
-          Math.round((x - i * 190 + 69) / scaleDown),
-          Math.round((y - (i % 2) * 80 + 66 + shiftMiddle) / scaleDown),
+          xname,
+          yname,
         ),
         color(0, 0, 0),
         origin('topleft'),
@@ -746,33 +762,42 @@ async function main() {
     //console.log(player['map']);
     layers(['bg', 'obj', 'ui'], 'obj');
 
-    const shiftx = 300;
-    const shifty = 144;
+    add([
+      sprite('floor'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+
+    // const shiftx = 300;
+    // const shifty = 144;
+    const shiftx = 160;
+    const shifty = 24; // 48
 
     const title = add([
-      text('Apartment', 24),
+      text('Apartment', 36, { width: 10 },),
       layer('ui'),
-      pos(132 + shiftx, -40 + shifty),
+      pos( 760 + shiftx, 170+shifty),
+      // pos(254 + shiftx, -40 + shifty),
     ]);
     const person = add([
       sprite('char'),
       pos(50 + shiftx, 335 + shifty),
-      scale(0.2),
+      scale(0.2*1.5),
     ]);
 
     const board = add([
       sprite('board'),
-      pos(355 + shiftx, 54 + shifty),
-      scale(0.05),
+      pos(372*1.5 + shiftx, 46*1.5 + shifty - 60),
+      scale(0.065),
       layer('ui'),
     ]);
 
     function add_badges() {
       console.log(player['badges']);
       add([
-        text(player['name'] + ' (Badges)', 15),
+        text(player['name'] + ' (Badges)', 23),
         layer('ui'),
-        pos(150 + shiftx, 72 + shifty),
+        pos(128*1.5 + shiftx, 58*1.5 + shifty),
         'name',
       ]);
       if (player['badges'].length == 0) {
@@ -789,15 +814,15 @@ async function main() {
         ]);
       } else {
         var px = 40 + shiftx;
-        var py = 95 + shifty;
+        var py = 125 + shifty;
 
         player['badges'].forEach((element) => {
-          add([sprite(element), pos(px, py), layer('ui'), scale(0.2), 'badge']);
+          add([sprite(element), pos(px, py), layer('ui'), scale(0.25*1.5), 'badge']);
           // py+=30
-          if (px < 390 + shiftx) {
-            px += 40;
+          if (px < 390*1.5 + shiftx) {
+            px += 40*2;
           } else {
-            py += 50;
+            py += 50*1.5;
             px = 40 + shiftx;
           }
           console.log(px);
@@ -808,16 +833,16 @@ async function main() {
     board.action(() => {
       // console.log(board.pos)
       if (board.isClicked()) {
-        if (board.scale.x == 0.05) {
-          board.scale.x = 0.385;
-          board.scale.y = 0.385;
+        if (board.scale.x == 0.065) {
+          board.scale.x = 0.577;
+          board.scale.y = 0.577;
           board.pos = vec2(0 + shiftx, 60 + shifty);
           add_badges();
           console.log(board);
         } else {
-          board.scale.x = 0.05;
-          board.scale.y = 0.05;
-          board.pos = vec2(355 + shiftx, 54 + shifty);
+          board.scale.x = 0.065;
+          board.scale.y = 0.065;
+          board.pos = vec2(372*1.5 + shiftx, 46*1.5 + shifty - 60);
           every('badge', (obj) => {
             destroy(obj);
           });
@@ -849,18 +874,18 @@ async function main() {
     //   ]
 
     var posItems = {
-      width: 48,
-      height: 48,
+      width: 72,
+      height: 72,
       pos: vec2(shiftx, shifty),
-      r: [sprite('right-wall'), solid(), 'wall'],
-      l: [sprite('left-wall'), solid(), 'wall'],
-      d: [sprite('door'), solid(), 'door'],
-      b: [sprite('bottom-wall'), solid(), 'wall'],
-      t: [sprite('top-wall'), solid(), 'wall'],
-      p: [sprite('top-right-wall'), solid(), 'wall'],
-      z: [sprite('bottom-left-wall'), solid(), 'wall'],
-      a: [sprite('top-left-wall'), solid(), 'wall'],
-      x: [sprite('bottom-right-wall'), solid(), 'wall'],
+      r: [sprite('right-wall'), solid(), 'wall', scale(1.5)],
+      l: [sprite('left-wall'), solid(), 'wall', scale(1.5)],
+      d: [sprite('door'), solid(), 'door', scale(1.5)],
+      b: [sprite('bottom-wall'), solid(), 'wall', scale(1.5)],
+      t: [sprite('top-wall'), solid(), 'wall', scale(1.5)],
+      p: [sprite('top-right-wall'), solid(), 'wall', scale(1.5)],
+      z: [sprite('bottom-left-wall'), solid(), 'wall', scale(1.5)],
+      a: [sprite('top-left-wall'), solid(), 'wall', scale(1.5)],
+      x: [sprite('bottom-right-wall'), solid(), 'wall', scale(1.5)],
     };
     for (var i = 0; i < userData['items'].length; i++) {
       var item = userData['items'][i];
@@ -886,16 +911,26 @@ async function main() {
     // console.log(map)
     // console.log(new Array(11).join(" "))
 
-    keyPressRep('left', () => {
+    keyPress('left', () => {
+      person.scale.x = -0.2*1.5;
+    });
+
+    keyPress('right', () => {
+      person.scale.x = 0.2*1.5;
+    });
+
+    keyPress('left', () => {
       person.move(-MOVE_SPEED, 0);
+      person.scale.x = -0.2*1.5;
     });
-    keyPressRep('right', () => {
+    keyPress('right', () => {
       person.move(MOVE_SPEED, 0);
+      person.scale.x = 0.2*1.5;
     });
-    keyPressRep('up', () => {
+    keyPress('up', () => {
       person.move(0, -MOVE_SPEED);
     });
-    keyPressRep('down', () => {
+    keyPress('down', () => {
       person.move(0, MOVE_SPEED);
     });
     person.action(() => {
