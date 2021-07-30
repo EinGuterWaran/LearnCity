@@ -1,21 +1,27 @@
 import * as stHa from "../storage_handler.js";
-stHa.main();
 var menu = "dashboard";
-var tablerow = "<tr>\n" +
-    "                    <th scope=\"row\">[place]</th>\n" +
-    "                    <td>[name]</td>\n" +
-    "                    <td>[points]</td>\n" +
-    "                </tr>";
-setTimeout(function(){
-    var content = document.getElementById("content");
-    document.getElementById("dashboard").addEventListener ("click", function(){switchMenu("dashboard");}, false);
-    document.getElementById ("subjects").addEventListener ("click", function(){switchMenu("subjects");}, false);
-    document.getElementById ("students").addEventListener ("click", function(){switchMenu("students");}, false);
-    document.getElementById ("items").addEventListener ("click", function(){switchMenu("items");}, false);
-    document.getElementById ("tests").addEventListener ("click", function(){switchMenu("tests");}, false);
-    document.getElementById ("settings").addEventListener ("click", function(){switchMenu("settings");}, false);
-    main();
-}, 500);
+var data;
+var tablerow;
+async function firstMain(){
+    await stHa.main();
+    data = await stHa.getStorage();
+    tablerow = "<tr>\n" +
+        "                    <th scope=\"row\">[place]</th>\n" +
+        "                    <td>[name]</td>\n" +
+        "                    <td>[points]</td>\n" +
+        "                </tr>";
+    setTimeout(function(){
+        var content = document.getElementById("content");
+        document.getElementById("dashboard").addEventListener ("click", function(){switchMenu("dashboard");}, false);
+        document.getElementById ("subjects").addEventListener ("click", function(){switchMenu("subjects");}, false);
+        document.getElementById ("students").addEventListener ("click", function(){switchMenu("students");}, false);
+        document.getElementById ("items").addEventListener ("click", function(){switchMenu("items");}, false);
+        document.getElementById ("tests").addEventListener ("click", function(){switchMenu("tests");}, false);
+        document.getElementById ("settings").addEventListener ("click", function(){switchMenu("settings");}, false);
+        main();
+    }, 500);
+}
+firstMain();
 function reloadCSS() {
     const links = document.getElementsByTagName('link');
 
@@ -46,11 +52,11 @@ function clearMenu(){
     menupoints.forEach(menupoint => document.getElementById(menupoint).setAttribute("class","nav-link"));
 }
 async function main(){
-    var data = stHa.getStorage();
+    await stHa.main();
     clearMenu();
     document.getElementById(menu).setAttribute("aria-current","page");
     document.getElementById(menu).setAttribute("class","nav-link active");
-    content.appendChild(generateContent(data));
+    await content.appendChild(generateContent(data));
     reloadCSS();
     document.getElementById("title").innerText = menu.charAt(0).toUpperCase()+menu.slice(1);
 }
@@ -66,7 +72,7 @@ function generatTh(heads, table){
     table.appendChild(th);
 }
 
- function generateContent(data){
+function generateContent(data){
     var table = document.createElement("table");
     table.classList.add('table');
     table.classList.add('table-striped');
@@ -156,7 +162,7 @@ function generatTh(heads, table){
              tbody.insertAdjacentHTML("beforeend","<tr colspan='5'>Maximum number of students has been reached!</tr>");
          table.appendChild(tbody);
     }
-     else if (menu == "items") {
+     else if (menu === "items") {
          var items = data["items"];
          generatTh(["Id","Name","Letter", "Price", "Scarcity (1-100)", "type", "kind", "scale","Image"], table);
          for (var i = 0; i < items.length; i++){
@@ -242,8 +248,8 @@ function generatTh(heads, table){
 
 }
 
-function saveSettings(){
-    var tData = stHa.getStorage();
+async function saveSettings(){
+    var tData = await stHa.getStorage();
     var firstInput = document.getElementById("firstName").value;
     var lasttInput = document.getElementById("lastName").value;
     var titleInput = document.getElementById("title2").value;
@@ -260,8 +266,8 @@ function saveSettings(){
     }
 }
 
-function addStudent(){
-    var sData = stHa.getStorage();
+async function addStudent(){
+    var sData = await stHa.getStorage();
     var studentName = document.getElementById("studentName").value;
     var avatars = ['philip','janu','rk','mo','romelo'];
     if (studentName.length > 0 && studentName.length <= 12) {
@@ -303,8 +309,8 @@ function addStudent(){
         window.alert("The maximum number of characters for a student name is 12!");
 }
 
-function addSubject() {
-    var stData = stHa.getStorage();
+async function addSubject() {
+    var stData = await stHa.getStorage();
     var subjectName = document.getElementById("newSubject").value;
     if (subjectName.length > 0){
         stData["subjects"][subjectName] = {};
@@ -320,8 +326,8 @@ function addSubject() {
 
 }
 
-function deleteSubject(key) {
-    var subData = stHa.getStorage();
+async function deleteSubject(key) {
+    var subData = await stHa.getStorage();
     delete subData["subjects"][key];
     stHa.writeStorage(subData);
     window.alert(key+" has been deleted successfully. :)");
@@ -329,8 +335,8 @@ function deleteSubject(key) {
 
 }
 
-function deleteStudent(key) {
-    var stuData = stHa.getStorage();
+async function deleteStudent(key) {
+    var stuData = await stHa.getStorage();
     var stuName = stuData["students"][key]["name"];
     stuData["students"].splice(key,1);
     stHa.writeStorage(stuData);
@@ -340,7 +346,7 @@ function deleteStudent(key) {
 
 function visualizeItems(itemString){
     itemString;
-    var itemData = stHa.getStorage();
+    var itemData = data;
     var outputItems = "";
     var isItemArray=[];
     var itemArray=[];
