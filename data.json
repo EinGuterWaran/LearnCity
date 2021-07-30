@@ -494,7 +494,7 @@
       "scarcity" : 40,
       "type": "furniture",
       "kind": "cabinet",
-      "scale": 0.4,
+      "scale": 0.6,
       "del": false
     },{
       "id" : 2,
@@ -505,7 +505,7 @@
       "scarcity" : 20,
       "type": "furniture",
       "kind": "drawer",
-      "scale": 0.2,
+      "scale": 0.3,
       "del": false
     },{
       "id" : 3,
@@ -516,7 +516,7 @@
       "scarcity" : 20,
       "type": "furniture",
       "kind": "plant",
-      "scale": 0.2,
+      "scale": 0.3,
       "del": false
     },{
       "id" : 4,
@@ -527,7 +527,7 @@
       "scarcity" : 50,
       "type": "furniture",
       "kind": "sofa",
-      "scale": 0.2,
+      "scale": 0.3,
       "del": false
     },{
       "id" : 5,
@@ -538,7 +538,7 @@
       "scarcity" : 10,
       "type": "furniture",
       "kind": "stool",
-      "scale": 0.2,
+      "scale": 0.3,
       "del": false
     },{
       "id" : 6,
@@ -549,7 +549,7 @@
       "scarcity" : 90,
       "type": "furniture",
       "kind": "sofa",
-      "scale": 0.4,
+      "scale": 0.6,
       "del": false
     }
   ]
