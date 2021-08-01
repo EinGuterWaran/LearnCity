@@ -29,12 +29,15 @@ async function main() {
   });
 
   const myfunc = () => {
-
-    const expPercent = userData['student'].exp / 10000;
-    var goalPercent = 0;
+    var userExp = userData['student'].exp;
+    var userLvl = Math.floor(userExp/1000);
+    const expPercent = (userExp-userLvl*1000)/1000;
+    var goalPercent1 = 0;
     for (var i = 0; i < userData['students'].length; i++) {
-      goalPercent += userData['students'][i].id;
+      goalPercent1 += userData['students'][i].exp;
     }
+    var goalPercent = goalPercent1 / userData['teacher'].semesterGoal;
+
 
     add([
       rect(Math.round(304 / scaleDown), Math.round(114 / scaleDown)),
@@ -43,64 +46,82 @@ async function main() {
       origin('topleft'),
     ]);
 
+    if (userData['student'].name.length <= 9){
+        add([
+            text('User: ' + userData['student'].name, Math.round(20 / scaleDown)),
+            pos(Math.round(1120 / scaleDown), Math.round(5 / scaleDown)),
+            color(0, 0, 0),
+            origin('topleft'),
+        ]);
+    }
+    else {
+        add([
+            text('User: ' + userData['student'].name, Math.round(17 / scaleDown)),
+            pos(Math.round(1120 / scaleDown), Math.round(5 / scaleDown)),
+            color(0, 0, 0),
+            origin('topleft'),
+        ]);
+      }
+
+
     add([
-      text('User: ' + userData['student'].name, Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(5 / scaleDown)),
+      text('Coins: ' + userData['student'].coins, Math.round(20 / scaleDown)),
+      pos(Math.round(1120 / scaleDown), Math.round(35 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+    add([
+      text('LVL: '+ userLvl, Math.round(18 / scaleDown)),
+      pos(Math.round(1120 / scaleDown), Math.round(65 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      text('Coins: ' + userData['student'].coins, Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(25 / scaleDown)),
-      color(0, 0, 0),
-      origin('topleft'),
-    ]);
-    add([
-      text('Exp: ', Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(45 / scaleDown)),
+      rect(140, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(60 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      rect(120, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(43 / scaleDown)),
-      color(0, 0, 0),
-      origin('topleft'),
-    ]);
-
-    
-
-    goalPercent = goalPercent / 100;
-
-    add([
-      rect(120*expPercent, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(43 / scaleDown)),
+      rect(140*expPercent, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(60 / scaleDown)),
       color(rgba(0.094, 0.760, 0.058)),
       origin('topleft'),
     ]);
-
+  add([
+      text('EXP: '+ userExp + '/' + (userLvl+1)*1000, Math.round(10 / scaleDown)),
+      pos(Math.round(1250 / scaleDown), Math.round(65 / scaleDown)),
+      color(255, 255, 255),
+      origin('topleft'),
+  ]);
     add([
-      text('Goal:', Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(65 / scaleDown)),
+      text('Class\nGoal:', Math.round(16 / scaleDown)),
+      pos(Math.round(1120 / scaleDown), Math.round(95 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      rect(120, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(65 / scaleDown)),
+      rect(140, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(100 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      rect(120*goalPercent, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(65 / scaleDown)),
+      rect(140*goalPercent, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(100 / scaleDown)),
       color(rgba(0.094, 0.760, 0.058)),
       origin('topleft'),
     ]);
+      add([
+          text(goalPercent1 + '/' + userData['teacher'].semesterGoal, Math.round(10 / scaleDown)),
+          pos(Math.round(1250 / scaleDown), Math.round(105 / scaleDown)),
+          color(255, 255, 255),
+          origin('topleft'),
+      ]);
   }
 
   // loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
@@ -242,7 +263,7 @@ async function main() {
     ]);
 
     myfunc()
-    
+
 
     const citySound = play('city-sound', {
       volume: 1.0,
@@ -332,7 +353,7 @@ async function main() {
       var subjectName = subject.charAt(0).toUpperCase() + subject.substring(1);
       if (subjectName.length > 7) {
         subjectName =
-          subjectName.substring(0, 6) + '-' + subjectName.substring(6);
+            subjectName.substring(0, 6) + '-' + subjectName.substring(6);
         shiftMiddle = 0;
       }
       add([
@@ -340,8 +361,8 @@ async function main() {
           width: Math.round(94 / scaleDown), // wrap when exceeds this width (defaults to 0 - no wrap)
         }),
         pos(
-          Math.round((x - i * 190 + 69) / scaleDown),
-          Math.round((y - (i % 2) * 80 + 66 + shiftMiddle) / scaleDown),
+            Math.round((x - i * 190 + 69) / scaleDown),
+            Math.round((y - (i % 2) * 80 + 66 + shiftMiddle) / scaleDown),
         ),
         color(0, 0, 0),
         origin('topleft'),
@@ -462,9 +483,9 @@ async function main() {
 
           add([
             text(
-              "In this demo you\ncan't buy items,\nyou already have\nall items in your\ninventory.",
-              48,
-              { width: Math.round((1440 - padding * 2) / scaleDown) },
+                "In this demo you\ncan't buy items,\nyou already have\nall items in your\ninventory.",
+                48,
+                { width: Math.round((1440 - padding * 2) / scaleDown) },
             ),
             pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
             origin('topleft'),
@@ -778,9 +799,9 @@ async function main() {
       if (player['badges'].length == 0) {
         add([
           text(
-            'You can do it!! Lets do some challenges to earn some badges',
-            15,
-            { width: 300 },
+              'You can do it!! Lets do some challenges to earn some badges',
+              15,
+              { width: 300 },
           ),
           color(rgb(1, 0, 0)),
           layer('ui'),
