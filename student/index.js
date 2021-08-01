@@ -7,6 +7,10 @@ async function main() {
   // default choose first player
   await stHa.main();
   var userData = await stHa.getStorage();
+  document.addEventListener("click", async function () {
+    userData = await stHa.getStorage();
+  });
+
   //console.log(userData['students']['0']);
 
   //player = userData['students']['0'];
@@ -97,7 +101,7 @@ async function main() {
       origin('topleft'),
   ]);
     add([
-      text('Class\nGoal:', Math.round(16 / scaleDown)),
+      text('Class\nGoal:', Math.round(18 / scaleDown)),
       pos(Math.round(1120 / scaleDown), Math.round(95 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
@@ -618,7 +622,7 @@ async function main() {
     });
   });
 
-  scene('elevator-animation2', (from, player) => {
+  scene('elevator-animation2', (from, player, whichPlayer) => {
     add([
       sprite('elevator-down'),
       //scale(width() / 240, height() / 240),
@@ -633,9 +637,9 @@ async function main() {
 
     wait(2, () => {
       if (from == 'room') {
-        go('elevator', player);
+        go('elevator', player, whichPlayer);
       } else if (from == 'elevator') {
-        go('room', player);
+        go('room', player, whichPlayer);
       }
     });
   });
@@ -730,6 +734,7 @@ async function main() {
       ]);
 
       const player = userData['students'][i];
+      const whichPlayer = i;
       action(i.toString(), (b) => {
         if (b.isClicked()) {
           play('elevator4', {
@@ -739,7 +744,7 @@ async function main() {
           });
           wait(1, () => {
             elevatorMusic.stop();
-            go('elevator-animation2', 'elevator', player);
+            go('elevator-animation2', 'elevator', player, whichPlayer);
           });
         }
       });
@@ -762,7 +767,7 @@ async function main() {
     //console.log(buttons);
   });
 
-  scene('room', (player) => {
+  scene('room', (player, whichPlayer) => {
     //console.log(player);
     //console.log(player['map']);
     layers(['bg', 'obj', 'ui'], 'obj');
@@ -789,6 +794,8 @@ async function main() {
     ]);
 
     function add_badges() {
+      player = userData['students'][whichPlayer];
+      console.log(whichPlayer)
       console.log(player['badges']);
       add([
         text(player['name'] + ' (Badges)', 15),
