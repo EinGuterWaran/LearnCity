@@ -487,7 +487,7 @@ async function main() {
 
           add([
             text(
-                "In this demo you\ncan't buy items,\nyou already have\nall items in your\ninventory.",
+                "In this demo you\ncan't buy anything on the market.\nBut do not worry!\nYou already own\nevery item 2 times.",
                 48,
                 { width: Math.round((1440 - padding * 2) / scaleDown) },
             ),
@@ -518,8 +518,14 @@ async function main() {
 
   scene('club-house', () => {
     const rectangle = add([
-      rect(300 / scaleDown, 500 / scaleDown),
+      rect(300 / scaleDown, 375 / scaleDown),
       pos(Math.round(230 / scaleDown), Math.round(200 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+    const rectangle2 = add([
+      rect(300 / scaleDown, 125 / scaleDown),
+      pos(Math.round(230 / scaleDown), Math.round(575 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
@@ -550,6 +556,7 @@ async function main() {
     });
 
     var stateMessage = true;
+    var stateMessage2 = true;
     rectangle.action(() => {
       // console.log(board.pos)
       // console.log('Testtt');
@@ -569,7 +576,7 @@ async function main() {
           const padding = 100;
 
           add([
-            text('In this demo the\nclub house is not\nfinished.', 48, {
+            text('This function is\nlocked in this\ndemo.', 48, {
               width: Math.round((1440 - padding * 2) / scaleDown),
             }),
             pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
@@ -586,14 +593,55 @@ async function main() {
         }
       }
       mouseClick(() => {
-        if (!stateMessage) {
+        if (!stateMessage && stateMessage2) {
           //stateMessage = true;
           destroyAll('message');
           wait(0.1, () => {
             stateMessage = true;
           });
         }
+        if (!stateMessage2 && stateMessage) {
+          //stateMessage = true;
+          destroyAll('message2');
+          wait(0.1, () => {
+            stateMessage2 = true;
+          });
+        }
       });
+
+      if (rectangle2.isClicked()) {
+        if (stateMessage2) {
+          const message2 = add([
+            rect(1440 / scaleDown, 1024 / scaleDown),
+            pos(0 / scaleDown, 0 / scaleDown),
+            color(rgba(0, 0, 0, 0.8)),
+            origin('topleft'),
+            'message2',
+            // scale(1),
+          ]);
+
+          const padding = 100;
+
+          add([
+            text('Janusan Lingeswaran,\nProject Manager, Lead Developer\n\n' +
+                'Philipp Kant,\nDeveloper\n\n' +
+                'Radhhicka Kishorpouria,\nDesigner\n\n' +
+                'Mahamad Patol,\nDeveloper\n\n\n\nWe hope you like the demo. :-)', 16, {
+              width: Math.round((1440 - padding * 2) / scaleDown),
+            }),
+            pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
+            origin('topleft'),
+            color(255, 255, 255),
+            origin('topleft'),
+            'message2',
+          ]);
+
+          stateMessage2 = false;
+        } else {
+          destroyAll('message2');
+          stateMessage2 = true;
+        }
+      }
       // if (mouseIsClicked()) {
       //   destroyAll('message');
       //   stateMessage = true;
