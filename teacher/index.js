@@ -128,7 +128,7 @@ function generateContent(data){
         var students = data["students"];
         var actStudent = [];
         generatTh(["Id","Name","Badges","Items", "avatar", "delete"], table);
-        for (var s = 0; s < students.length; s++){
+        for (var s = 1; s < students.length; s++){
             if (students[s]!=null) {
                 actStudent.push(s);
                 var badgesOutput = students[s]["badges"].toString();

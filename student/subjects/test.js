@@ -22,7 +22,7 @@ var addExp=0;
 async function main(next){
     var SUBJ = url.searchParams.get("s");
     var TEST = url.searchParams.get("t");
-    userData = stHa.getStorage();
+    userData = await stHa.getStorage();
     var student = userData["student"];
     var testData = userData["subjects"][SUBJ]["test"];
     if (next){
@@ -68,6 +68,16 @@ async function main(next){
         document.getElementById("but").setAttribute("type", "button");
         document.getElementById("form").insertAdjacentHTML('afterbegin', "<h3>The test is over. :)</h3>" +
             "<h5>You earned "+addExp+" EXP and "+addCoins+" Coins. :)</h5>");
+        var percReach = correct/testData[TEST]["task"].length;
+        var badge= "";
+        if (percReach >= 0.9)
+            badge="g";
+        else if (percReach >= 0.7)
+            badge="s";
+        else if (percReach >= 0.5)
+            badge="b";
+        userData["students"][0].badges.push(badge);
+
         userData["subjects"][SUBJ]["test"][TEST].done=1;
         userData["subjects"][SUBJ]["test"][TEST].correct=correct;
         userData["student"].coins+=addCoins;

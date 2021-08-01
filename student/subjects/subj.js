@@ -4,7 +4,6 @@ stHa.main();
 var url_string = window.location.href;
 var url = new URL(url_string);
 const SUBJ = url.searchParams.get("s");
-console.log(SUBJ);
 var userData;
 var todo ="<div class=\"col-md-6\">\n" +
     "            <div class=\"h-100 p-5 text-dark bg-light rounded-3\">\n" +
@@ -43,7 +42,7 @@ async function main(){
             return minutes+" minutes";
         return minutes+" minutes and "+seconds+" seconds";
     }
-    userData = stHa.getStorage();
+    userData = await stHa.getStorage();
     document.getElementById('sbj').innerText = SUBJ.charAt(0).toUpperCase()+SUBJ.slice(1);
     var student = userData["student"];
     document.getElementById('student').innerHTML = "<b>"+student["name"]+", "+student["exp"]+" EXP, "+student["coins"]+" Coins</b>";
