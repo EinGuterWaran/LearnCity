@@ -1,5 +1,4 @@
-import * as stHa from "../../storage_handler.js";
-stHa.main();
+import * as stHa from "/LearnCity/storage_handler.js";
 
 var url_string = window.location.href;
 var url = new URL(url_string);
@@ -32,6 +31,7 @@ var tablerow = "<tr>\n" +
     "                </tr>";
 
 async function main(){
+    await stHa.main();
     function writeTime(seconds){
         if (seconds < 60){
             return seconds+" seconds";

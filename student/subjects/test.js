@@ -1,5 +1,5 @@
-import * as stHa from "../../storage_handler.js";
-stHa.main();
+import * as stHa from "/LearnCity/storage_handler.js";
+
 
 setTimeout(function(){
     document.getElementById("but").addEventListener ("click", function(){nextQuestion(); return false;}, false);
@@ -20,6 +20,7 @@ var addCoins=0;
 var addExp=0;
 
 async function main(next){
+    await stHa.main();
     var SUBJ = url.searchParams.get("s");
     var TEST = url.searchParams.get("t");
     userData = await stHa.getStorage();
