@@ -323,24 +323,24 @@
     "id": 0,
     "name": "Alissa",
     "coins": 100,
-    "exp": 4500,
+    "exp": 3900,
     "character": "rk.svg"
   },
   "subjects": {
     "maths": {
       "highscore": [
         {
-          "name": "Marie",
+          "name": "Elena",
           "exp": 120
         },
         {
-          "name": "Jack",
+          "name": "Will",
           "exp": 100
         },{
-          "name": "The_K1d",
+          "name": "Angela",
           "exp": 90
         },{
-          "name": "Romelo",
+          "name": "Nithusan",
           "exp": 80
         },{
           "name": "Philipp",
@@ -430,21 +430,21 @@
     "english": {
       "highscore": [
         {
-          "name": "Angela",
+          "name": "Lingeswaran",
           "exp": 100
         },
         {
-          "name": "Radhicka",
+          "name": "The_K1d",
           "exp": 80
         },{
-          "name": "The_K1d",
+          "name": "Luigi",
           "exp": 60
         },{
-          "name": "Mohammad",
+          "name": "Mario",
           "exp": 40
         },{
           "name": "Janusan",
-          "exp": 20
+          "exp": 10
         }
       ],
   "test": [
