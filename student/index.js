@@ -193,6 +193,7 @@ async function main() {
   loadSprite('market-inside', '../img/small/market-inside.png');
   loadSprite('club-house-inside', '../img/small/club-house-inside.png');
   loadSprite('loading-screen', '../img/small/loading-screen.png');
+  loadSprite('settings-inside', '../img/small/settings-inside.png');
   loadSprite('avatar1', '../img/small/avatar1.png');
   loadSprite('avatar2', '../img/small/avatar2.png');
   loadSprite('elevator-up', '../img/small/elevator-up.png');
@@ -401,6 +402,42 @@ async function main() {
 
   scene('settings-building', () => {
     add([
+      sprite('settings-inside'),
+      //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+    const nameButton = add([
+      rect(489 / scaleDown, 146 / scaleDown),
+      pos(Math.round(475 / scaleDown), Math.round(270 / scaleDown)),
+      color(0, 0, 0, 0),
+      origin('topleft'),
+    ]);
+    const avatarButton = add([
+      rect(489 / scaleDown, 146 / scaleDown),
+      pos(Math.round(475 / scaleDown), Math.round(519 / scaleDown)),
+      color(0, 0, 0, 0),
+      origin('topleft'),
+    ]);
+    const exitButton = add([
+      text('Exit', Math.round(48 / scaleDown)),
+      pos(Math.round(1050 / scaleDown), Math.round(750 / scaleDown)),
+      color(0, 0, 0, 0),
+      origin('topleft'),
+    ]);
+
+    exitButton.action(() => {
+      if (exitButton.isClicked()) {
+        go('city');
+      }
+    });
+    avatarButton.action(() => {
+      if (avatarButton.isClicked()) {
+        go('avatarScene1');
+      }
+    });
+  });
+  scene('avatarScene1', () => {
+    add([
       sprite('avatar1'),
       //scale(width() / 240, height() / 240),
       origin('topleft'),
@@ -421,12 +458,12 @@ async function main() {
 
     continueButton.action(() => {
       if (continueButton.isClicked()) {
-        go('settings-building2');
+        go('avatarScene2');
       }
     });
   });
 
-  scene('settings-building2', () => {
+  scene('avatarScene2', () => {
     const exitButton = add([
       text('Exit', Math.round(88 / scaleDown)),
       pos(Math.round(950 / scaleDown), Math.round(860 / scaleDown)),
@@ -442,7 +479,7 @@ async function main() {
 
     exitButton.action(() => {
       if (exitButton.isClicked()) {
-        go('city');
+        go('settings-building');
       }
     });
   });
@@ -577,7 +614,7 @@ async function main() {
       // console.log(message.scale);
       // console.log(scale(1).scale);
       if (rectangle.isClicked()) {
-        if (stateMessage) {
+        if (stateMessage && !stateMessage2) {
           const message = add([
             rect(1440 / scaleDown, 1024 / scaleDown),
             pos(0 / scaleDown, 0 / scaleDown),
@@ -624,7 +661,7 @@ async function main() {
       });
 
       if (rectangle2.isClicked()) {
-        if (stateMessage2) {
+        if (stateMessage2 && !stateMessage) {
           const message2 = add([
             rect(1440 / scaleDown, 1024 / scaleDown),
             pos(0 / scaleDown, 0 / scaleDown),
