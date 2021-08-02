@@ -96,7 +96,7 @@ async function main() {
     ]);
   add([
       text('EXP: '+ userExp + '/' + (userLvl+1)*1000, Math.round(10 / scaleDown)),
-      pos(Math.round(1250 / scaleDown), Math.round(65 / scaleDown)),
+      pos(Math.round(1250 / scaleDown), Math.round(68 / scaleDown)),
       color(255, 255, 255),
       origin('topleft'),
   ]);
@@ -122,7 +122,7 @@ async function main() {
     ]);
       add([
           text(goalPercent1 + '/' + userData['teacher'].semesterGoal, Math.round(10 / scaleDown)),
-          pos(Math.round(1250 / scaleDown), Math.round(105 / scaleDown)),
+          pos(Math.round(1250 / scaleDown), Math.round(108 / scaleDown)),
           color(255, 255, 255),
           origin('topleft'),
       ]);
@@ -134,7 +134,7 @@ async function main() {
 
   // furniture
   loadSprite('char', '../img/chars/' + userData['student']['character']);
-  loadSprite('door', '../img/apartment/door.png');
+  loadSprite('door', '../img/apartment/door4.png');
   for (var i = 0; i < userData['items'].length; i++) {
     var item = userData['items'][i];
     if (item['type'] === 'furniture') {
@@ -889,14 +889,14 @@ async function main() {
     const shifty = 24; // 48
 
     const title = add([
-      text('Apartment', 36, { width: 10 },),
+      text(userData['students'][whichPlayer].name, 36, { width: 10 },),
       layer('ui'),
-      pos( 760 + shiftx, 170+shifty),
+      pos( 760 + shiftx, -34 + shifty),
       // pos(254 + shiftx, -40 + shifty),
     ]);
     const person = add([
       sprite('char'),
-      pos(50 + shiftx, 335 + shifty),
+      pos(150 + shiftx, 80 + shifty),
       scale(0.2*1.5),
     ]);
 
@@ -1028,21 +1028,21 @@ async function main() {
     // console.log(map)
     // console.log(new Array(11).join(" "))
 
-    keyPress('left', () => {
-      person.scale.x = -0.2*1.5;
-    });
+    // keyPress('left', () => {
+    //   person.scale.x = -0.2*1.5;
+    // });
 
-    keyPress('right', () => {
-      person.scale.x = 0.2*1.5;
-    });
+    // keyPress('right', () => {
+    //   person.scale.x = 0.2*1.5;
+    // });
 
     keyPress('left', () => {
       person.move(-MOVE_SPEED, 0);
-      person.scale.x = -0.2*1.5;
+      // person.scale.x = -0.2*1.5;
     });
     keyPress('right', () => {
       person.move(MOVE_SPEED, 0);
-      person.scale.x = 0.2*1.5;
+      // person.scale.x = 0.2*1.5;
     });
     keyPress('up', () => {
       person.move(0, -MOVE_SPEED);
