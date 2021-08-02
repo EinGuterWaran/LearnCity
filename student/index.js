@@ -574,21 +574,21 @@ async function main() {
   });
 
   scene('club-house', () => {
-    const rectangle = add([
-      rect(300 / scaleDown, 375 / scaleDown),
-      pos(Math.round(230 / scaleDown), Math.round(200 / scaleDown)),
-      color(0, 0, 0),
-      origin('topleft'),
-    ]);
-    const rectangle2 = add([
-      rect(300 / scaleDown, 125 / scaleDown),
-      pos(Math.round(230 / scaleDown), Math.round(575 / scaleDown)),
-      color(0, 0, 0),
-      origin('topleft'),
-    ]);
     add([
       sprite('club-house-inside'),
       //scale(width() / 240, height() / 240),
+      origin('topleft'),
+    ]);
+    const rectangleC = add([
+      rect(300 / scaleDown, 375 / scaleDown),
+      pos(Math.round(230 / scaleDown), Math.round(200 / scaleDown)),
+      color(0, 0, 0, 0),
+      origin('topleft'),
+    ]);
+    const rectangleC2 = add([
+      rect(300 / scaleDown, 125 / scaleDown),
+      pos(Math.round(230 / scaleDown), Math.round(575 / scaleDown)),
+      color(0, 0, 0, 0),
       origin('topleft'),
     ]);
 
@@ -614,60 +614,9 @@ async function main() {
 
     var stateMessage = true;
     var stateMessage2 = true;
-    rectangle.action(() => {
-      // console.log(board.pos)
-      // console.log('Testtt');
-      // console.log(message.scale);
-      // console.log(scale(1).scale);
-      if (rectangle.isClicked()) {
-        if (stateMessage && !stateMessage2) {
-          const message = add([
-            rect(1440 / scaleDown, 1024 / scaleDown),
-            pos(0 / scaleDown, 0 / scaleDown),
-            color(rgba(0, 0, 0, 0.8)),
-            origin('topleft'),
-            'message',
-            // scale(1),
-          ]);
-
-          const padding = 100;
-
-          add([
-            text('This function is\nlocked in this\ndemo.', 48, {
-              width: Math.round((1440 - padding * 2) / scaleDown),
-            }),
-            pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
-            origin('topleft'),
-            color(255, 0, 0),
-            origin('topleft'),
-            'message',
-          ]);
-
-          stateMessage = false;
-        } else {
-          destroyAll('message');
-          stateMessage = true;
-        }
-      }
-      mouseClick(() => {
-        if (!stateMessage && stateMessage2) {
-          //stateMessage = true;
-          destroyAll('message');
-          wait(0.1, () => {
-            stateMessage = true;
-          });
-        }
-        if (!stateMessage2 && stateMessage) {
-          //stateMessage = true;
-          destroyAll('message2');
-          wait(0.1, () => {
-            stateMessage2 = true;
-          });
-        }
-      });
-
-      if (rectangle2.isClicked()) {
-        if (stateMessage2 && !stateMessage) {
+    rectangleC2.action(() => {
+      if (rectangleC2.isClicked()) {
+        if (stateMessage2) {
           const message2 = add([
             rect(1440 / scaleDown, 1024 / scaleDown),
             pos(0 / scaleDown, 0 / scaleDown),
@@ -699,6 +648,63 @@ async function main() {
           stateMessage2 = true;
         }
       }
+      mouseClick(() => {
+        if (!stateMessage2) {
+          //stateMessage = true;
+          destroyAll('message2');
+          wait(0.1, () => {
+            stateMessage2 = true;
+          });
+        }
+      });
+    });
+
+    rectangleC.action(() => {
+      // console.log(board.pos)
+      // console.log('Testtt');
+      // console.log(message.scale);
+      // console.log(scale(1).scale);
+      if (rectangleC.isClicked()) {
+        if (stateMessage) {
+          const message = add([
+            rect(1440 / scaleDown, 1024 / scaleDown),
+            pos(0 / scaleDown, 0 / scaleDown),
+            color(rgba(0, 0, 0, 0.8)),
+            origin('topleft'),
+            'message',
+            // scale(1),
+          ]);
+
+          const padding = 100;
+
+          add([
+            text('This function is\nlocked in this\ndemo.', 48, {
+              width: Math.round((1440 - padding * 2) / scaleDown),
+            }),
+            pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
+            origin('topleft'),
+            color(255, 0, 0),
+            origin('topleft'),
+            'message',
+          ]);
+
+          stateMessage = false;
+        } else {
+          destroyAll('message');
+          stateMessage = true;
+        }
+      }
+      mouseClick(() => {
+        if (!stateMessage) {
+          //stateMessage = true;
+          destroyAll('message');
+          wait(0.1, () => {
+            stateMessage = true;
+          });
+        }
+      });
+
+
       // if (mouseIsClicked()) {
       //   destroyAll('message');
       //   stateMessage = true;
