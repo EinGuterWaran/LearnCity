@@ -8,6 +8,7 @@ async function getJson(url) {
 
 async function getOriginalJSON(){
     var actURL = window.location.href;
+    [actURL] = actURL.split('?');
     var path = window.location.pathname;
     var actURL = actURL.replace(path,'');
     var userData = await getJson(actURL+'/data.json');

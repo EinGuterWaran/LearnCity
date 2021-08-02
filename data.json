@@ -2,11 +2,13 @@
   "teacher": {
     "firstname" : "Anne-Liese",
     "lastname" : "Schäfer",
-    "title" : "Mrs."
+    "title" : "Mrs.",
+    "semesterGoal": 60000
   },
   "students": [
     {
       "id": 0,
+      "exp": 3000,
       "name": "Alissa",
       "map": [
         "attttttttp",
@@ -25,11 +27,12 @@
         1,4,5
       ],
       "badges":[
-        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+        "b"
       ]
     },
     {
       "id": 1,
+      "exp": 3200,
       "name": "Nithusan",
       "map": [
         "attttttttp",
@@ -52,6 +55,7 @@
     ]
     },{
       "id": 2,
+      "exp": 1000,
       "name": "Maria",
       "map": [
         "attttttttp",
@@ -75,6 +79,7 @@
     },
     {
       "id": 3,
+      "exp": 6000,
       "name": "Jonas",
       "map": [
         "attttttttp",
@@ -98,6 +103,7 @@
     },
     {
       "id": 4,
+      "exp": 3000,
       "name": "Sarah",
       "map": [
         "attttttttp",
@@ -122,6 +128,7 @@
     },
     {
       "id": 5,
+      "exp": 3000,
       "name": "Patrick",
       "map": [
         "attttttttp",
@@ -145,6 +152,7 @@
     },
     {
       "id": 6,
+      "exp": 3000,
       "name": "Alicia",
       "map": [
         "attttttttp",
@@ -168,6 +176,7 @@
     },
     {
       "id": 7,
+      "exp": 3000,
       "name": "Mahmud",
       "map": [
         "attttttttp",
@@ -191,6 +200,7 @@
     },
     {
       "id": 8,
+      "exp": 3000,
       "name": "Harry",
       "map": [
         "attttttttp",
@@ -214,6 +224,7 @@
     },
     {
       "id": 9,
+      "exp": 666,
       "name": "Anna Teufel",
       "map": [
         "attttttttp",
@@ -237,6 +248,7 @@
     },
     {
       "id": 10,
+      "exp": 3000,
       "name": "Sharmila",
       "map": [
         "attttttttp",
@@ -260,6 +272,7 @@
     },
     {
       "id": 11,
+      "exp": 3000,
       "name": "Mehmet",
       "map": [
         "attttttttp",
@@ -283,6 +296,7 @@
     },
     {
       "id": 12,
+      "exp": 0,
       "name": "Carl Johnson",
       "map": [
         "attttttttp",
@@ -309,24 +323,24 @@
     "id": 0,
     "name": "Alissa",
     "coins": 100,
-    "exp": 1100,
+    "exp": 3900,
     "character": "rk.svg"
   },
   "subjects": {
     "maths": {
       "highscore": [
         {
-          "name": "Marie",
+          "name": "Elena",
           "exp": 120
         },
         {
-          "name": "Jack",
+          "name": "Will",
           "exp": 100
         },{
-          "name": "The_K1d",
+          "name": "Angela",
           "exp": 90
         },{
-          "name": "Romelo",
+          "name": "Nithusan",
           "exp": 80
         },{
           "name": "Philipp",
@@ -416,21 +430,21 @@
     "english": {
       "highscore": [
         {
-          "name": "Angela",
+          "name": "Lingeswaran",
           "exp": 100
         },
         {
-          "name": "Radhicka",
+          "name": "The_K1d",
           "exp": 80
         },{
-          "name": "The_K1d",
+          "name": "Luigi",
           "exp": 60
         },{
-          "name": "Mohammad",
+          "name": "Mario",
           "exp": 40
         },{
           "name": "Janusan",
-          "exp": 20
+          "exp": 10
         }
       ],
   "test": [

@@ -73,6 +73,7 @@ function generatTh(heads, table){
 }
 
 function generateContent(data){
+
     var table = document.createElement("table");
     table.classList.add('table');
     table.classList.add('table-striped');
@@ -123,11 +124,11 @@ function generateContent(data){
          table.appendChild(tbody);
      }
 
-     else if (menu == "students") {
+     else if (menu === "students") {
         var students = data["students"];
         var actStudent = [];
         generatTh(["Id","Name","Badges","Items", "avatar", "delete"], table);
-        for (var s = 0; s < students.length; s++){
+        for (var s = 1; s < students.length; s++){
             if (students[s]!=null) {
                 actStudent.push(s);
                 var badgesOutput = students[s]["badges"].toString();
@@ -185,12 +186,12 @@ function generateContent(data){
 
 
     }
-     else if (menu == "tests") {
+     else if (menu === "tests") {
          table = document.createElement("h1");
          table.insertAdjacentText("beforeend", "Here would be a module to add and edit tests.");
 
     }
-     else if (menu == "settings"){
+     else if (menu === "settings"){
          var teacher = data["teacher"];
          table = document.createElement("form");
          var form = "  <div class=\"form-group\">\n" +
@@ -204,26 +205,32 @@ function generateContent(data){
              "  <div class=\"form-group\">\n" +
              "    <label for=\"title\">Title</label>\n" +
              "    <select class=\"form-control\" id=\"title2\">\n";
-            if (teacher.title != "Mr.")
+            if (teacher.title !== "Mr.")
                 form+="<option>Mr.</option>\n";
             else
                 form+="<option selected>Mr.</option>\n";
-            if (teacher.title != "Mrs.")
+            if (teacher.title !== "Mrs.")
                 form+="<option>Mrs.</option>\n";
             else
                 form+="<option selected value='Mrs.'>Mrs.</option>\n";
-         if (teacher.title != "Ms.")
+         if (teacher.title !== "Ms.")
              form+="<option>Ms.</option>\n";
          else
              form+="<option selected>Ms.</option>\n";
-             form+="    </select>\n" +
-             "</div>\n";
-             form+="<div class=\"form-group\"><br><input type='button' id='setButton' value='Save'></div>" +
-                 "<hr> <div class=\"alert alert-danger\" role=\"alert\">\n" +
-                 "  Danger Zone\n" +
-                 "</div>\n" +
-                 "If you click this button, there is no way back. <br><br>"+
-                 "<button type=\"button\" class=\"btn btn-danger\" id='reset'>Reset this class!</button>\n";
+         form+="    </select>\n" +
+         "</div>\n";
+         var semesterGoal = teacher.semesterGoal;
+         form+="<div class=\"form-group\">"+
+             "    <label for=\"classGoal\">Class Goal (EXP)</label>\n" +
+             "    <input type=\"range\" class=\"form-control\" onchange=\"updateTextInput(this.value);\" id=\"classGoal\" min='10000' max='100000' step='10000' value="+semesterGoal+">\n" +
+             "<input disabled type=\"text\" id=\"textInput\" value="+semesterGoal+">\n"+
+             "  </div>\n";
+         form +=  "<div class=\"form-group\"><br><input type='button' id='setButton' value='Save'></div>" +
+             "<hr> <div class=\"alert alert-danger\" role=\"alert\">\n" +
+             "  Danger Zone\n" +
+             "</div>\n" +
+             "If you click this button, there is no way back. <br><br>"+
+             "<button type=\"button\" class=\"btn btn-danger\" id='reset'>Reset this class!</button>\n";
          setTimeout(function(){
              document.getElementById ("setButton").addEventListener ("click", function(){saveSettings();}, false);
              document.getElementById ("reset").addEventListener ("click", function(){stHa.initStorage();window.alert("This class has been reset.");location.reload();}, false);
@@ -253,10 +260,13 @@ async function saveSettings(){
     var firstInput = document.getElementById("firstName").value;
     var lasttInput = document.getElementById("lastName").value;
     var titleInput = document.getElementById("title2").value;
-    if (firstInput.length !=0 && lasttInput.length !=0){
+    var goalInput = document.getElementById("classGoal").value;
+
+    if (firstInput.length !==0 && lasttInput.length !==0){
         tData["teacher"].firstname = firstInput;
         tData["teacher"].lastname = lasttInput;
         tData["teacher"].title = titleInput;
+        tData["teacher"].semesterGoal = goalInput;
         stHa.writeStorage(tData);
         window.alert("New settings have been saved successfully. :)");
         location.reload();
@@ -375,3 +385,5 @@ function visualizeItems(itemString){
 
     return outputItems;
 }
+
+

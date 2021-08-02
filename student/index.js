@@ -7,6 +7,10 @@ async function main() {
   // default choose first player
   await stHa.main();
   var userData = await stHa.getStorage();
+  document.addEventListener("click", async function () {
+    userData = await stHa.getStorage();
+  });
+
   //console.log(userData['students']['0']);
 
   //player = userData['students']['0'];
@@ -29,12 +33,15 @@ async function main() {
   });
 
   const myfunc = () => {
-
-    const expPercent = userData['student'].exp / 10000;
-    var goalPercent = 0;
+    var userExp = userData['student'].exp;
+    var userLvl = Math.floor(userExp/1000);
+    const expPercent = (userExp-userLvl*1000)/1000;
+    var goalPercent1 = 0;
     for (var i = 0; i < userData['students'].length; i++) {
-      goalPercent += userData['students'][i].id;
+      goalPercent1 += userData['students'][i].exp;
     }
+    var goalPercent = goalPercent1 / userData['teacher'].semesterGoal;
+
 
     add([
       rect(Math.round(304 / scaleDown), Math.round(114 / scaleDown)),
@@ -43,64 +50,82 @@ async function main() {
       origin('topleft'),
     ]);
 
+    if (userData['student'].name.length <= 9){
+        add([
+            text('User: ' + userData['student'].name, Math.round(20 / scaleDown)),
+            pos(Math.round(1120 / scaleDown), Math.round(5 / scaleDown)),
+            color(0, 0, 0),
+            origin('topleft'),
+        ]);
+    }
+    else {
+        add([
+            text('User: ' + userData['student'].name, Math.round(17 / scaleDown)),
+            pos(Math.round(1120 / scaleDown), Math.round(5 / scaleDown)),
+            color(0, 0, 0),
+            origin('topleft'),
+        ]);
+      }
+
+
     add([
-      text('User: ' + userData['student'].name, Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(5 / scaleDown)),
+      text('Coins: ' + userData['student'].coins, Math.round(20 / scaleDown)),
+      pos(Math.round(1120 / scaleDown), Math.round(35 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+    add([
+      text('LVL: '+ userLvl, Math.round(18 / scaleDown)),
+      pos(Math.round(1120 / scaleDown), Math.round(65 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      text('Coins: ' + userData['student'].coins, Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(25 / scaleDown)),
-      color(0, 0, 0),
-      origin('topleft'),
-    ]);
-    add([
-      text('Exp: ', Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(45 / scaleDown)),
+      rect(140, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(60 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      rect(120, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(43 / scaleDown)),
-      color(0, 0, 0),
-      origin('topleft'),
-    ]);
-
-    
-
-    goalPercent = goalPercent / 100;
-
-    add([
-      rect(120*expPercent, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(43 / scaleDown)),
+      rect(140*expPercent, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(60 / scaleDown)),
       color(rgba(0.094, 0.760, 0.058)),
       origin('topleft'),
     ]);
-
+  add([
+      text('EXP: '+ userExp + '/' + (userLvl+1)*1000, Math.round(10 / scaleDown)),
+      pos(Math.round(1250 / scaleDown), Math.round(65 / scaleDown)),
+      color(255, 255, 255),
+      origin('topleft'),
+  ]);
     add([
-      text('Goal:', Math.round(13 / scaleDown)),
-      pos(Math.round(1190 / scaleDown), Math.round(65 / scaleDown)),
+      text('Class\nGoal:', Math.round(18 / scaleDown)),
+      pos(Math.round(1120 / scaleDown), Math.round(95 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      rect(120, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(65 / scaleDown)),
+      rect(140, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(100 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
 
     add([
-      rect(120*goalPercent, 13),
-      pos(Math.round(1270 / scaleDown), Math.round(65 / scaleDown)),
+      rect(140*goalPercent, 20),
+      pos(Math.round(1240 / scaleDown), Math.round(100 / scaleDown)),
       color(rgba(0.094, 0.760, 0.058)),
       origin('topleft'),
     ]);
+      add([
+          text(goalPercent1 + '/' + userData['teacher'].semesterGoal, Math.round(10 / scaleDown)),
+          pos(Math.round(1250 / scaleDown), Math.round(105 / scaleDown)),
+          color(255, 255, 255),
+          origin('topleft'),
+      ]);
   }
 
   // loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
@@ -244,7 +269,7 @@ async function main() {
     ]);
 
     myfunc()
-    
+
 
     const citySound = play('city-sound', {
       volume: 1.0,
@@ -322,8 +347,6 @@ async function main() {
 
     var i = 0;
 
-    console.log(userData['subjects'])
-
     for (var subject in userData['subjects']) {
       const house = add([
         sprite('subject-building'),
@@ -348,7 +371,7 @@ async function main() {
         (((7 - subjectName.length) / (7 * 2)) * 94) /
         scaleDown;
       }
-      
+
 
 
       add([
@@ -478,9 +501,9 @@ async function main() {
 
           add([
             text(
-              "In this demo you\ncan't buy items,\nyou already have\nall items in your\ninventory.",
-              48,
-              { width: Math.round((1440 - padding * 2) / scaleDown) },
+                "In this demo you\ncan't buy anything on the market.\nBut do not worry!\nYou already own\nevery item 2 times.",
+                48,
+                { width: Math.round((1440 - padding * 2) / scaleDown) },
             ),
             pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
             origin('topleft'),
@@ -509,8 +532,14 @@ async function main() {
 
   scene('club-house', () => {
     const rectangle = add([
-      rect(300 / scaleDown, 500 / scaleDown),
+      rect(300 / scaleDown, 375 / scaleDown),
       pos(Math.round(230 / scaleDown), Math.round(200 / scaleDown)),
+      color(0, 0, 0),
+      origin('topleft'),
+    ]);
+    const rectangle2 = add([
+      rect(300 / scaleDown, 125 / scaleDown),
+      pos(Math.round(230 / scaleDown), Math.round(575 / scaleDown)),
       color(0, 0, 0),
       origin('topleft'),
     ]);
@@ -541,6 +570,7 @@ async function main() {
     });
 
     var stateMessage = true;
+    var stateMessage2 = true;
     rectangle.action(() => {
       // console.log(board.pos)
       // console.log('Testtt');
@@ -560,7 +590,7 @@ async function main() {
           const padding = 100;
 
           add([
-            text('In this demo the\nclub house is not\nfinished.', 48, {
+            text('This function is\nlocked in this\ndemo.', 48, {
               width: Math.round((1440 - padding * 2) / scaleDown),
             }),
             pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
@@ -577,14 +607,55 @@ async function main() {
         }
       }
       mouseClick(() => {
-        if (!stateMessage) {
+        if (!stateMessage && stateMessage2) {
           //stateMessage = true;
           destroyAll('message');
           wait(0.1, () => {
             stateMessage = true;
           });
         }
+        if (!stateMessage2 && stateMessage) {
+          //stateMessage = true;
+          destroyAll('message2');
+          wait(0.1, () => {
+            stateMessage2 = true;
+          });
+        }
       });
+
+      if (rectangle2.isClicked()) {
+        if (stateMessage2) {
+          const message2 = add([
+            rect(1440 / scaleDown, 1024 / scaleDown),
+            pos(0 / scaleDown, 0 / scaleDown),
+            color(rgba(0, 0, 0, 0.8)),
+            origin('topleft'),
+            'message2',
+            // scale(1),
+          ]);
+
+          const padding = 100;
+
+          add([
+            text('Janusan Lingeswaran,\nProject Manager, Lead Developer\n\n' +
+                'Philipp Kant,\nDeveloper\n\n' +
+                'Radhhicka Kishorpouria,\nDesigner\n\n' +
+                'Mahamad Patol,\nDeveloper\n\n\n\nWe hope you like the demo. :-)', 16, {
+              width: Math.round((1440 - padding * 2) / scaleDown),
+            }),
+            pos(Math.round(150 / scaleDown), Math.round(300 / scaleDown)),
+            origin('topleft'),
+            color(255, 255, 255),
+            origin('topleft'),
+            'message2',
+          ]);
+
+          stateMessage2 = false;
+        } else {
+          destroyAll('message2');
+          stateMessage2 = true;
+        }
+      }
       // if (mouseIsClicked()) {
       //   destroyAll('message');
       //   stateMessage = true;
@@ -613,7 +684,7 @@ async function main() {
     });
   });
 
-  scene('elevator-animation2', (from, player) => {
+  scene('elevator-animation2', (from, player, whichPlayer) => {
     add([
       sprite('elevator-down'),
       //scale(width() / 240, height() / 240),
@@ -628,9 +699,9 @@ async function main() {
 
     wait(2, () => {
       if (from == 'room') {
-        go('elevator', player);
+        go('elevator', player, whichPlayer);
       } else if (from == 'elevator') {
-        go('room', player);
+        go('room', player, whichPlayer);
       }
     });
   });
@@ -725,6 +796,7 @@ async function main() {
       ]);
 
       const player = userData['students'][i];
+      const whichPlayer = i;
       action(i.toString(), (b) => {
         if (b.isClicked()) {
           play('elevator4', {
@@ -734,7 +806,7 @@ async function main() {
           });
           wait(1, () => {
             elevatorMusic.stop();
-            go('elevator-animation2', 'elevator', player);
+            go('elevator-animation2', 'elevator', player, whichPlayer);
           });
         }
       });
@@ -757,7 +829,7 @@ async function main() {
     //console.log(buttons);
   });
 
-  scene('room', (player) => {
+  scene('room', (player, whichPlayer) => {
     //console.log(player);
     //console.log(player['map']);
     layers(['bg', 'obj', 'ui'], 'obj');
@@ -793,6 +865,8 @@ async function main() {
     ]);
 
     function add_badges() {
+      player = userData['students'][whichPlayer];
+      console.log(whichPlayer)
       console.log(player['badges']);
       add([
         text(player['name'] + ' (Badges)', 23),
@@ -803,9 +877,9 @@ async function main() {
       if (player['badges'].length == 0) {
         add([
           text(
-            'You can do it!! Lets do some challenges to earn some badges',
-            15,
-            { width: 300 },
+              'You can do it!! Lets do some challenges to earn some badges',
+              15,
+              { width: 300 },
           ),
           color(rgb(1, 0, 0)),
           layer('ui'),
