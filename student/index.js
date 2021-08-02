@@ -387,7 +387,7 @@ async function main() {
         origin('topleft'),
       ]);
 
-      const location = '/student/subjects/?s=' + subject;
+      const location = 'subjects/?s=' + subject;
 
       action(subject, (b) => {
         if (b.isClicked()) {
