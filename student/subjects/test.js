@@ -8,8 +8,6 @@ setTimeout(function(){
 
 var url_string = window.location.href;
 var url = new URL(url_string);
-var SUBJ = url.searchParams.get("s");
-var TEST = url.searchParams.get("t");
 var userData;
 var curQue=0;
 var first = 1;
@@ -26,7 +24,18 @@ async function main(next){
     userData = await stHa.getStorage();
     var student = userData["student"];
     var testData = userData["subjects"][SUBJ]["test"];
+    if (!next && (testData[TEST]["done"] || testData[TEST]["started"])){
+        if (testData[TEST]["started"]){
+            userData["subjects"][SUBJ]["test"][TEST].done=1;
+            stHa.writeStorage(userData);
+        }
+        document.getElementById("testmain").innerHTML = "<div class='card border-danger mb-3'>You have already taken this test!</div>"
+        +"<br> <a href='index.html?s="+SUBJ+"'>Back</a>";
+        throw new Error("You have already taken this test!");
+    }
     if (next){
+        userData["subjects"][SUBJ]["test"][TEST].started=1;
+        userData["subjects"][SUBJ]["test"][TEST].correct=correct;
         var answer = document.getElementById("answer").value;
         document.getElementById("answer").value='';
         if (feedback)
@@ -42,9 +51,11 @@ async function main(next){
                 "<p>You get "+wonExp+" EXP and "+wonCoins+" Coins.</p>"+
                 "</div></div>");
             correct++;
+            userData["subjects"][SUBJ]["test"][TEST].correct=correct;
+            userData["student"].coins+=wonCoins;
+            userData["student"].exp+=wonExp;
             addCoins += wonCoins;
             addExp += wonExp;
-
         }
         else {
             feedback=1;
@@ -56,6 +67,7 @@ async function main(next){
             curQue++;
         if (curQue===testData[TEST]["task"].length)
             final = 1;
+        stHa.writeStorage(userData);
     }
     var progressPerc = 100*(curQue)/testData[TEST]["task"].length;
     if (final){
@@ -67,18 +79,36 @@ async function main(next){
         document.getElementById('answerform').remove();
         document.getElementById("but").setAttribute("onclick", "location.href = 'index.html?s="+SUBJ+"'")
         document.getElementById("but").setAttribute("type", "button");
-        document.getElementById("form").insertAdjacentHTML('afterbegin', "<h3>The test is over. :)</h3>" +
+        document.getElementById("form").insertAdjacentHTML('afterbegin', "<h3>The test is over. :) You answered "+correct+
+            " out of "+testData[TEST]["task"].length+" questions correctly.</h3>" +
             "<h5>You earned "+addExp+" EXP and "+addCoins+" Coins. :)</h5>");
         var percReach = correct/testData[TEST]["task"].length;
         var badge= "";
-        if (percReach >= 0.9)
-            badge="g";
-        else if (percReach >= 0.7)
+        var showBadge="<h3> Because you answered more than <b>[perc]%</b> of the questions correctly, you get a <b> [badge] badge</b>. Great job!</h3> "
+            +"<div style='text-align: center'><img src='../../img/badges/[badgei].svg'></div>";
+        if (percReach >= 0.9) {
+            badge = "g";
+            showBadge = showBadge.replace("[perc]","90")
+                .replace("[badge]","gold")
+                .replace("[badgei]","gold_dark");
+        }
+        else if (percReach >= 0.7){
             badge="s";
-        else if (percReach >= 0.5)
-            badge="b";
-        userData["students"][0].badges.push(badge);
+            showBadge = showBadge.replace("[perc]","70")
+                .replace("[badge]","silver")
+                .replace("[badgei]","silver_dark");
+        }
 
+        else if (percReach >= 0.5){
+            badge="b";
+            showBadge = showBadge.replace("[perc]","50")
+                .replace("[badge]","bronze")
+                .replace("[badgei]","bronze_dark");
+        }
+        if (percReach >= 0.5){
+            document.getElementById("form").insertAdjacentHTML('beforeend',showBadge);
+        }
+        userData["students"][0].badges.push(badge);
         userData["subjects"][SUBJ]["test"][TEST].done=1;
         userData["subjects"][SUBJ]["test"][TEST].correct=correct;
         userData["student"].coins+=addCoins;

@@ -43,7 +43,7 @@
 </head>
 <body>
 <main>
-    <div class="container py-4">
+    <div class="container py-4" id="testmain">
         <header class="pb-3 mb-4 border-bottom">
             <a class="d-flex align-items-center text-dark text-decoration-none">
                 <span class="fs-4" id="sbj"> </span>
@@ -53,7 +53,7 @@
         </header>
         <div class="container-fluid">
             <div class="row" id="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="text-align: center">
                     <h3 class="text-left" id="testname">
                         Testname
                     </h3>
@@ -67,22 +67,25 @@
                         <div id="progBar" class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
-                    <div class="jumbotron">
+                    <div class="jumbotron" style="text-align: center">
+                        <br><br>
                         <h2>
                             <span id="ques"></span>
                         </h2>
                     </div>
-                    <form role="form" id="form" onkeydown="return event.key != 'Enter';">
-                        <div class="form-group" id="answerform">
-                            <label for="answer">
-                                Your answer:
-                            </label>
-                            <input type="text" class="form-control" id="answer" />
-                        </div>
+                    <div style="text-align: center">
+                        <form role="form" id="form" onkeydown="return event.key != 'Enter';">
+                            <div class="form-group" id="answerform">
+                                <label for="answer">
+                                    Your answer:
+                                </label>
+                                <input type="text" class="form-control" id="answer" style="text-align: center" />
+                            </div>
+                        </form>
                         <button type="button" id="but" class="btn btn-primary">
                             Submit
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
