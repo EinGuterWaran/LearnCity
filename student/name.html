@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Für Apple-Geräte -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon-180x180.png">
+    <!-- Für Browser -->
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon/favicon-96x96.png">
+    <!-- Für Windows Metro -->
+    <meta name="msapplication-square310x310logo" content="../img/favicon/mstile-310x310.png">
+    <meta name="msapplication-TileColor" content="#0091ff">
+
+    <title>Change your Name</title>
+</head>
+<body style="margin: 0; padding: 0; overflow-x:hidden; overflow-y:hidden;">
+    <script type="module" src="name.js"></script>
+    <script type="module" src="../storage_handler.js"></script>
+    <div style="text-align: center" id="nameDiv">
+        <h1>Changing name</h1>
+        <a id="currentName">Your current name is: </a> <br><hr>
+        <label for="newName">New Name:</label>
+        <input type="text" size="13" id="newName"> <br> <br>
+        <button id="saveName" class="btn btn-primary">Save</button>
+    </div>
+    <br><br>
+    <div style="text-align: center">
+        <button onclick="window.close();" class="btn btn-dark">Exit!</button>
+    </div>
+</body>
+</html>

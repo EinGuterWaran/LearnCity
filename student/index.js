@@ -412,6 +412,7 @@ async function main() {
       color(0, 0, 0, 0),
       origin('topleft'),
     ]);
+
     const avatarButton = add([
       rect(489 / scaleDown, 146 / scaleDown),
       pos(Math.round(475 / scaleDown), Math.round(519 / scaleDown)),
@@ -421,7 +422,7 @@ async function main() {
     const exitButton = add([
       text('Exit', Math.round(48 / scaleDown)),
       pos(Math.round(1050 / scaleDown), Math.round(750 / scaleDown)),
-      color(0, 0, 0, 0),
+      color(0, 0, 0),
       origin('topleft'),
     ]);
 
@@ -433,6 +434,11 @@ async function main() {
     avatarButton.action(() => {
       if (avatarButton.isClicked()) {
         go('avatarScene1');
+      }
+    });
+    nameButton.action(() => {
+      if (nameButton.isClicked()) {
+        window.open("name.html", "Change name","width=500,height=500");
       }
     });
   });
