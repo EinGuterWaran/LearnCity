@@ -11,16 +11,13 @@
       "exp": 3000,
       "name": "Alissa",
       "map": [
-        "atdttttttp",
-        "lh   1   r",
-        "l        r",
-        "l        r",
-        "l    4   r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "char": "img/chars/rk.svg",
       "items": [
@@ -35,16 +32,13 @@
       "exp": 3200,
       "name": "Nithusan",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l  222   r",
-        "l   55   r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "char": "img/chars/janu.svg",
       "items": [
@@ -58,16 +52,13 @@
       "exp": 1000,
       "name": "Maria",
       "map": [
-        "atdttttttp",
-        "l66666666r",
-        "l    4   r",
-        "l  1     r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "char": "img/chars/rk.svg",
       "items": [
@@ -82,16 +73,13 @@
       "exp": 6000,
       "name": "Jonas",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l       6r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "char": "img/chars/philip.svg",
       "items": [
@@ -106,16 +94,13 @@
       "exp": 3000,
       "name": "Sarah",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l  1  1  r",
-        "l        r",
-        "l        r",
-        "l    3   r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1,1,2,2,2,4,3,3,3,6,3
@@ -131,16 +116,13 @@
       "exp": 3000,
       "name": "Patrick",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l    1   r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1
@@ -155,16 +137,13 @@
       "exp": 3000,
       "name": "Alicia",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l     1  r",
-        "l     6  r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1,6
@@ -179,16 +158,13 @@
       "exp": 3000,
       "name": "Mahmud",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l   15   r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1,5
@@ -203,16 +179,13 @@
       "exp": 3000,
       "name": "Harry",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l    3   r",
-        "l        r",
-        "l        r",
-        "l   16   r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1,6,3
@@ -227,16 +200,13 @@
       "exp": 666,
       "name": "Anna Teufel",
       "map": [
-        "atdttttttp",
-        "l   666  r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         6,6,6,5,4,6,1,1,4
@@ -251,16 +221,13 @@
       "exp": 3000,
       "name": "Sharmila",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l   4    r",
-        "l        r",
-        "l  55    r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1,2,3,4,5,5,6
@@ -275,16 +242,13 @@
       "exp": 3000,
       "name": "Mehmet",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l  123   r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
         1,2,3,4,5,5,6
@@ -299,16 +263,13 @@
       "exp": 0,
       "name": "Carl Johnson",
       "map": [
-        "atdttttttp",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   26r",
+        "l2  66r",
+        "l0 644r",
+        "l56  4r",
+        "zbbbbbx"
       ],
       "items": [
 
@@ -324,7 +285,7 @@
     "name": "Alissa",
     "coins": 100,
     "exp": 3900,
-    "character": "rk.svg"
+    "character": "rk.png"
   },
   "subjects": {
     "maths": {
@@ -494,80 +455,80 @@
     {
       "id" : 0,
       "name": "Bookshelf",
-      "src" : "bookshelf.svg",
+      "src" : "bookshelf.png",
       "let": "0",
       "price" : 150,
       "scarcity" : 70,
       "type": "furniture",
       "kind": "bookshelf",
-      "scale": 0.4,
+      "scale": 0.9,
       "del": false
     },
     {
       "id" : 1,
       "name": "Cabinet",
-      "src" : "cabinet.svg",
+      "src" : "cabinet.png",
       "let": "1",
       "price" : 80,
       "scarcity" : 40,
       "type": "furniture",
       "kind": "cabinet",
-      "scale": 0.6,
+      "scale": 1.0,
       "del": false
     },{
       "id" : 2,
       "name": "Drawer",
-      "src" : "drawer.svg",
+      "src" : "drawer.png",
       "let": "2",
       "price" : 30,
       "scarcity" : 20,
       "type": "furniture",
       "kind": "drawer",
-      "scale": 0.3,
+      "scale": 0.6,
       "del": false
     },{
       "id" : 3,
       "name": "Plant",
-      "src" : "plant.svg",
+      "src" : "plant.png",
       "let": "3",
       "price" : 30,
       "scarcity" : 20,
       "type": "furniture",
       "kind": "plant",
-      "scale": 0.3,
+      "scale": 0.5,
       "del": false
     },{
       "id" : 4,
       "name": "Single Sofa",
-      "src" : "single_sofa.svg",
+      "src" : "single_sofa.png",
       "let": "4",
       "price" : 100,
       "scarcity" : 50,
       "type": "furniture",
       "kind": "sofa",
-      "scale": 0.3,
+      "scale": 0.73,
       "del": false
     },{
       "id" : 5,
       "name": "Stool",
-      "src" : "stool.svg",
+      "src" : "stool.png",
       "let": "5",
       "price" : 10,
       "scarcity" : 10,
       "type": "furniture",
       "kind": "stool",
-      "scale": 0.3,
+      "scale": 0.5,
       "del": false
     },{
       "id" : 6,
       "name": "Three Seater Sofa",
-      "src" : "three_seater_sofa.svg",
+      "src" : "sofa_long2.png",
       "let": "6",
       "price" : 200,
       "scarcity" : 90,
       "type": "furniture",
       "kind": "sofa",
-      "scale": 0.6,
+      "scale": 1.0,
       "del": false
     }
   ]
