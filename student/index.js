@@ -134,7 +134,7 @@ async function main() {
 
   // furniture
   loadSprite('char', '../img/chars/' + userData['student']['character']);
-  loadSprite('door', '../img/apartment/door4.png');
+  loadSprite('door', '../img/apartment/door5.png');
   for (var i = 0; i < userData['items'].length; i++) {
     var item = userData['items'][i];
     if (item['type'] === 'furniture') {
@@ -892,7 +892,7 @@ async function main() {
     // const shiftx = 300;
     // const shifty = 144;
     const shiftx = 160;
-    const shifty = 24; // 48
+    const shifty = 6; // 48
 
     const title = add([
       text(userData['students'][whichPlayer].name, 36, { width: 10 },),
@@ -902,13 +902,13 @@ async function main() {
     ]);
     const person = add([
       sprite('char'),
-      pos(150 + shiftx, 80 + shifty),
-      scale(0.2*1.5),
+      pos(250 + shiftx, 120 + shifty),
+      scale(1.0),
     ]);
 
     const board = add([
       sprite('board'),
-      pos(372*1.5 + shiftx, 46*1.5 + shifty - 60),
+      pos(372*1.5 + shiftx + 19, 46*1.5 + shifty - 60),
       scale(0.065),
       layer('ui'),
     ]);
@@ -942,11 +942,11 @@ async function main() {
         player['badges'].forEach((element) => {
           add([sprite(element), pos(px, py), layer('ui'), scale(0.25*1.5), 'badge']);
           // py+=30
-          if (px < 390*1.5 + shiftx) {
-            px += 40*2;
+          if (px < 390*1.5 + shiftx + 19) {
+            px += 40*2 + 19;
           } else {
             py += 50*1.5;
-            px = 40 + shiftx;
+            px = 40 + shiftx + 19;
           }
           console.log(px);
         });
@@ -959,13 +959,13 @@ async function main() {
         if (board.scale.x == 0.065) {
           board.scale.x = 0.577;
           board.scale.y = 0.577;
-          board.pos = vec2(0 + shiftx, 60 + shifty);
+          board.pos = vec2(0 + shiftx + 19, 60 + shifty);
           add_badges();
           console.log(board);
         } else {
           board.scale.x = 0.065;
           board.scale.y = 0.065;
-          board.pos = vec2(372*1.5 + shiftx, 46*1.5 + shifty - 60);
+          board.pos = vec2(372*1.5 + shiftx + 19, 46*1.5 + shifty - 60);
           every('badge', (obj) => {
             destroy(obj);
           });
@@ -997,18 +997,18 @@ async function main() {
     //   ]
 
     var posItems = {
-      width: 72,
-      height: 72,
+      width: 72*1.5,
+      height: 72*1.5,
       pos: vec2(shiftx, shifty),
-      r: [sprite('right-wall'), solid(), 'wall', scale(1.5)],
-      l: [sprite('left-wall'), solid(), 'wall', scale(1.5)],
-      d: [sprite('door'), solid(), 'door', scale(1.5)],
-      b: [sprite('bottom-wall'), solid(), 'wall', scale(1.5)],
-      t: [sprite('top-wall'), solid(), 'wall', scale(1.5)],
-      p: [sprite('top-right-wall'), solid(), 'wall', scale(1.5)],
-      z: [sprite('bottom-left-wall'), solid(), 'wall', scale(1.5)],
-      a: [sprite('top-left-wall'), solid(), 'wall', scale(1.5)],
-      x: [sprite('bottom-right-wall'), solid(), 'wall', scale(1.5)],
+      r: [sprite('right-wall'), solid(), 'wall', scale(2.25)],
+      l: [sprite('left-wall'), solid(), 'wall', scale(2.25)],
+      d: [sprite('door'), solid(), 'door', scale(2.25)],
+      b: [sprite('bottom-wall'), solid(), 'wall', scale(2.25)],
+      t: [sprite('top-wall'), solid(), 'wall', scale(2.25)],
+      p: [sprite('top-right-wall'), solid(), 'wall', scale(2.25)],
+      z: [sprite('bottom-left-wall'), solid(), 'wall', scale(2.25)],
+      a: [sprite('top-left-wall'), solid(), 'wall', scale(2.25)],
+      x: [sprite('bottom-right-wall'), solid(), 'wall', scale(2.25)],
     };
     for (var i = 0; i < userData['items'].length; i++) {
       var item = userData['items'][i];
@@ -1042,18 +1042,18 @@ async function main() {
     //   person.scale.x = 0.2*1.5;
     // });
 
-    keyPress('left', () => {
+    keyPressRep('left', () => {
       person.move(-MOVE_SPEED, 0);
       // person.scale.x = -0.2*1.5;
     });
-    keyPress('right', () => {
+    keyPressRep('right', () => {
       person.move(MOVE_SPEED, 0);
       // person.scale.x = 0.2*1.5;
     });
-    keyPress('up', () => {
+    keyPressRep('up', () => {
       person.move(0, -MOVE_SPEED);
     });
-    keyPress('down', () => {
+    keyPressRep('down', () => {
       person.move(0, MOVE_SPEED);
     });
     person.action(() => {
