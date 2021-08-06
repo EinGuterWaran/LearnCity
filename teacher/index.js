@@ -283,8 +283,13 @@ async function addStudent(){
     if (studentName.length > 0 && studentName.length <= 12) {
         if (sData["students"].length < 16) {
             var whichAvatar = Math.floor(Math.random() * 4);
+            var maxid=0;
+            for (var i = 0; i < sData["students"].length; i++){
+                if (sData["students"][i]["id"] > maxid)
+                    maxid = sData["students"][i]["id"];
+            }
             var newStudent = {
-                "id": sData["students"].length,
+                "id": maxid+1,
                 "name": studentName,
                 "map": [
                     "attttttttp",
