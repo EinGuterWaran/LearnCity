@@ -1105,6 +1105,25 @@ async function main() {
         go('elevator-animation2', 'room', player);
       });
     });
+
+    var door = add([
+      rect(Math.round(140 / scaleDown), Math.round(140 / scaleDown)),
+      pos(Math.round(505 / scaleDown), Math.round(17 / scaleDown)),
+      color(rgba(0,0,0,0)),
+      origin('topleft'),
+    ]);
+    door.action(() => {
+      if (door.isClicked()) {
+        play('door', {
+          volume: 1.0,
+          speed: 1.0,
+          //detune: 1200,
+        });
+        wait(0.5, () => {
+          go('elevator-animation2', 'room', player);
+        });
+      }
+    });
     const allObjs = get('char');
     //console.log(allObjs);
   });
