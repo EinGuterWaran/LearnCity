@@ -211,6 +211,7 @@ async function main() {
   loadSound('elevator6', '../sounds/482096_8253036-lq.mp3');
   loadSound('door', '../sounds/214001_3635427-lq.mp3');
   loadSound('city-sound', '../sounds/366304_5950368-lq.mp3');
+  loadSound('easteregg', '../sounds/easteregg.mp3');
 
   // loadSound(
   //   'elevator1',
@@ -267,9 +268,16 @@ async function main() {
       sprite('easter-egg'),
       origin('topleft'),
     ]);
-
+    const eggSound= play('easteregg', {
+      volume: 0.2,
+      speed: 1.0,
+      loop: true,
+      seek: 27,
+      //detune: 1200,
+    });
     easteregg.action(() => {
       if (easteregg.isClicked()) {
+        eggSound.stop();
           go('city');
       }
     });
@@ -289,6 +297,7 @@ async function main() {
     ]);
     balloon.action(() => {
       if (balloon.isClicked()) {
+        citySound.stop();
         go('easter-egg');
       }
     });
@@ -296,7 +305,7 @@ async function main() {
 
 
     const citySound = play('city-sound', {
-      volume: 1.0,
+      volume: 4.0,
       speed: 1.0,
       loop: true,
       seek: 27,
