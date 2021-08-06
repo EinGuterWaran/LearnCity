@@ -900,11 +900,7 @@ async function main() {
       pos( 760 + shiftx, -34 + shifty),
       // pos(254 + shiftx, -40 + shifty),
     ]);
-    const person = add([
-      sprite('char'),
-      pos(250 + shiftx, 120 + shifty),
-      scale(1.0),
-    ]);
+    
 
     const board = add([
       sprite('board'),
@@ -1017,7 +1013,6 @@ async function main() {
           posItems[item['let']] = [
             sprite(item['src'].substr(0, item['src'].length - 4)),
             scale(item['scale']),
-            solid(),
             item['kind'],
           ];
         else
@@ -1026,6 +1021,9 @@ async function main() {
             solid(),
             item['kind'],
           ];
+        if (item['solid'])
+          posItems[item['let']].push(solid());
+
       }
     }
 
@@ -1041,7 +1039,12 @@ async function main() {
     // keyPress('right', () => {
     //   person.scale.x = 0.2*1.5;
     // });
-
+    const person = add([
+      sprite('char'),
+      pos(250 + shiftx, 120 + shifty),
+      scale(1.0),
+    ]);
+    
     keyPressRep('left', () => {
       person.move(-MOVE_SPEED, 0);
       // person.scale.x = -0.2*1.5;

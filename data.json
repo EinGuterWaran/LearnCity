@@ -462,7 +462,8 @@
       "type": "furniture",
       "kind": "bookshelf",
       "scale": 0.9,
-      "del": false
+      "del": false,
+      "solid": true
     },
     {
       "id" : 1,
@@ -485,7 +486,8 @@
       "type": "furniture",
       "kind": "drawer",
       "scale": 0.6,
-      "del": false
+      "del": false,
+      "solid": true
     },{
       "id" : 3,
       "name": "Plant",
@@ -496,7 +498,8 @@
       "type": "furniture",
       "kind": "plant",
       "scale": 0.5,
-      "del": false
+      "del": false,
+      "solid": true
     },{
       "id" : 4,
       "name": "Single Sofa",
@@ -507,7 +510,8 @@
       "type": "furniture",
       "kind": "sofa",
       "scale": 0.73,
-      "del": false
+      "del": false,
+      "solid": false
     },{
       "id" : 5,
       "name": "Stool",
@@ -518,7 +522,8 @@
       "type": "furniture",
       "kind": "stool",
       "scale": 0.5,
-      "del": false
+      "del": false,
+      "solid": false
     },{
       "id" : 6,
       "name": "Three Seater Sofa",
@@ -529,7 +534,8 @@
       "type": "furniture",
       "kind": "sofa",
       "scale": 1.0,
-      "del": false
+      "del": false,
+      "solid": false
     }
   ]
 
