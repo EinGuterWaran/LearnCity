@@ -193,6 +193,7 @@ async function main() {
   loadSprite('market-inside', '../img/small/market-inside.png');
   loadSprite('club-house-inside', '../img/small/club-house-inside.png');
   loadSprite('loading-screen', '../img/small/loading-screen.png');
+  loadSprite('easter-egg', '../img/small/easter-egg.png');
   loadSprite('settings-inside', '../img/small/settings-inside.png');
   loadSprite('avatar1', '../img/small/avatar1.png');
   loadSprite('avatar2', '../img/small/avatar2.png');
@@ -261,14 +262,36 @@ async function main() {
       go('city');
     });
   });
+  scene('easter-egg', () => {
+    var easteregg = add([
+      sprite('easter-egg'),
+      origin('topleft'),
+    ]);
 
+    easteregg.action(() => {
+      if (easteregg.isClicked()) {
+          go('city');
+      }
+    });
+
+  });
   scene('city', () => {
     add([
       sprite('city-background'),
       //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
-
+    const balloon = add([
+      rect(42 / scaleDown, 70 / scaleDown),
+      pos(Math.round(1051 / scaleDown), Math.round(40 / scaleDown)),
+      color(0, 0, 0, 0),
+      origin('topleft'),
+    ]);
+    balloon.action(() => {
+      if (balloon.isClicked()) {
+        go('easter-egg');
+      }
+    });
     myfunc()
 
 
@@ -1044,7 +1067,7 @@ async function main() {
       pos(250 + shiftx, 120 + shifty),
       scale(1.0),
     ]);
-    
+
     keyPressRep('left', () => {
       person.move(-MOVE_SPEED, 0);
       // person.scale.x = -0.2*1.5;
