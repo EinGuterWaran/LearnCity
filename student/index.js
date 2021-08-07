@@ -4,29 +4,17 @@ import * as stHa from '../storage_handler.js';
 const scaleDown = 1.3333333333333333;
 
 async function main() {
-  // default choose first player
   await stHa.main();
   var userData = await stHa.getStorage();
   document.addEventListener("click", async function () {
     userData = await stHa.getStorage();
   });
 
-  //console.log(userData['students']['0']);
-
-  //player = userData['students']['0'];
-  //console.log(player['map']);
-
-  //   for (var i = 0; i < userData['students'].length; i++) {
-  //     console.log(userData['students'][i]);
-  //   }
-
   kaboom({
     global: true,
-    //width: window.innerHeight <= window.innerWidth ? (window.innerHeight / 3) * 4 : window.innerWidth,
-    //height: window.innerWidth <= window.innerHeight ? (window.innerWidth / 4) * 3 : window.innerHeight,
     root: document.getElementById('game'),
-    width: 1080, //1440
-    height: 768, //1024
+    width: 1080,
+    height: 768,
     scale: 1,
     debug: true,
     clearColor: [0, 0, 0, 1],
@@ -128,11 +116,6 @@ async function main() {
       ]);
   }
 
-  // loadSprite('elevator-sketch', '../img/elevator/elevator-sketch.png');
-  // loadSprite('elevator-inside', '../img/elevator/elevator-inside.png');
-  // loadSprite('bell-button', '../img/elevator/bell-button.png');
-
-  // furniture
   loadSprite('char', '../img/chars/' + userData['student']['character']);
   loadSprite('door', '../img/apartment/door5.png');
   for (var i = 0; i < userData['items'].length; i++) {
@@ -162,26 +145,7 @@ async function main() {
   loadSprite('board', '../img/badges/wooden_board.svg');
 
   loadSprite('floor', '../img/apartment/floor10.png');
-
-  // city
-  // loadSprite('city-background', 'https://i.imgur.com/Tu3Qqzi.png');
-  // loadSprite('apartment-building', 'https://i.imgur.com/tKRE5mO.png');
-  // loadSprite('settings-building', 'https://i.imgur.com/iWlvTL2.png');
-  // loadSprite('subject-building', 'https://i.imgur.com/oKq4WvC.png');
-  // loadSprite('market', 'https://i.imgur.com/xsCx0QA.png');
-  // loadSprite('club-house', 'https://i.imgur.com/VqVolZR.png');
-  // loadSprite('city-image', 'https://i.imgur.com/FROeDHY.png');
-  // loadSprite('market-inside', 'https://i.imgur.com/ZrvMVTZ.png');
-  // loadSprite('club-house-inside', 'https://i.imgur.com/09wCp4G.png');
-
-  // loadSprite('loading-screen', 'https://i.imgur.com/8n8c7fJ.png');
-  // loadSprite('avatar1', 'https://i.imgur.com/zWJNFUn.png');
-  // loadSprite('avatar2', 'https://i.imgur.com/9PU6ViJ.png');
-
-  // // elevator
-  // loadSprite('elevator-up', 'https://i.imgur.com/oLybhK4.png');
-  // loadSprite('elevator-down', 'https://i.imgur.com/prk0prO.png');
-
+  
   loadSprite('elevator-inside', '../img/small/elevator-inside.png');
   loadSprite('bell-button', '../img/small/bell-button.png');
   loadSprite('city-background', '../img/small/city-background.png');
@@ -199,10 +163,7 @@ async function main() {
   loadSprite('avatar2', '../img/small/avatar2.png');
   loadSprite('elevator-up', '../img/small/elevator-up.png');
   loadSprite('elevator-down', '../img/small/elevator-down.png');
-
-  // sounds
-  // loadSound("elevator-music", "sounds/539574__qd42__elevator-ding-at-arenco-tower-dubai.wav");
-
+  
   loadSound('elevator1', '../sounds/55837_644651-lq.mp3');
   loadSound('elevator2', '../sounds/539574_3775755-lq.mp3');
   loadSound('elevator3', '../sounds/403188_7813079-lq.mp3');
@@ -212,51 +173,12 @@ async function main() {
   loadSound('door', '../sounds/214001_3635427-lq.mp3');
   loadSound('city-sound', '../sounds/366304_5950368-lq.mp3');
   loadSound('easteregg', '../sounds/easteregg.mp3');
+  loadSound('dreamy', '../sounds/bensound-dreams.mp3');
 
-  // loadSound(
-  //   'elevator1',
-  //   'https://freesound.org/data/previews/55/55837_644651-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'elevator2',
-  //   'https://freesound.org/data/previews/539/539574_3775755-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'elevator3',
-  //   'https://freesound.org/data/previews/403/403188_7813079-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'elevator4',
-  //   'https://freesound.org/data/previews/331/331205_2792951-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'elevator5',
-  //   'https://freesound.org/data/previews/467/467243_6300624-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'elevator6',
-  //   'https://freesound.org/data/previews/482/482096_8253036-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'door',
-  //   'https://freesound.org/data/previews/214/214001_3635427-lq.mp3',
-  // );
-
-  // loadSound(
-  //   'city-sound',
-  //   'https://freesound.org/data/previews/366/366304_5950368-lq.mp3',
-  // );
 
   scene('loading-screen', () => {
     add([
       sprite('loading-screen'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
     wait(0, () => {
@@ -273,7 +195,6 @@ async function main() {
       speed: 1.0,
       loop: true,
       seek: 27,
-      //detune: 1200,
     });
     easteregg.action(() => {
       if (easteregg.isClicked()) {
@@ -286,7 +207,6 @@ async function main() {
   scene('city', () => {
     add([
       sprite('city-background'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
     const balloon = add([
@@ -305,11 +225,10 @@ async function main() {
 
 
     const citySound = play('city-sound', {
-      volume: 4.0,
+      volume: 40.0,
       speed: 1.0,
       loop: true,
       seek: 27,
-      //detune: 1200,
     });
 
     const apartmentBuilding = add([
@@ -323,7 +242,6 @@ async function main() {
         play('door', {
           volume: 1.0,
           speed: 1.0,
-          //detune: 1200,
         });
         wait(1, () => {
           citySound.stop();
@@ -371,9 +289,7 @@ async function main() {
       }
     });
 
-    const size = 1.0; // 0.9
-    // var x = 1240;
-    // var y = 737;
+    const size = 1.0;
     var x = 1250;
     var y = 762;
     var row = 0;
@@ -433,9 +349,18 @@ async function main() {
   });
 
   scene('settings-building', () => {
+    let dreamySound;
+    wait(0.2, () => {
+      dreamySound = play('dreamy', {
+        volume: 0.1,
+        speed: 1.0,
+        loop: true,
+        seek: 27,
+        //detune: 1200,
+      });
+    });
     add([
       sprite('settings-inside'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
     const nameButton = add([
@@ -460,6 +385,7 @@ async function main() {
 
     exitButton.action(() => {
       if (exitButton.isClicked()) {
+        dreamySound.stop();
         go('city');
       }
     });
@@ -477,15 +403,9 @@ async function main() {
   scene('avatarScene1', () => {
     add([
       sprite('avatar1'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
 
-    // add(
-    //   [rect(100, 100)],
-    //   pos(950 / scaleDown, 950 / scaleDown),
-    //   color(0, 0, 0),
-    // );
 
     const continueButton = add([
       text('Continue', Math.round(48 / scaleDown)),
@@ -511,7 +431,6 @@ async function main() {
 
     add([
       sprite('avatar2'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
 
@@ -523,6 +442,15 @@ async function main() {
   });
 
   scene('market', () => {
+    let dreamySound;
+    wait(0.2, () => {
+      dreamySound = play('dreamy', {
+        volume: 0.1,
+        speed: 1.0,
+        loop: true,
+        seek: 27,
+      });
+    });
     const rectangle = add([
       rect(1200 / scaleDown, 600 / scaleDown),
       pos(Math.round(120 / scaleDown), Math.round(210 / scaleDown)),
@@ -532,7 +460,6 @@ async function main() {
 
     add([
       sprite('market-inside'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
 
@@ -552,15 +479,12 @@ async function main() {
 
     exitButton.action(() => {
       if (exitButton.isClicked()) {
+        dreamySound.stop();
         go('city');
       }
     });
     var stateMessage = true;
     rectangle.action(() => {
-      // console.log(board.pos)
-      // console.log('Testtt');
-      // console.log(message.scale);
-      // console.log(scale(1).scale);
       if (rectangle.isClicked()) {
         if (stateMessage) {
           const message = add([
@@ -569,7 +493,6 @@ async function main() {
             color(rgba(0, 0, 0, 0.8)),
             origin('topleft'),
             'message',
-            // scale(1),
           ]);
 
           const padding = 100;
@@ -595,7 +518,7 @@ async function main() {
       }
       mouseClick(() => {
         if (!stateMessage) {
-          //stateMessage = true;
+
           destroyAll('message');
           wait(0.1, () => {
             stateMessage = true;
@@ -606,9 +529,17 @@ async function main() {
   });
 
   scene('club-house', () => {
+    let dreamySound;
+    wait(0.2, () => {
+      dreamySound = play('dreamy', {
+        volume: 0.1,
+        speed: 1.0,
+        loop: true,
+        seek: 27,
+      });
+    });
     add([
       sprite('club-house-inside'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
     const rectangleC = add([
@@ -640,6 +571,7 @@ async function main() {
 
     exitButton.action(() => {
       if (exitButton.isClicked()) {
+        dreamySound.stop();
         go('city');
       }
     });
@@ -655,7 +587,6 @@ async function main() {
             color(rgba(0, 0, 0, 0.8)),
             origin('topleft'),
             'message2',
-            // scale(1),
           ]);
 
           const padding = 100;
@@ -682,7 +613,6 @@ async function main() {
       }
       mouseClick(() => {
         if (!stateMessage2) {
-          //stateMessage = true;
           destroyAll('message2');
           wait(0.1, () => {
             stateMessage2 = true;
@@ -692,10 +622,6 @@ async function main() {
     });
 
     rectangleC.action(() => {
-      // console.log(board.pos)
-      // console.log('Testtt');
-      // console.log(message.scale);
-      // console.log(scale(1).scale);
       if (rectangleC.isClicked()) {
         if (stateMessage) {
           const message = add([
@@ -704,7 +630,6 @@ async function main() {
             color(rgba(0, 0, 0, 0.8)),
             origin('topleft'),
             'message',
-            // scale(1),
           ]);
 
           const padding = 100;
@@ -728,32 +653,23 @@ async function main() {
       }
       mouseClick(() => {
         if (!stateMessage) {
-          //stateMessage = true;
           destroyAll('message');
           wait(0.1, () => {
             stateMessage = true;
           });
         }
       });
-
-
-      // if (mouseIsClicked()) {
-      //   destroyAll('message');
-      //   stateMessage = true;
-      // }
     });
   });
 
   scene('elevator-animation', (from) => {
     add([
       sprite('elevator-up'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
     play('elevator3', {
-      volume: 1.0,
+      volume: 2.0,
       speed: 1.0,
-      //detune: 1200,
     });
 
     wait(2, () => {
@@ -768,14 +684,12 @@ async function main() {
   scene('elevator-animation2', (from, player, whichPlayer) => {
     add([
       sprite('elevator-down'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
 
     play('elevator6', {
       volume: 1.0,
       speed: 1.0,
-      //detune: 1,
     });
 
     wait(2, () => {
@@ -791,7 +705,7 @@ async function main() {
     add([sprite('elevator-inside'), origin('topleft')]);
 
     const elevatorMusic = play('elevator5', {
-      volume: 0.1,
+      volume: 0.3,
       loop: true,
     });
 
@@ -806,7 +720,6 @@ async function main() {
         play('elevator4', {
           volume: 1.0,
           speed: 1.0,
-          //detune: 1,
         });
         wait(1, () => {
           elevatorMusic.stop();
@@ -819,8 +732,6 @@ async function main() {
       text('Exit', Math.round(14 / scaleDown)),
       pos(Math.round((237 + 342 * 1 + 90) / scaleDown), Math.round((241 + 91 * 5 + 22) / scaleDown)),
       color(255, 0, 0),
-      //pos(237, 241),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
 
@@ -845,29 +756,6 @@ async function main() {
         row = 5;
       }
 
-      // console.log(buttons);
-
-      // console.log(userData['students'][i]);
-      // buttons[i] = add([
-      //   sprite('bell-button'),
-      //   pos(x + (i % 3) * 342, y + row * 91),
-      //   origin('topleft'),
-      // ]);
-
-      // player = userData['students'][i];
-      // console.log(player);
-      // // buttons[i].action(() => {
-      // //   if (buttons[i].isClicked()) {
-      // //     go('room', userData['students'][i]);
-      // //   }
-      // // });
-
-      // add([
-      //   text(userData['students'][i].name, 18),
-      //   pos(x + (i % 3) * 342 + 90, y + row * 91 + 22),
-      //   color(0, 0, 0),
-      //   origin('topleft'),
-      // ]);
 
       add([
         sprite('bell-button'),
@@ -883,7 +771,6 @@ async function main() {
           play('elevator4', {
             volume: 1.0,
             speed: 1.0,
-            //detune: 1,
           });
           wait(1, () => {
             elevatorMusic.stop();
@@ -895,11 +782,6 @@ async function main() {
       var xname = Math.round((x + (i % 3) * 342 + 87) / scaleDown);
       var yname = Math.round((y + row * 91 + 24) / scaleDown);
 
-      // xname +=
-      //   (((12 - userData['students'][i].name.length) / (12 * 2)) * 150) /
-      //   scaleDown;
-      // console.log(userData['students'][i].name.length);
-
       add([
         text(userData['students'][i].name, 11),
         pos(xname, yname),
@@ -907,30 +789,33 @@ async function main() {
         origin('topleft'),
       ]);
     }
-    //console.log(buttons);
   });
 
   scene('room', (player, whichPlayer) => {
-    //console.log(player);
-    //console.log(player['map']);
     layers(['bg', 'obj', 'ui'], 'obj');
+
+    let dreamySound;
+    wait(0.8, () => {
+      dreamySound = play('dreamy', {
+        volume: 0.1,
+        speed: 1.0,
+        loop: true,
+        seek: 27,
+      });
+    });
 
     add([
       sprite('floor'),
-      //scale(width() / 240, height() / 240),
       origin('topleft'),
     ]);
 
-    // const shiftx = 300;
-    // const shifty = 144;
     const shiftx = 160;
-    const shifty = 6; // 48
+    const shifty = 6;
 
     const title = add([
       text(userData['students'][whichPlayer].name, 36, { width: 10 },),
       layer('ui'),
       pos( 760 + shiftx, -34 + shifty),
-      // pos(254 + shiftx, -40 + shifty),
     ]);
     
 
@@ -943,8 +828,6 @@ async function main() {
 
     function add_badges() {
       player = userData['students'][whichPlayer];
-      console.log(whichPlayer)
-      console.log(player['badges']);
       add([
         text(player['name'] + ' (Badges)', 23),
         layer('ui'),
@@ -969,27 +852,23 @@ async function main() {
 
         player['badges'].forEach((element) => {
           add([sprite(element), pos(px, py), layer('ui'), scale(0.25*1.5), 'badge']);
-          // py+=30
           if (px < 390*1.5 + shiftx + 19) {
             px += 40*2 + 19;
           } else {
             py += 50*1.5;
             px = 40 + shiftx + 19;
           }
-          console.log(px);
         });
       }
     }
 
     board.action(() => {
-      // console.log(board.pos)
       if (board.isClicked()) {
         if (board.scale.x == 0.065) {
           board.scale.x = 0.577;
           board.scale.y = 0.577;
           board.pos = vec2(0 + shiftx + 19, 60 + shifty);
           add_badges();
-          console.log(board);
         } else {
           board.scale.x = 0.065;
           board.scale.y = 0.065;
@@ -1009,20 +888,6 @@ async function main() {
     // 20 by 20 map
     const sizeOfMap = 20;
     const map = player['map'];
-    console.log(map);
-    console.log(player['name']);
-    // [
-    //     "attttttttp",
-    //     "l   e k  r",
-    //     "l        r",
-    //     "l        r",
-    //     "l       sr",
-    //     "l    k   r",
-    //     "l        r",
-    //     "d    s   r",
-    //     "l        r",
-    //     "zbbbbbbbbx"
-    //   ]
 
     var posItems = {
       width: 72*1.5,
@@ -1061,16 +926,6 @@ async function main() {
 
     addLevel(map, posItems);
 
-    // console.log(map)
-    // console.log(new Array(11).join(" "))
-
-    // keyPress('left', () => {
-    //   person.scale.x = -0.2*1.5;
-    // });
-
-    // keyPress('right', () => {
-    //   person.scale.x = 0.2*1.5;
-    // });
     const person = add([
       sprite('char'),
       pos(250 + shiftx, 120 + shifty),
@@ -1079,11 +934,9 @@ async function main() {
 
     keyPressRep('left', () => {
       person.move(-MOVE_SPEED, 0);
-      // person.scale.x = -0.2*1.5;
     });
     keyPressRep('right', () => {
       person.move(MOVE_SPEED, 0);
-      // person.scale.x = 0.2*1.5;
     });
     keyPressRep('up', () => {
       person.move(0, -MOVE_SPEED);
@@ -1096,10 +949,10 @@ async function main() {
     });
 
     person.collides('door', () => {
+      dreamySound.stop();
       play('door', {
         volume: 1.0,
         speed: 1.0,
-        //detune: 1200,
       });
       wait(0.5, () => {
         go('elevator-animation2', 'room', player);
@@ -1114,10 +967,10 @@ async function main() {
     ]);
     door.action(() => {
       if (door.isClicked()) {
+        dreamySound.stop();
         play('door', {
           volume: 1.0,
           speed: 1.0,
-          //detune: 1200,
         });
         wait(0.5, () => {
           go('elevator-animation2', 'room', player);
@@ -1125,7 +978,6 @@ async function main() {
       }
     });
     const allObjs = get('char');
-    //console.log(allObjs);
   });
 
   start('loading-screen');
