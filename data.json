@@ -12,16 +12,16 @@
       "name": "Alissa",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l3  21r",
+        "l     r",
+        "l     r",
+        "l 564 r",
+        "l    0r",
         "zbbbbbx"
       ],
       "char": "img/chars/rk.svg",
       "items": [
-        1,1,2,2,3,3,4,4,5,5,6,6
+        0,1,2,3,4,5,6
       ],
       "badges":[
         "b"
@@ -33,16 +33,16 @@
       "name": "Nithusan",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l     r",
+        "l  056r",
+        "l12225r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "char": "img/chars/janu.svg",
       "items": [
-        1,2,2,2,5,5,6
+        0,1,2,2,2,5,5,6
       ],
       "badges":[
       "g","s","b","s","s","g"
@@ -54,10 +54,10 @@
       "map": [
         "atdtttp",
         "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l   25r",
+        "l    4r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "char": "img/chars/rk.svg",
@@ -74,11 +74,11 @@
       "name": "Jonas",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l     r",
+        "l     r",
+        "l  6  r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "char": "img/chars/philip.svg",
@@ -95,11 +95,11 @@
       "name": "Sarah",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l1    r",
+        "l1  22r",
+        "l4  22r",
+        "l3 333r",
+        "l   6 r",
         "zbbbbbx"
       ],
       "items": [
@@ -117,11 +117,11 @@
       "name": "Patrick",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l  1  r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
@@ -138,11 +138,11 @@
       "name": "Alicia",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l   16r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
@@ -159,11 +159,11 @@
       "name": "Mahmud",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l   15r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
@@ -181,14 +181,14 @@
       "map": [
         "atdtttp",
         "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l     r",
+        "l  0  r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
-        1,6,3
+        0,1,6,3
       ],
       "char": "img/chars/philip.svg",
       "badges":[
@@ -201,15 +201,15 @@
       "name": "Anna Teufel",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l  6  r",
+        "l  6  r",
+        "l  66 r",
+        "l  6  r",
+        "l  6  r",
         "zbbbbbx"
       ],
       "items": [
-        6,6,6,5,4,6,1,1,4
+        6,6,6,6,6,6
       ],
       "char": "img/chars/rk.svg",
       "badges":[
@@ -223,10 +223,10 @@
       "map": [
         "atdtttp",
         "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l   24r",
+        "l     r",
+        "l  55 r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
@@ -244,10 +244,10 @@
       "map": [
         "atdtttp",
         "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l   25r",
+        "l     r",
+        "l   45r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
@@ -264,11 +264,11 @@
       "name": "Carl Johnson",
       "map": [
         "atdtttp",
-        "l3  16r",
-        "l   26r",
-        "l2  66r",
-        "l0 644r",
-        "l56  4r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
         "zbbbbbx"
       ],
       "items": [
@@ -368,7 +368,7 @@
           "-name": "Which Number",
           "type": "text",
           "desc": "Which number is that?",
-          "done": 1,
+          "done": 0,
           "started": 0,
           "correct": 2,
           "ExpPC": 10,
@@ -487,7 +487,7 @@
       "kind": "drawer",
       "scale": 0.6,
       "del": false,
-      "solid": true
+      "solid": false
     },{
       "id" : 3,
       "name": "Plant",

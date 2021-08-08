@@ -117,6 +117,9 @@ async function main() {
   }
 
   loadSprite('char', '../img/chars/' + userData['student']['character']);
+  for (var i=1; i < userData['students'].length; i++){
+    loadSprite('char'+i, '../' + userData['students'][i]['char']);
+  }
   loadSprite('door', '../img/apartment/door5.png');
   for (var i = 0; i < userData['items'].length; i++) {
     var item = userData['items'][i];
@@ -499,7 +502,7 @@ async function main() {
 
           add([
             text(
-                "In this demo you\ncan't buy anything on the market.\nBut do not worry!\nYou already own\nevery item 2 times.",
+                "In this demo you\ncan't buy anything on the market.\nBut do not worry!\nYou already own\nevery item.",
                 48,
                 { width: Math.round((1440 - padding * 2) / scaleDown) },
             ),
@@ -931,6 +934,115 @@ async function main() {
       pos(250 + shiftx, 120 + shifty),
       scale(1.0),
     ]);
+
+    //Simulate other students
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    /*var viereck = add([
+      rect(Math.round(680 / scaleDown), Math.round(620 / scaleDown)),
+      pos(Math.round(340 / scaleDown), Math.round(140 / scaleDown)),
+      color(rgba(0,0,0)),
+      origin('topleft'),
+    ]);*/
+    var randSim = getRandomInt(100);
+    console.log(randSim);
+    if (randSim > 0) {
+      var randPlayer = getRandomInt(userData['students'].length-2)+1;
+      console.log(randPlayer);
+        var simPerson1 = add([
+          sprite('char'+randPlayer),
+          pos(Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)),
+          scale(0.2),
+        ]);
+    }
+    if (randSim > 1){
+      var randPlayer2 = getRandomInt(userData['students'].length-2)+1;
+      console.log(randPlayer2);
+      var simPerson2 = add([
+        sprite('char'+randPlayer2),
+        pos(Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)),
+        scale(0.2),
+      ]);
+    }
+    var moveState1=[0,0];
+    simPerson1.action(() => {
+      simPerson1.resolve();
+        var where = getRandomInt(30);
+        if (moveState1[1] === 0){
+          if (where===0){
+            simPerson1.move(-MOVE_SPEED, 0);
+            moveState1=[0,4];
+          }
+          else if(where===1){
+            simPerson1.move(MOVE_SPEED, 0);
+            moveState1=[1,4];
+          }
+          else if(where===2){
+            simPerson1.move(0, -MOVE_SPEED);
+            moveState1=[2,4];
+          }
+          else if(where===3){
+            simPerson1.move(0, MOVE_SPEED);
+            moveState1=[3,4];
+          }
+        }
+        else {
+          if (moveState1[0]===0){
+            simPerson1.move(-MOVE_SPEED, 0);
+          }
+          else if(moveState1[0]===1){
+            simPerson1.move(MOVE_SPEED, 0);
+          }
+          else if(moveState1[0]===2){
+            simPerson1.move(0, -MOVE_SPEED);
+          }
+          else if(moveState1[0]===3){
+            simPerson1.move(0, MOVE_SPEED);
+          }
+          moveState1[1]--;
+        }
+      simPerson1.resolve();
+    });
+    var moveState2=[0,0];
+    simPerson2.action(() => {
+      simPerson2.resolve();
+      var where2 = getRandomInt(30);
+      if (moveState2[1] === 0){
+        if (where2===0){
+          simPerson2.move(-MOVE_SPEED, 0);
+          moveState2=[0,4];
+        }
+        else if(where2===1){
+          simPerson2.move(MOVE_SPEED, 0);
+          moveState2=[1,4];
+        }
+        else if(where2===2){
+          simPerson2.move(0, -MOVE_SPEED);
+          moveState2=[2,4];
+        }
+        else if(where2===3){
+          simPerson2.move(0, MOVE_SPEED);
+          moveState2=[3,4];
+        }
+      }
+      else {
+        if (moveState2[0]===0){
+          simPerson2.move(-MOVE_SPEED, 0);
+        }
+        else if(moveState2[0]===1){
+          simPerson2.move(MOVE_SPEED, 0);
+        }
+        else if(moveState2[0]===2){
+          simPerson2.move(0, -MOVE_SPEED);
+        }
+        else if(moveState2[0]===3){
+          simPerson2.move(0, MOVE_SPEED);
+        }
+        moveState2[1]--;
+      }
+      simPerson2.resolve();
+    });
 
     keyPressRep('left', () => {
       person.move(-MOVE_SPEED, 0);
