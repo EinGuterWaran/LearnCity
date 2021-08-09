@@ -939,7 +939,7 @@ async function main() {
     }
 
     var randSim = getRandomInt(100);
-    if (randSim > 0) {
+    if (randSim > 20) {
       var randPlayer = getRandomInt(userData['students'].length-2)+1;
       var coor1 = [Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)];
         var simPerson1 = add([
@@ -1005,7 +1005,7 @@ async function main() {
             simPerson1.resolve();
         });
     }
-    if (randSim > 1){
+    if (randSim > 80){
       var randPlayer2 = getRandomInt(userData['students'].length-2)+1;
       while (randPlayer2===randPlayer){
           randPlayer2 = getRandomInt(userData['students'].length-2)+1;
@@ -1102,17 +1102,19 @@ async function main() {
         go('elevator-animation2', 'room', player);
       });
     });
-
-      if (simPerson1.exists()){
-          person.collides('simPerson', () => {
-              moveState1=[4,200];
-          });
-
+      if (typeof simPerson1 !== 'undefined') {
+          if (simPerson1.exists()){
+              person.collides('simPerson', () => {
+                  moveState1=[4,200];
+              });
+          }
       }
-      if (simPerson2.exists()){
-          person.collides('simPerson2', () => {
-              moveState2=[4,200];
-          });
+      if (typeof simPerson2 !== 'undefined') {
+          if (simPerson2.exists()) {
+              person.collides('simPerson2', () => {
+                  moveState2 = [4, 200];
+              });
+          }
       }
 
     var door = add([
