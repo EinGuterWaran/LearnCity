@@ -2,7 +2,6 @@ import * as stHa from '../storage_handler.js';
 
 
 const scaleDown = 1.3333333333333333;
-
 async function main() {
   await stHa.main();
   var userData = await stHa.getStorage();
@@ -359,7 +358,6 @@ async function main() {
         speed: 1.0,
         loop: true,
         seek: 27,
-        //detune: 1200,
       });
     });
     add([
@@ -929,7 +927,7 @@ async function main() {
 
     addLevel(map, posItems);
 
-    const person = add([
+    var person = add([
       sprite('char'),
       pos(250 + shiftx, 120 + shifty),
       scale(1.0),
@@ -939,110 +937,144 @@ async function main() {
     function getRandomInt(max) {
       return Math.floor(Math.random() * max);
     }
-    /*var viereck = add([
-      rect(Math.round(680 / scaleDown), Math.round(620 / scaleDown)),
-      pos(Math.round(340 / scaleDown), Math.round(140 / scaleDown)),
-      color(rgba(0,0,0)),
-      origin('topleft'),
-    ]);*/
+
     var randSim = getRandomInt(100);
-    console.log(randSim);
     if (randSim > 0) {
       var randPlayer = getRandomInt(userData['students'].length-2)+1;
-      console.log(randPlayer);
+      var coor1 = [Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)];
         var simPerson1 = add([
           sprite('char'+randPlayer),
-          pos(Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)),
+          pos(coor1[0], coor1[1]),
+          "simPerson",
           scale(0.2),
         ]);
+        var simText1 = add([
+            text(userData['students'][randPlayer].name, Math.round(20 / scaleDown)),
+            pos(coor1[0]-15, coor1[1]-15),
+            color(0, 0, 0),
+            origin('topleft'),
+        ]);
+        simPerson1.collides('door', () => {
+            destroy(simPerson1);
+            destroy(simText1);
+        });
+        var moveState1=[0,0];
+        simPerson1.action(() => {
+            simPerson1.resolve();
+            var where = getRandomInt(30);
+            if (moveState1[1] === 0){
+                if (where===0){
+                    simPerson1.move(-MOVE_SPEED, 0);
+                    moveState1=[0,4];
+                }
+                else if(where===1){
+                    simPerson1.move(MOVE_SPEED, 0);
+                    moveState1=[1,4];
+                }
+                else if(where===2){
+                    simPerson1.move(0, -MOVE_SPEED);
+                    moveState1=[2,4];
+                }
+                else if(where===3){
+                    simPerson1.move(0, MOVE_SPEED);
+                    moveState1=[3,4];
+                }
+                simText1.pos['x'] = simPerson1.pos['x']-15;
+                simText1.pos['y'] = simPerson1.pos['y']-15;
+            }
+            else {
+                if (moveState1[0]===0){
+                    simPerson1.move(-MOVE_SPEED, 0);
+                }
+                else if(moveState1[0]===1){
+                    simPerson1.move(MOVE_SPEED, 0);
+                }
+                else if(moveState1[0]===2){
+                    simPerson1.move(0, -MOVE_SPEED);
+                }
+                else if(moveState1[0]===3){
+                    simPerson1.move(0, MOVE_SPEED);
+                }
+                else if(moveState1[0]===4){
+                        simPerson1.move(0, 0);
+                }
+                moveState1[1]--;
+                simText1.pos['x'] = simPerson1.pos['x']-15;
+                simText1.pos['y'] = simPerson1.pos['y']-15;
+            }
+            simPerson1.resolve();
+        });
     }
     if (randSim > 1){
       var randPlayer2 = getRandomInt(userData['students'].length-2)+1;
-      console.log(randPlayer2);
+      while (randPlayer2===randPlayer){
+          randPlayer2 = getRandomInt(userData['students'].length-2)+1;
+      }
+      var coor2 = [Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)]
       var simPerson2 = add([
         sprite('char'+randPlayer2),
-        pos(Math.round(rand(680/ scaleDown)+340/scaleDown), Math.round(rand(620/ scaleDown)+140/ scaleDown)),
+        pos(coor2[0], coor2[1]),
+          "simPerson2",
         scale(0.2),
       ]);
+        var simText2 = add([
+            text(userData['students'][randPlayer2].name, Math.round(20 / scaleDown)),
+            pos(coor2[0]-15, coor2[1]-15),
+            color(0, 0, 0),
+            origin('topleft'),
+        ]);
+        simPerson2.collides('door', () => {
+            destroy(simPerson2);
+            destroy(simText2);
+        });
+        var moveState2=[0,0];
+        simPerson2.action(() => {
+            simPerson2.resolve();
+            var where2 = getRandomInt(30);
+            if (moveState2[1] === 0){
+                if (where2===0){
+                    simPerson2.move(-MOVE_SPEED, 0);
+                    moveState2=[0,4];
+                }
+                else if(where2===1){
+                    simPerson2.move(MOVE_SPEED, 0);
+                    moveState2=[1,4];
+                }
+                else if(where2===2){
+                    simPerson2.move(0, -MOVE_SPEED);
+                    moveState2=[2,4];
+                }
+                else if(where2===3){
+                    simPerson2.move(0, MOVE_SPEED);
+                    moveState2=[3,4];
+                }
+                
+                simText2.pos['x'] = simPerson2.pos['x']-15;
+                simText2.pos['y'] = simPerson2.pos['y']-15;
+            }
+            else {
+                if (moveState2[0]===0){
+                    simPerson2.move(-MOVE_SPEED, 0);
+                }
+                else if(moveState2[0]===1){
+                    simPerson2.move(MOVE_SPEED, 0);
+                }
+                else if(moveState2[0]===2){
+                    simPerson2.move(0, -MOVE_SPEED);
+                }
+                else if(moveState2[0]===3){
+                    simPerson2.move(0, MOVE_SPEED);
+                }
+                else if(moveState1[0]===4){
+                        simPerson2.move(0, 0);
+                }
+                moveState2[1]--;
+                simText2.pos['x'] = simPerson2.pos['x']-15;
+                simText2.pos['y'] = simPerson2.pos['y']-15;
+            }
+            simPerson2.resolve();
+        });
     }
-    var moveState1=[0,0];
-    simPerson1.action(() => {
-      simPerson1.resolve();
-        var where = getRandomInt(30);
-        if (moveState1[1] === 0){
-          if (where===0){
-            simPerson1.move(-MOVE_SPEED, 0);
-            moveState1=[0,4];
-          }
-          else if(where===1){
-            simPerson1.move(MOVE_SPEED, 0);
-            moveState1=[1,4];
-          }
-          else if(where===2){
-            simPerson1.move(0, -MOVE_SPEED);
-            moveState1=[2,4];
-          }
-          else if(where===3){
-            simPerson1.move(0, MOVE_SPEED);
-            moveState1=[3,4];
-          }
-        }
-        else {
-          if (moveState1[0]===0){
-            simPerson1.move(-MOVE_SPEED, 0);
-          }
-          else if(moveState1[0]===1){
-            simPerson1.move(MOVE_SPEED, 0);
-          }
-          else if(moveState1[0]===2){
-            simPerson1.move(0, -MOVE_SPEED);
-          }
-          else if(moveState1[0]===3){
-            simPerson1.move(0, MOVE_SPEED);
-          }
-          moveState1[1]--;
-        }
-      simPerson1.resolve();
-    });
-    var moveState2=[0,0];
-    simPerson2.action(() => {
-      simPerson2.resolve();
-      var where2 = getRandomInt(30);
-      if (moveState2[1] === 0){
-        if (where2===0){
-          simPerson2.move(-MOVE_SPEED, 0);
-          moveState2=[0,4];
-        }
-        else if(where2===1){
-          simPerson2.move(MOVE_SPEED, 0);
-          moveState2=[1,4];
-        }
-        else if(where2===2){
-          simPerson2.move(0, -MOVE_SPEED);
-          moveState2=[2,4];
-        }
-        else if(where2===3){
-          simPerson2.move(0, MOVE_SPEED);
-          moveState2=[3,4];
-        }
-      }
-      else {
-        if (moveState2[0]===0){
-          simPerson2.move(-MOVE_SPEED, 0);
-        }
-        else if(moveState2[0]===1){
-          simPerson2.move(MOVE_SPEED, 0);
-        }
-        else if(moveState2[0]===2){
-          simPerson2.move(0, -MOVE_SPEED);
-        }
-        else if(moveState2[0]===3){
-          simPerson2.move(0, MOVE_SPEED);
-        }
-        moveState2[1]--;
-      }
-      simPerson2.resolve();
-    });
 
     keyPressRep('left', () => {
       person.move(-MOVE_SPEED, 0);
@@ -1070,6 +1102,18 @@ async function main() {
         go('elevator-animation2', 'room', player);
       });
     });
+
+      if (simPerson1.exists()){
+          person.collides('simPerson', () => {
+              moveState1=[4,200];
+          });
+
+      }
+      if (simPerson2.exists()){
+          person.collides('simPerson2', () => {
+              moveState2=[4,200];
+          });
+      }
 
     var door = add([
       rect(Math.round(140 / scaleDown), Math.round(140 / scaleDown)),
