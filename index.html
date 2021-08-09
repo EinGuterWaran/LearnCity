@@ -86,7 +86,8 @@
         <h2 class="display-5">Students Demo</h2>
         <p class="lead">Discover Learn City from a student's point of view.</p>
         <a class="btn btn-outline-light" href="student" onclick="window.open(this.href, 'mywin',
-'left='+((screen.width/2)-540)+',top='+((screen.height/2)-384)+',width=1080,height=768,toolbar=0,resizable=0'); return false;" >Start Demo</a>
+'left='+((screen.width/2)-540)+',top='+((screen.height/2)-384)+',width=1080,height=768,toolbar=0,resizable=0'); return false;" >Start Demo</a><br>
+        <a id='studentCount'>Already started [loading...] times. :)</a>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
         <img height="300" src="img/landing/students.png">
@@ -97,7 +98,8 @@
         <h2 class="display-5">Teacher Demo</h2>
         <p class="lead">Discover the backend for the teacher.</p>
         <a class="btn btn-outline-secondary" href="teacher" onclick="window.open(this.href, 'mywin',
-'left=0,top=0,width='+screen.width+',height='+screen.height+',toolbar=0,resizable=0, menubar=0, location=no'); return false;" >Start Demo</a>
+'left=0,top=0,width='+screen.width+',height='+screen.height+',toolbar=0,resizable=0, menubar=0, location=no'); return false;" >Start Demo</a><br>
+        <a id='teacherCount'>Already started [loading...] times. :)</a>
       </div>
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
         <img height="300" src="img/landing/teacher.png">
@@ -127,7 +129,23 @@
 
 
     <script src="css/bootstrap.bundle.min.js"></script>
+  <script>
+    var studentC = document.getElementById('studentCount');
+    var teacherC = document.getElementById('teacherCount');
+    let targetUrl1 = 'https://einguterwaran.github.io/LearnCity/student';
+    let targetUrl2 = 'https://einguterwaran.github.io/LearnCity/teacher';
+    fetch(`https://hitcounter.pythonanywhere.com/nocount?url=${encodeURIComponent(targetUrl1)}`, {
+      credentials: 'include'
+    })
+            .then(res => res.text())
+            .then(count => studentC.innerText = "Already started "+count+" times :)")
 
+    fetch(`https://hitcounter.pythonanywhere.com/nocount?url=${encodeURIComponent(targetUrl2)}`, {
+      credentials: 'include'
+    })
+            .then(res => res.text())
+            .then(count => teacherC.innerText = "Already started "+count+" times. :)")
+  </script>
       
 </main></body>
 </html>

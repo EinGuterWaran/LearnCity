@@ -1,4 +1,13 @@
 import * as stHa from "../storage_handler.js";
+
+//increase counter
+let targetUrl = 'https://einguterwaran.github.io/LearnCity/teacher';
+fetch(`https://hitcounter.pythonanywhere.com/count?url=${encodeURIComponent(targetUrl)}`, {
+    credentials: 'include'})
+        .then(res => res.text())
+        .then(count => console.log("Counter increased to "+count))
+
+
 var menu = "dashboard";
 var data;
 var tablerow;
@@ -172,7 +181,7 @@ function generateContent(data){
                  "<td>"+items[i]["let"]+"</td><td>"+items[i]["price"]+"</td>" +
                  "<td>"+items[i]["scarcity"]+"</td><td>"+items[i]["type"]+"</td>" +
                  "<td>"+items[i]["kind"]+"</td><td>"+items[i]["scale"]+"</td>" +
-                 "<td><img height='100' src='../img/furniture/"+items[i]["src"]+"'></td></tr>")
+                 "<td><img height='50' src='../img/furniture/"+items[i]["src"]+"'></td></tr>")
          }
          tbody.insertAdjacentHTML("beforeend","<tr><td></td><td><input type='text'></td><td><input type='text'></td>" +
              "<td><input type='text'></td><td><input type='text'></td><td>" +

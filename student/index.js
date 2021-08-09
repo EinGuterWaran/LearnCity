@@ -1,5 +1,11 @@
 import * as stHa from '../storage_handler.js';
 
+//increase counter
+let targetUrl = 'https://einguterwaran.github.io/LearnCity/student';
+fetch(`https://hitcounter.pythonanywhere.com/count?url=${encodeURIComponent(targetUrl)}`, {
+  credentials: 'include'})
+    .then(res => res.text())
+    .then(count => console.log("Counter increased to "+count))
 
 const scaleDown = 1.3333333333333333;
 async function main() {
