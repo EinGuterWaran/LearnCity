@@ -1,68 +1,282 @@
 {
+  "teacher": {
+    "firstname" : "Anne-Liese",
+    "lastname" : "Schäfer",
+    "title" : "Mrs.",
+    "semesterGoal": 60000
+  },
   "students": [
     {
       "id": 0,
+      "exp": 3000,
       "name": "Alissa",
       "map": [
-        "atttttttts",
-        "l   e k  r",
-        "l        r",
-        "l        r",
-        "l       pr",
-        "l        r",
-        "l        r",
-        "d        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  21r",
+        "l     r",
+        "l     r",
+        "l 564 r",
+        "l    0r",
+        "zbbbbbx"
       ],
+      "char": "img/chars/rk.svg",
       "items": [
-        1,14,3,11,11
+        0,1,2,3,4,5,6
       ],
       "badges":[
-        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+        "b"
       ]
     },
     {
       "id": 1,
+      "exp": 3200,
       "name": "Nithusan",
       "map": [
-        "atttttttts",
-        "l   e k  r",
-        "l        r",
-        "l        r",
-        "l       pr",
-        "l    k   r",
-        "l        r",
-        "d    p   r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l     r",
+        "l  056r",
+        "l12225r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
       ],
+      "char": "img/chars/janu.svg",
       "items": [
-        1,14,3,11,33,1,5,3
+        0,1,2,2,2,5,5,6
       ],
       "badges":[
       "g","s","b","s","s","g"
     ]
     },{
       "id": 2,
+      "exp": 1000,
       "name": "Maria",
       "map": [
-        "atttttttts",
-        "l   e    r",
-        "l        r",
-        "l        r",
-        "l kk    pr",
-        "l        r",
-        "l    k   r",
-        "d        r",
-        "l        r",
-        "zbbbbbbbbx"
+        "atdtttp",
+        "l3  16r",
+        "l   25r",
+        "l    4r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
       ],
+      "char": "img/chars/rk.svg",
       "items": [
-        1,14,3,11,15
+        1,5,4,3,2,6
       ],
       "badges":[
         "g","g","g","s","s"
+      ]
+    },
+    {
+      "id": 3,
+      "exp": 6000,
+      "name": "Jonas",
+      "map": [
+        "atdtttp",
+        "l     r",
+        "l     r",
+        "l  6  r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "char": "img/chars/philip.svg",
+      "items": [
+        6
+      ],
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 4,
+      "exp": 3000,
+      "name": "Sarah",
+      "map": [
+        "atdtttp",
+        "l1    r",
+        "l1  22r",
+        "l4  22r",
+        "l3 333r",
+        "l   6 r",
+        "zbbbbbx"
+      ],
+      "items": [
+        1,1,2,2,2,4,3,3,3,6,3
+      ],
+      "char": "img/chars/rk.svg",
+
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 5,
+      "exp": 3000,
+      "name": "Patrick",
+      "map": [
+        "atdtttp",
+        "l  1  r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+        1
+      ],
+      "char": "img/chars/romelo.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 6,
+      "exp": 3000,
+      "name": "Alicia",
+      "map": [
+        "atdtttp",
+        "l   16r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+        1,6
+      ],
+      "char": "img/chars/rk.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 7,
+      "exp": 3000,
+      "name": "Mahmud",
+      "map": [
+        "atdtttp",
+        "l   15r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+        1,5
+      ],
+      "char": "img/chars/mo.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 8,
+      "exp": 3000,
+      "name": "Harry",
+      "map": [
+        "atdtttp",
+        "l3  16r",
+        "l     r",
+        "l  0  r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+        0,1,6,3
+      ],
+      "char": "img/chars/philip.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 9,
+      "exp": 666,
+      "name": "Anna Teufel",
+      "map": [
+        "atdtttp",
+        "l  6  r",
+        "l  6  r",
+        "l  66 r",
+        "l  6  r",
+        "l  6  r",
+        "zbbbbbx"
+      ],
+      "items": [
+        6,6,6,6,6,6
+      ],
+      "char": "img/chars/rk.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 10,
+      "exp": 3000,
+      "name": "Sharmila",
+      "map": [
+        "atdtttp",
+        "l3  16r",
+        "l   24r",
+        "l     r",
+        "l  55 r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+        1,2,3,4,5,5,6
+      ],
+      "char": "img/chars/rk.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 11,
+      "exp": 3000,
+      "name": "Mehmet",
+      "map": [
+        "atdtttp",
+        "l3  16r",
+        "l   25r",
+        "l     r",
+        "l   45r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+        1,2,3,4,5,5,6
+      ],
+      "char": "img/chars/Mo.svg",
+      "badges":[
+        "g","s","b","s","s","g","s","g","s","g","s","g","g"
+      ]
+    },
+    {
+      "id": 12,
+      "exp": 0,
+      "name": "Carl Johnson",
+      "map": [
+        "atdtttp",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "l     r",
+        "zbbbbbx"
+      ],
+      "items": [
+
+      ],
+      "char": "img/chars/romelo.svg",
+      "badges":[
+        "g"
       ]
     }
   ],
@@ -70,24 +284,24 @@
     "id": 0,
     "name": "Alissa",
     "coins": 100,
-    "exp": 1100,
-    "character": "1.jpg"
+    "exp": 3900,
+    "character": "rk.png"
   },
   "subjects": {
-    "mathematics": {
+    "maths": {
       "highscore": [
         {
-          "name": "Marie",
+          "name": "Elena",
           "exp": 120
         },
         {
-          "name": "Jack",
+          "name": "Will",
           "exp": 100
         },{
-          "name": "The_K1d",
+          "name": "Angela",
           "exp": 90
         },{
-          "name": "Romelo",
+          "name": "Nithusan",
           "exp": 80
         },{
           "name": "Philipp",
@@ -101,6 +315,7 @@
           "type": "text",
           "desc": "Add the numbers!",
           "done": 0,
+          "started": 0,
           "ExpPC": 30,
           "CPC": 5,
           "timer": 300,
@@ -125,6 +340,7 @@
           "type": "text",
           "desc": "Which number is that?",
           "done": 0,
+          "started": 0,
           "ExpPC": 20,
           "CPC": 3,
           "timer": 200,
@@ -152,7 +368,8 @@
           "-name": "Which Number",
           "type": "text",
           "desc": "Which number is that?",
-          "done": 1,
+          "done": 0,
+          "started": 0,
           "correct": 2,
           "ExpPC": 10,
           "CPC": 2,
@@ -177,21 +394,21 @@
     "english": {
       "highscore": [
         {
-          "name": "Angela",
+          "name": "Lingeswaran",
           "exp": 100
         },
         {
-          "name": "Radhicka",
+          "name": "The_K1d",
           "exp": 80
         },{
-          "name": "The_K1d",
+          "name": "Luigi",
           "exp": 60
         },{
-          "name": "Mohammad",
+          "name": "Mario",
           "exp": 40
         },{
           "name": "Janusan",
-          "exp": 20
+          "exp": 10
         }
       ],
   "test": [
@@ -201,6 +418,7 @@
       "type": "text",
       "desc": "What is the oppsite of the following word?",
       "done": 0,
+      "started": 0,
       "correct": 0,
       "ExpPC": 20,
       "CPC": 5,
@@ -232,5 +450,93 @@
 
   "#omit-xml-declaration": "yes"
   }
-  }
+  },
+  "items": [
+    {
+      "id" : 0,
+      "name": "Bookshelf",
+      "src" : "bookshelf.png",
+      "let": "0",
+      "price" : 150,
+      "scarcity" : 70,
+      "type": "furniture",
+      "kind": "bookshelf",
+      "scale": 0.9,
+      "del": false,
+      "solid": true
+    },
+    {
+      "id" : 1,
+      "name": "Cabinet",
+      "src" : "cabinet.png",
+      "let": "1",
+      "price" : 80,
+      "scarcity" : 40,
+      "type": "furniture",
+      "kind": "cabinet",
+      "scale": 1.0,
+      "del": false
+    },{
+      "id" : 2,
+      "name": "Drawer",
+      "src" : "drawer.png",
+      "let": "2",
+      "price" : 30,
+      "scarcity" : 20,
+      "type": "furniture",
+      "kind": "drawer",
+      "scale": 0.6,
+      "del": false,
+      "solid": false
+    },{
+      "id" : 3,
+      "name": "Plant",
+      "src" : "plant.png",
+      "let": "3",
+      "price" : 30,
+      "scarcity" : 20,
+      "type": "furniture",
+      "kind": "plant",
+      "scale": 0.5,
+      "del": false,
+      "solid": true
+    },{
+      "id" : 4,
+      "name": "Single Sofa",
+      "src" : "single_sofa.png",
+      "let": "4",
+      "price" : 100,
+      "scarcity" : 50,
+      "type": "furniture",
+      "kind": "sofa",
+      "scale": 0.73,
+      "del": false,
+      "solid": false
+    },{
+      "id" : 5,
+      "name": "Stool",
+      "src" : "stool.png",
+      "let": "5",
+      "price" : 10,
+      "scarcity" : 10,
+      "type": "furniture",
+      "kind": "stool",
+      "scale": 0.5,
+      "del": false,
+      "solid": false
+    },{
+      "id" : 6,
+      "name": "Three Seater Sofa",
+      "src" : "sofa_long2.png",
+      "let": "6",
+      "price" : 200,
+      "scarcity" : 90,
+      "type": "furniture",
+      "kind": "sofa",
+      "scale": 1.0,
+      "del": false,
+      "solid": false
+    }
+  ]
+
 }
